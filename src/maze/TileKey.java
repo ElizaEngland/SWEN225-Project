@@ -13,6 +13,6 @@ public class TileKey extends Tile{
 
     @Override
     public ImageIcon getIcon() {
-        return new ImageIcon("resources/key.png");
+        return new ImageIcon("resources/key_"+colour+".png");
     }
 }

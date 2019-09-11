@@ -13,6 +13,6 @@ public class TileDoor extends Tile{
 
     @Override
     public ImageIcon getIcon() {
-        return new ImageIcon("resources/door.png");
+        return new ImageIcon("resources/door_"+colour+".png");
     }
 }
