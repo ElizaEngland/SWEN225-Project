@@ -13,8 +13,4 @@ public class TileTreasure extends Tile {
         return new ImageIcon("resources/treasure.png");
     }
 
-    @Override
-    public String toString() {
-        return "T";
-    }
 }

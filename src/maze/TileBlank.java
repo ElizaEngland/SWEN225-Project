@@ -13,8 +13,4 @@ public class TileBlank extends Tile {
         return new ImageIcon("resources/blank.png");
     }
 
-    @Override
-    public String toString() {
-        return "B";
-    }
 }

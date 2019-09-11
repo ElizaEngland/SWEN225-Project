@@ -28,15 +28,30 @@ public class Board {
                 int x = Integer.parseInt(tokens[0]);    // x
                 int y = Integer.parseInt(tokens[1]);    // y
                 String type = tokens[2];            // tile type
+                String colour;
+
+                if (tokens.length == 4) {   // for colour coded keys/doors
+                     colour = tokens[3];
+                }
 
                 Tile tile;
 
                 if (type.equals("blank")) {
                     tile = new TileBlank(x, y);
                 } else if (type.equals("treasure")) {
-                    tile = new TileTreasure(x,y);
+                    tile = new TileTreasure(x, y);
                 } else if (type.equals("wall")) {
-                    tile = new TileWall(x,y);
+                    tile = new TileWall(x, y);
+                } else if (type.equals("door")) {
+                    tile = new TileDoor(x, y, colour);
+                } else if (type.equals("exit")) {
+                    tile = new TileExit(x, y);
+                } else if (type.equals("free")) {
+                    tile = new TileFree(x, y);
+                } else if (type.equals("info")) {
+                    tile = new TileInfo(x, y);
+                } else if (type.equals("key")) {
+                    tile = new TileKey(x, y, colour);
                 } else {
                     tile = null;
                 }
@@ -45,30 +60,14 @@ public class Board {
 
             }
 
-        } catch (IOException e) { System.out.println("Error: " + e); }
+        } catch (IOException e) {
+            System.out.println("Error: " + e);
+        }
 
     }
 
     public Tile[][] getBoard() {
         return board;
     }
-
-    @Override
-    public String toString() {
-
-        StringBuilder result = new StringBuilder();
-
-        for (int y = 0; y < Main.HEIGHT; y++) {
-            for (int x = 0; x < Main.WIDTH; x++) {
-                Tile t = board[x][y];
-                result.append(t);
-            }
-            result.append("\n");
-        }
-
-        return result.toString();
-
-    }
-
 
 }
