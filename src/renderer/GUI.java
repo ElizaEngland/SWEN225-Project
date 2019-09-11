@@ -20,7 +20,6 @@ public class GUI extends JFrame {
         this.board = board;
         createFrame();
 
-        setPreferredSize(new Dimension(500, 500));
         pack();
         setLocationRelativeTo(null);
         setVisible(true);
@@ -38,7 +37,7 @@ public class GUI extends JFrame {
         for (int row = 0; row < Main.HEIGHT; row++) {
             for (int col = 0; col < Main.WIDTH; col++) {
 
-                tileGrid[col][row] = new JLabel(board.getBoard()[col][row].getIcon());
+                tileGrid[col][row] = new JLabel(new ImageIcon(board.getBoard()[col][row].getIcon().getImage().getScaledInstance(60,60,java.awt.Image.SCALE_SMOOTH)));
                 boardPanel.add(tileGrid[col][row]);
 
             }
