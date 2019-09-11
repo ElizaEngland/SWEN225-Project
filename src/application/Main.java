@@ -18,7 +18,4 @@ public class Main {
         GUI gui = new GUI(board);
 
     }
-
-    //Application Branch test
-
 }

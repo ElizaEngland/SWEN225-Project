@@ -8,6 +8,6 @@ public class TileExitLock extends Tile{
 
     @Override
     public ImageIcon getIcon() {
-        return new ImageIcon("resources/exitlock.png");
+        return new ImageIcon("resources/exitLock.png");
     }
 }
