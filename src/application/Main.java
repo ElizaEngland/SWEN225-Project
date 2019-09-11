@@ -9,8 +9,8 @@ import renderer.GUI;
  */
 public class Main {
 
-    public static final int WIDTH = 3;
-    public static final int HEIGHT = 3;
+    public static final int WIDTH = 9;
+    public static final int HEIGHT = 9;
 
     public static void main(String[] args) {
 
