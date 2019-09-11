@@ -6,6 +6,9 @@ import maze.Tile;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * GUI class for Chip's Challenge.
+ */
 public class GUI extends JFrame {
 
     private static final int WIDTH = 3;
