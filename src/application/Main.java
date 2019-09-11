@@ -3,7 +3,6 @@ package application;
 import maze.Board;
 import renderer.GUI;
 
-//Mason was here
 
 /**
  * Main class for Chip's Challenge.
@@ -20,6 +19,6 @@ public class Main {
 
     }
 
-    // ben was here
+    //Application Branch test
 
 }
