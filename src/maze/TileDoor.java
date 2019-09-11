@@ -2,7 +2,7 @@ package maze;
 
 import javax.swing.*;
 
-public class TileDoor extends Tile{
+public class TileDoor extends Tile {
 
     private String colour;
 
@@ -13,6 +13,6 @@ public class TileDoor extends Tile{
 
     @Override
     public ImageIcon getIcon() {
-        return new ImageIcon("resources/door_"+colour+".png");
+        return new ImageIcon("resources/door_" + colour + ".png");
     }
 }
