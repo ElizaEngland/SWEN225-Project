@@ -3,7 +3,6 @@ package application;
 import maze.Board;
 import renderer.GUI;
 
-
 /**
  * Main class for Chip's Challenge.
  */

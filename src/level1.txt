@@ -79,11 +79,3 @@
 6 8 free
 7 8 free
 8 8 treasure
-
-
-
-
-
-
-
-

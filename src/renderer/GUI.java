@@ -1,7 +1,6 @@
 package renderer;
 
 import maze.Board;
-import maze.Tile;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,8 +10,6 @@ import java.awt.*;
  */
 public class GUI extends JFrame {
 
-    private static final int WIDTH = 17;
-    private static final int HEIGHT = 17;
     private Board board;
 
     public GUI(Board board) {
