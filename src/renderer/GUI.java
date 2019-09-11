@@ -3,6 +3,9 @@ package renderer;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * GUI class for Chip's Challenge.
+ */
 public class GUI extends JFrame {
 
     public GUI() {
