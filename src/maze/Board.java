@@ -28,7 +28,7 @@ public class Board {
                 int x = Integer.parseInt(tokens[0]);    // x
                 int y = Integer.parseInt(tokens[1]);    // y
                 String type = tokens[2];            // tile type
-                String colour;
+                String colour = "";
 
                 if (tokens.length == 4) {   // for colour coded keys/doors
                      colour = tokens[3];
