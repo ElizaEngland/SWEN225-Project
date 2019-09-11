@@ -46,8 +46,6 @@ public class Board {
                     tile = new TileDoor(x, y, colour);
                 } else if (type.equals("exit")) {
                     tile = new TileExit(x, y);
-                } else if (type.equals("free")) {
-                    tile = new TileFree(x, y);
                 } else if (type.equals("info")) {
                     tile = new TileInfo(x, y);
                 } else if (type.equals("key")) {
