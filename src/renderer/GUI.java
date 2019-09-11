@@ -20,7 +20,7 @@ public class GUI extends JFrame {
         this.board = board;
         createFrame();
 
-        setPreferredSize(new Dimension(500, 500));
+        setPreferredSize(new Dimension(1100, 950));
         pack();
         setLocationRelativeTo(null);
         setVisible(true);
@@ -28,6 +28,8 @@ public class GUI extends JFrame {
     }
 
     private void createFrame() {
+
+        // BOARD
 
         JPanel mainPanel = new JPanel();
         JPanel boardPanel = new JPanel();
@@ -46,7 +48,15 @@ public class GUI extends JFrame {
 
         mainPanel.add(boardPanel);
 
-        add(mainPanel, "Center");
+        // CONTROLS
+
+        JPanel rightPanel = new JPanel();
+        JLabel timer = new JLabel("Time remaining:");
+
+        rightPanel.add(timer);
+
+        add(mainPanel, "West");
+        add(rightPanel, "East");
 
     }
 
