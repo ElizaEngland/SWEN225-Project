@@ -13,8 +13,4 @@ public class TileWall extends Tile {
         return new ImageIcon("resources/wall.png");
     }
 
-    @Override
-    public String toString() {
-        return "W";
-    }
 }
