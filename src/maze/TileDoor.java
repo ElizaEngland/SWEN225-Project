@@ -4,10 +4,15 @@ import javax.swing.*;
 
 public class TileDoor extends Tile{
 
-    TileDoor(int x, int y) { super(x, y); }
+    private String colour;
+
+    TileDoor(int x, int y, String colour) {
+        super(x, y);
+        this.colour = colour;
+    }
 
     @Override
     public ImageIcon getIcon() {
-        return new ImageIcon("resources/door.png");
+        return new ImageIcon("resources/door_"+colour+".png");
     }
 }
