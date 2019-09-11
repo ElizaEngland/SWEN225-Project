@@ -52,7 +52,9 @@ public class Board {
                     tile = new TileInfo(x, y);
                 } else if (type.equals("key")) {
                     tile = new TileKey(x, y, colour);
-                } else {
+                } else if (type.equals("exitlock")) {
+                    tile = new TileExitLock(x, y);
+                }else {
                     tile = null;
                 }
 
