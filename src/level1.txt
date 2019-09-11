@@ -1,0 +1,9 @@
+0 0 blank
+1 0 blank
+2 0 treasure
+0 1 blank
+1 1 blank
+2 1 blank
+0 2 blank
+1 2 wall
+2 2 wall
