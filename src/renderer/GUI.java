@@ -1,5 +1,6 @@
 package renderer;
 
+import application.Main;
 import maze.Board;
 import maze.Tile;
 
@@ -11,8 +12,6 @@ import java.awt.*;
  */
 public class GUI extends JFrame {
 
-    private static final int WIDTH = 3;
-    private static final int HEIGHT = 3;
     private Board board;
 
     public GUI(Board board) {
@@ -33,16 +32,14 @@ public class GUI extends JFrame {
 
         JPanel mainPanel = new JPanel();
         JPanel boardPanel = new JPanel();
-        JLabel[][] tileGrid = new JLabel[WIDTH][HEIGHT];
+        JLabel[][] tileGrid = new JLabel[Main.WIDTH][Main.HEIGHT];
 
-        boardPanel.setLayout(new GridLayout(HEIGHT, WIDTH, 0, 0));
+        boardPanel.setLayout(new GridLayout(Main.HEIGHT, Main.WIDTH, 0, 0));
 
-        for (int row = 0; row < HEIGHT; row++) {
-            for (int col = 0; col < WIDTH; col++) {
-
+        for (int row = 0; row < Main.HEIGHT; row++) {
+            for (int col = 0; col < Main.WIDTH; col++) {
                 tileGrid[col][row] = new JLabel(board.getBoard()[col][row].getIcon());
                 boardPanel.add(tileGrid[col][row]);
-
             }
         }
 

@@ -8,6 +8,9 @@ import renderer.GUI;
  */
 public class Main {
 
+    public static final int WIDTH = 3;
+    public static final int HEIGHT = 3;
+
     public static void main(String[] args) {
 
         Board board = new Board();
