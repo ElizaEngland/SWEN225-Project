@@ -22,7 +22,7 @@
 3 2 wall
 4 2 exitlock
 5 2 wall
-6 2 door blue
+6 2 door purple
 7 2 wall
 8 2 free
 0 3 free
@@ -41,7 +41,7 @@
 4 4 info
 5 4 key green
 6 4 free
-7 4 door blue
+7 4 door purple
 8 4 free
 0 5 free
 1 5 door red
@@ -70,7 +70,7 @@
 6 7 wall
 7 7 wall
 8 7 wall
-0 8 key blue
+0 8 key purple
 1 8 free
 2 8 free
 3 8 free
@@ -79,11 +79,3 @@
 6 8 free
 7 8 free
 8 8 treasure
-
-
-
-
-
-
-
-
