@@ -1,7 +1,5 @@
 package maze;
 
-import application.Main;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -9,7 +7,10 @@ import java.io.IOException;
 
 public class Board {
 
-    private Tile[][] board = new Tile[Main.WIDTH][Main.HEIGHT];
+    private static final int WIDTH = 17;
+    private static final int HEIGHT = 17;
+
+    private Tile[][] board = new Tile[WIDTH][HEIGHT];
 
     public Board() {
 
@@ -58,8 +59,8 @@ public class Board {
 
         StringBuilder result = new StringBuilder();
 
-        for (int y = 0; y < Main.HEIGHT; y++) {
-            for (int x = 0; x < Main.WIDTH; x++) {
+        for (int y = 0; y < HEIGHT; y++) {
+            for (int x = 0; x < WIDTH; x++) {
                 Tile t = board[x][y];
                 result.append(t);
             }
