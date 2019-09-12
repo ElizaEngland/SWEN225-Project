@@ -20,7 +20,6 @@ public class GUI extends JFrame {
         this.board = board;
         createFrame();
 
-        setPreferredSize(new Dimension(1100, 950));
         pack();
         setLocationRelativeTo(null);
         setVisible(true);
@@ -28,8 +27,6 @@ public class GUI extends JFrame {
     }
 
     private void createFrame() {
-
-        // BOARD
 
         JPanel mainPanel = new JPanel();
         JPanel boardPanel = new JPanel();
@@ -40,7 +37,7 @@ public class GUI extends JFrame {
         for (int row = 0; row < Main.HEIGHT; row++) {
             for (int col = 0; col < Main.WIDTH; col++) {
 
-                tileGrid[col][row] = new JLabel(board.getBoard()[col][row].getIcon());
+                tileGrid[col][row] = new JLabel(new ImageIcon(board.getBoard()[col][row].getIcon().getImage().getScaledInstance(60,60,java.awt.Image.SCALE_SMOOTH)));
                 boardPanel.add(tileGrid[col][row]);
 
             }
@@ -48,15 +45,7 @@ public class GUI extends JFrame {
 
         mainPanel.add(boardPanel);
 
-        // CONTROLS
-
-        JPanel rightPanel = new JPanel();
-        JLabel timer = new JLabel("Time remaining:");
-
-        rightPanel.add(timer);
-
-        add(mainPanel, "West");
-        add(rightPanel, "East");
+        add(mainPanel, "Center");
 
     }
 
