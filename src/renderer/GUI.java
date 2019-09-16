@@ -2,7 +2,6 @@ package renderer;
 
 import application.Main;
 import maze.Board;
-import maze.Tile;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -26,13 +25,12 @@ public class GUI implements WindowListener {
     private static JLabel[][] tileGrid = new JLabel[Main.COLS][Main.ROWS];
     private JPanel boardPanel;
     private JPanel sidePanel;
-    private JPanel p1,p2,p3,p4;
-
+    private JPanel p1, p2, p3, p4;
 
     public GUI(Board board, KeyListener keyListener) {
 
         mainFrame = new JFrame();
-        //super("Chap’s Challenge");
+        mainFrame.setTitle("Chap's Challenge");
         mainFrame.addKeyListener(keyListener);
 
         this.board = board;
@@ -63,6 +61,7 @@ public class GUI implements WindowListener {
     }
 
     private void createFrame() {
+
         mainPanel = new JPanel();
         Border blackline = BorderFactory.createLineBorder(Color.black);
         mainFrame.setPreferredSize(new Dimension(725, 625));
@@ -126,8 +125,6 @@ public class GUI implements WindowListener {
         p4.add(inventory);
 
 
-
-
         side1.add(p1, "North");
         side1.add(p2, "Center");
         side1.add(p3, "North");
@@ -145,11 +142,6 @@ public class GUI implements WindowListener {
     }
 
     @Override
-    public void windowOpened(WindowEvent e) {
-
-    }
-
-    @Override
     public void windowClosing(WindowEvent e) {
         // Ask the user to confirm they wanted to do this
         int r = JOptionPane.showConfirmDialog(mainFrame,
@@ -158,6 +150,26 @@ public class GUI implements WindowListener {
                 JOptionPane.QUESTION_MESSAGE);
 
         if (r == JOptionPane.YES_OPTION) System.exit(0);
+    }
+
+    /**
+     * Update the icons on the board (called each time a move is made).
+     */
+    public void update() {
+
+        for (int row = 0; row < Main.ROWS; row++) {
+            for (int col = 0; col < Main.COLS; col++) {
+                tileGrid[col][row].setIcon(board.getTile(col, row).getIcon());
+            }
+        }
+
+    }
+
+    // Unused methods:
+
+    @Override
+    public void windowOpened(WindowEvent e) {
+
     }
 
     @Override
@@ -185,13 +197,4 @@ public class GUI implements WindowListener {
 
     }
 
-    public void update() {
-
-        for (int row = 0; row < Main.ROWS; row++) {
-            for (int col = 0; col < Main.COLS; col++) {
-                tileGrid[col][row].setIcon(board.getTile(col, row).getIcon());
-            }
-        }
-
-    }
 }

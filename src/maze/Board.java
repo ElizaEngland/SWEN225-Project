@@ -15,6 +15,7 @@ public class Board {
     /**
      * Load the board from a text file and generate a two-dimensional array of tiles.
      */
+    @SuppressWarnings("IfCanBeSwitch")
     public Board() {
 
         try {
@@ -35,7 +36,7 @@ public class Board {
                 String colour = "";
 
                 if (tokens.length == 4) {   // for colour coded keys/doors
-                     colour = tokens[3];
+                    colour = tokens[3];
                 }
 
                 Tile tile;
@@ -56,7 +57,7 @@ public class Board {
                     tile = new TileKey(x, y, colour);
                 } else if (type.equals("exitlock")) {
                     tile = new TileExitLock(x, y);
-                }else {
+                } else {
                     tile = null;
                 }
 
@@ -72,10 +73,11 @@ public class Board {
 
     /**
      * Move the player from one coordinate to another.
+     *
      * @param oldX The X coordinate of the position moved from.
      * @param oldY The Y coordinate of the position moved from.
-     * @param x The X coordinate of the position moved to.
-     * @param y The Y coordinate of the position moved to.
+     * @param x    The X coordinate of the position moved to.
+     * @param y    The Y coordinate of the position moved to.
      */
     public void update(int oldX, int oldY, int x, int y) {
         board[oldX][oldY].setPlayer(false);
@@ -84,6 +86,7 @@ public class Board {
 
     /**
      * Get a specific tile from the board at a specified coordinate.
+     *
      * @param x The X coordinate
      * @param y The Y coordinate
      * @return The tile at the specified coordinates
@@ -94,6 +97,7 @@ public class Board {
 
     /**
      * Returns the object beneath the player if it is an item that can be picked up.
+     *
      * @param x The X coordinate.
      * @param y The Y coordinate.
      * @return The object to be picked up if one is found.

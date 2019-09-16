@@ -31,6 +31,7 @@ public class Main implements KeyListener {
 
     /**
      * Handles key press events and makes the corresponding changes to the game.
+     *
      * @param e The key which was pressed
      */
     @Override
@@ -42,7 +43,8 @@ public class Main implements KeyListener {
         if (key == KeyEvent.VK_DOWN) player.move(Direction.SOUTH, board);
         if (key == KeyEvent.VK_LEFT) player.move(Direction.WEST, board);
         if (key == KeyEvent.VK_RIGHT) player.move(Direction.EAST, board);
-        if (key == KeyEvent.VK_I) System.out.println(player.getInventory()); // FIXME: 16/09/2019 Won't work like this in the final version.
+        if (key == KeyEvent.VK_I)
+            System.out.println(player.getInventory()); // FIXME: 16/09/2019 Won't work like this in the final version.
 
         gui.update();
     }

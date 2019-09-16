@@ -1,6 +1,7 @@
 package application;
 
 import maze.Board;
+import maze.Tile;
 import maze.TileDoor;
 import maze.TileWall;
 
@@ -17,6 +18,7 @@ class Player {
 
     /**
      * Player constructor.
+     *
      * @param startX The starting x position of the player
      * @param startY The starting y position of the player
      */
@@ -27,6 +29,7 @@ class Player {
 
     /**
      * Allows the movement of a player around the board.
+     *
      * @param direction The direction to be moved
      */
     void move(Direction direction, Board board) {
@@ -65,26 +68,25 @@ class Player {
 
     /**
      * Checks whether the move a player is attempting to make is valid or not.
-     * @param x The X coordinate.
-     * @param y The Y coordinate.
+     *
+     * @param x     The X coordinate.
+     * @param y     The Y coordinate.
      * @param board The board to be checked against.
      * @return Whether or not the move is valid.
      */
     private boolean validMove(int x, int y, Board board) {
 
-        if (y < 0 || x < 0 || y >= Main.ROWS || x >= Main.COLS) {
-            return false;
-        }
+        if (y < 0 || x < 0 || y >= Main.ROWS || x >= Main.COLS) return false;
 
-        if (board.getTile(x, y) instanceof TileWall) {
-            return false;
-        }
+        Tile nextMove = board.getTile(x, y);
 
-        if (board.getTile(x, y) instanceof TileDoor) {
+        if (nextMove instanceof TileWall) return false;
+
+        if (nextMove instanceof TileDoor) {
             boolean foundKey = false;
-            String colour = ((TileDoor) board.getTile(x, y)).getColour();
+            String colour = ((TileDoor) nextMove).getColour();
             for (Item item : getInventory()) {
-                if (item.toString().equals(colour)) {
+                if (item.toString().equals("key_" + colour)) {
                     foundKey = true;
                 }
             }
@@ -97,6 +99,7 @@ class Player {
 
     /**
      * Allows the addition of items to the player inventory.
+     *
      * @param item The item which will be added to the players inventory
      */
     private void addItemToInventory(Item item) {
@@ -112,6 +115,7 @@ class Player {
 
     /**
      * Get the players inventory.
+     *
      * @return Player inventory.
      */
     ArrayList<Item> getInventory() {
