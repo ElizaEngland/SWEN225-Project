@@ -20,9 +20,9 @@ public class GUI implements WindowListener {
     private static JMenu file;
     private static JMenuItem loadGame, saveGame;
 
-    private static JFrame mainFrame;
+    private JFrame mainFrame;
     private JPanel mainPanel;
-    private static JLabel[][] tileGrid = new JLabel[Main.COLS][Main.ROWS];
+    private JLabel[][] tileGrid = new JLabel[Main.COLS][Main.ROWS];
     private JPanel boardPanel;
     private JPanel sidePanel;
     private JPanel p1, p2, p3, p4;

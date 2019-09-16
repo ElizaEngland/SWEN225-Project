@@ -17,7 +17,7 @@ public class TileInfo extends Tile {
         }
     }
 
-    public void showHelp() {
-        JFrame instructions = new JFrame();
-    }
+//    public void showHelp() {
+//        JFrame instructions = new JFrame();
+//    }
 }
