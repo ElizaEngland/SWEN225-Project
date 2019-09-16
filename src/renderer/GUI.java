@@ -19,6 +19,9 @@ public class GUI implements WindowListener {
     private static JMenuBar menuBar;
     private static JMenu file;
     private static JMenuItem loadGame, saveGame;
+
+    public static int HEIGHT = 630;
+    public static int WIDTH = 718;
     public JFrame mainFrame;
 
     public GUI(Board board, KeyListener keyListener) {
@@ -55,9 +58,8 @@ public class GUI implements WindowListener {
     }
 
     private void createFrame() {
-        System.out.println(mainFrame.WIDTH + "," + mainFrame.HEIGHT);
         JPanel mainPanel = new JPanel();
-        mainFrame.setPreferredSize(new Dimension(750,650 ));
+        mainFrame.setPreferredSize(new Dimension(WIDTH,HEIGHT ));
         JPanel boardPanel = new JPanel();
         JPanel sidePanel = new JPanel();
         JPanel p1 = new JPanel();
@@ -66,7 +68,7 @@ public class GUI implements WindowListener {
         Border blackline = BorderFactory.createLineBorder(Color.black);
         p1.setBackground(Color.GRAY);
         p2.setBackground(Color.GRAY);
-        mainPanel.setBackground(Color.GRAY);
+        mainPanel.setBackground(Color.BLACK);
         sidePanel.setBorder(blackline);
         mainPanel.setBorder(blackline);
 
@@ -113,6 +115,8 @@ public class GUI implements WindowListener {
         p2.add(mavsLeft, "North");
         p2.add(inventory, "South");
 
+        p1.setPreferredSize(new Dimension(WIDTH/5,HEIGHT/2));
+        p2.setPreferredSize(new Dimension(WIDTH/6,HEIGHT/2));
         sidePanel.add(p1,"North");
         sidePanel.add(p2,"South");
         mainPanel.add(boardPanel);
