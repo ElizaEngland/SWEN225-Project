@@ -13,17 +13,17 @@ import java.io.IOException;
  */
 public class Read {
 
-    JSONParser parser = new JSONParser();
-
-    try{
-
-        Object obj = parser.parse(new FileReader("jsonTest.json"));
-        JSONObject jsonObj = (JSONObject) obj;
-
-    }
-    catch(FileNotFoundException e){ e.printStackTrace(); }
-    catch(IOException e){ e.printStackTrace(); }
-    catch(ParseException e){ e.printStackTrace(); }
-    catch(Exception e) { e.printStackTrace();}
+//    JSONParser parser = new JSONParser();
+//
+//    try{
+//
+//        Object obj = parser.parse(new FileReader("jsonTest.json"));
+//        JSONObject jsonObj = (JSONObject) obj;
+//
+//    }
+//    catch(FileNotFoundException e){ e.printStackTrace(); }
+//    catch(IOException e){ e.printStackTrace(); }
+//    catch(ParseException e){ e.printStackTrace(); }
+//    catch(Exception e) { e.printStackTrace();}
 
 }
