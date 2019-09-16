@@ -22,9 +22,9 @@ public class Main implements KeyListener {
 
         board = new Board();
         gui = new GUI(board, this);
-        player = new Player(0, 0);
+        player = new Player(5, 5);
 
-        board.update(0, 0, 0, 0); // FIXME: 16/09/2019 Should be done a bit cleaner
+        board.update(5, 5, 5, 5); // FIXME: 16/09/2019 Should be done a bit cleaner
         gui.update();
 
     }

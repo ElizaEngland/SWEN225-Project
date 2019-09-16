@@ -1,6 +1,7 @@
 package application;
 
 import maze.Board;
+import maze.TileDoor;
 import maze.TileWall;
 
 import java.util.ArrayList;
@@ -16,7 +17,6 @@ class Player {
 
     /**
      * Player constructor.
-     *
      * @param startX The starting x position of the player
      * @param startY The starting y position of the player
      */
@@ -27,7 +27,6 @@ class Player {
 
     /**
      * Allows the movement of a player around the board.
-     *
      * @param direction The direction to be moved
      */
     void move(Direction direction, Board board) {
@@ -73,12 +72,30 @@ class Player {
      */
     private boolean validMove(int x, int y, Board board) {
 
-        return y >= 0 && x >= 0 && y < Main.ROWS && x < Main.COLS && !(board.getTile(x, y) instanceof TileWall);
+        if (y < 0 || x < 0 || y >= Main.ROWS || x >= Main.COLS) {
+            return false;
+        }
 
-        //if (door)
-        //for(player invent)
-        //if inventory !(has key)
-        //return false
+        if (board.getTile(x, y) instanceof TileWall) {
+            return false;
+        }
+
+        boolean foundKey = true;
+        if (board.getTile(x, y) instanceof TileDoor) {
+            foundKey = false;
+            String colour = ((TileDoor) board.getTile(x, y)).getColour();
+            for (Item item : getInventory()) {
+                if (item.toString().equals(colour)) {
+                    foundKey = true;
+                }
+            }
+        }
+
+        if (!foundKey) {
+            return false;
+        }
+
+        return true;
 
     }
 

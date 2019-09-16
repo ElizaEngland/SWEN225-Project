@@ -22,7 +22,7 @@ public class TileKey extends Tile {
 
     @Override
     public String toString() {
-        return "key_" + colour;
+        return colour;
     }
 
 }
