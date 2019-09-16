@@ -4,6 +4,7 @@ import application.Main;
 import maze.Board;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
@@ -12,26 +13,28 @@ import java.awt.event.WindowListener;
 /**
  * GUI class for Chip's Challenge.
  */
-public class GUI extends JFrame implements WindowListener {
+public class GUI implements WindowListener {
 
     private Board board;
     private static JMenuBar menuBar;
     private static JMenu file;
     private static JMenuItem loadGame, saveGame;
+    public JFrame mainFrame;
 
     public GUI(Board board, KeyListener keyListener) {
 
-        super("Chap’s Challenge");
-        addKeyListener(keyListener);
+        mainFrame=new JFrame();
+        //super("Chap’s Challenge");
+        mainFrame.addKeyListener(keyListener);
 
         this.board = board;
         makeMenuBar();
         createFrame();
 
-        addWindowListener(this);
-        pack();
-        setLocationRelativeTo(null);
-        setVisible(true);
+        mainFrame.addWindowListener(this);
+        mainFrame.pack();
+        mainFrame.setLocationRelativeTo(null);
+        mainFrame.setVisible(true);
 
     }
 
@@ -48,28 +51,75 @@ public class GUI extends JFrame implements WindowListener {
 
         menuBar.add(file);
 
-        setJMenuBar(menuBar);
+        mainFrame.setJMenuBar(menuBar);
     }
 
     private void createFrame() {
+        System.out.println(mainFrame.WIDTH + "," + mainFrame.HEIGHT);
         JPanel mainPanel = new JPanel();
+        mainFrame.setPreferredSize(new Dimension(750,650 ));
         JPanel boardPanel = new JPanel();
-        JLabel[][] tileGrid = new JLabel[Main.WIDTH][Main.HEIGHT];
+        JPanel sidePanel = new JPanel();
+        JPanel p1 = new JPanel();
+        JPanel p2 = new JPanel();
 
-        boardPanel.setLayout(new GridLayout(Main.HEIGHT, Main.WIDTH, 0, 0));
+        Border blackline = BorderFactory.createLineBorder(Color.black);
+        p1.setBackground(Color.GRAY);
+        p2.setBackground(Color.green);
+        mainPanel.setBackground(Color.GRAY);
+        sidePanel.setBorder(blackline);
+        mainPanel.setBorder(blackline);
 
-        for (int row = 0; row < Main.HEIGHT; row++) {
-            for (int col = 0; col < Main.WIDTH; col++) {
+        sidePanel.setLayout( new BoxLayout(sidePanel, BoxLayout.Y_AXIS));
 
-                tileGrid[col][row] = new JLabel(new ImageIcon(board.getBoard()[col][row].getIcon().getImage().getScaledInstance(60,60,java.awt.Image.SCALE_SMOOTH)));
+
+        JLabel levelcount = new JLabel();
+        JLabel timeLeft = new JLabel();
+        JLabel mavsLeft = new JLabel();
+        JLabel inventory = new JLabel();
+
+        JLabel[][] tileGrid = new JLabel[Main.COLS][Main.ROWS];
+
+        boardPanel.setLayout(new GridLayout(Main.ROWS, Main.COLS, 0, 0));
+
+        for (int row = 0; row < Main.ROWS; row++) {
+            for (int col = 0; col < Main.COLS; col++) {
+
+                tileGrid[col][row] = new JLabel(new ImageIcon(board.getBoard()[col][row].getIcon().getImage().getScaledInstance(60,60,Image.SCALE_SMOOTH)));
                 boardPanel.add(tileGrid[col][row]);
 
             }
         }
 
-        mainPanel.add(boardPanel);
 
-        add(mainPanel, "Center");
+
+        levelcount.setText("LEVEL");
+        timeLeft.setText("TIME");
+        mavsLeft.setText("TREASURE");
+        inventory.setText("INVENTORY");
+
+
+        levelcount.setAlignmentX(Component.CENTER_ALIGNMENT);
+        timeLeft.setAlignmentX(Component.CENTER_ALIGNMENT);
+        mavsLeft.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        levelcount.setForeground(Color.green);
+        timeLeft.setForeground(Color.green);
+        mavsLeft.setForeground(Color.green);
+        inventory.setForeground(Color.green);
+        sidePanel.setLayout(new GridLayout(3,0));
+        p1.add(levelcount, "North");
+        p1.add(timeLeft, "South");
+        p2.add(mavsLeft, "North");
+        p2.add(inventory, "South");
+
+        sidePanel.add(p1,"North");
+        sidePanel.add(p2,"South");
+        mainPanel.add(boardPanel);
+        mainPanel.add(sidePanel);
+
+        mainFrame.add(mainPanel, "Center");
+        mainFrame.add(sidePanel, "West");
 
     }
 
@@ -81,7 +131,7 @@ public class GUI extends JFrame implements WindowListener {
     @Override
     public void windowClosing(WindowEvent e) {
         // Ask the user to confirm they wanted to do this
-        int r = JOptionPane.showConfirmDialog(this,
+        int r = JOptionPane.showConfirmDialog(mainFrame,
                 new JLabel("Exit Game?"), "Confirm Exit",
                 JOptionPane.YES_NO_OPTION,
                 JOptionPane.QUESTION_MESSAGE);

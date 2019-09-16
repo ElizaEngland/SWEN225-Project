@@ -12,8 +12,8 @@ import java.awt.event.KeyListener;
  */
 public class Main implements KeyListener {
 
-    public static final int WIDTH = 9;
-    public static final int HEIGHT = 9;
+    public static final int COLS = 9;
+    public static final int ROWS = 9;
 
     private final Board board;
     private final GUI gui;

@@ -10,4 +10,8 @@ public class TileInfo extends Tile{
     public ImageIcon getIcon() {
         return new ImageIcon("resources/info.png");
     }
+
+    public void showHelp(){
+        JFrame instructions = new JFrame();
+    }
 }

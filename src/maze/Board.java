@@ -9,7 +9,7 @@ import java.io.IOException;
 
 public class Board {
 
-    private Tile[][] board = new Tile[Main.WIDTH][Main.HEIGHT];
+    private Tile[][] board = new Tile[Main.COLS][Main.ROWS];
 
     public Board() {
 
