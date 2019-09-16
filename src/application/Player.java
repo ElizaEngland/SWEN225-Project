@@ -1,8 +1,10 @@
 package application;
 
 import maze.Board;
+import maze.TileWall;
 
 import java.util.ArrayList;
+import java.util.Base64;
 
 /**
  * The player class which handles player movement, inventory etc...
@@ -33,31 +35,43 @@ public class Player {
         int oldY = y;
 
         if (direction == Direction.NORTH) {
-            if (y > 0) {
+            if (validMove(x, y - 1, board)) {
                 y--;
             }
         }
 
         if (direction == Direction.SOUTH) {
-            if (y < Main.COLS - 1) {
+            if (validMove(x, y + 1, board)) {
                 y++;
             }
         }
 
         if (direction == Direction.WEST) {
-            if (x > 0) {
+            if (validMove(x - 1, y, board)) {
                 x--;
             }
         }
 
         if (direction == Direction.EAST) {
-            if (x < Main.ROWS - 1) {
+            if (validMove(x + 1, y, board)) {
                 x++;
             }
         }
 
         board.update(oldX, oldY, x, y);
 
+    }
+
+    boolean validMove(int x, int y, Board board) {
+        if (y < 0 || x < 0 || y >= Main.ROWS || x >= Main.COLS) {
+            return false;
+        }
+
+        if (board.getBoard()[x][y] instanceof TileWall) {
+            return false;
+        }
+
+        return true;
     }
 
     /**

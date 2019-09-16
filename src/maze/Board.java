@@ -66,12 +66,13 @@ public class Board {
 
     }
 
-    public Tile[][] getBoard() {
-        return board;
-    }
-
     public void update(int oldX, int oldY, int x, int y) {
         board[oldX][oldY].removePlayer();
         board[x][y].setPlayer();
     }
+
+    public Tile[][] getBoard() {
+        return board;
+    }
+
 }
