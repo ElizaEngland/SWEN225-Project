@@ -1,5 +1,6 @@
 package maze;
 
+import application.Item;
 import application.Main;
 
 import java.io.BufferedReader;
@@ -11,11 +12,14 @@ public class Board {
 
     private Tile[][] board = new Tile[Main.COLS][Main.ROWS];
 
+    /**
+     * Load the board from a text file and generate a two-dimensional array of tiles.
+     */
     public Board() {
 
         try {
 
-            File rooms = new File("./src/level1.txt");   // MARKER: Please ensure this file is in the correct directory
+            File rooms = new File("./src/level1.map");   // MARKER: Please ensure this file is in the correct directory
 
             BufferedReader reader = new BufferedReader(new FileReader(rooms));
 
@@ -66,13 +70,45 @@ public class Board {
 
     }
 
+    /**
+     * Move the player from one coordinate to another.
+     * @param oldX The X coordinate of the position moved from.
+     * @param oldY The Y coordinate of the position moved from.
+     * @param x The X coordinate of the position moved to.
+     * @param y The Y coordinate of the position moved to.
+     */
     public void update(int oldX, int oldY, int x, int y) {
-        board[oldX][oldY].removePlayer();
-        board[x][y].setPlayer();
+        board[oldX][oldY].setPlayer(false);
+        board[x][y].setPlayer(true);
     }
 
-    public Tile[][] getBoard() {
-        return board;
+    /**
+     * Get a specific tile from the board at a specified coordinate.
+     * @param x The X coordinate
+     * @param y The Y coordinate
+     * @return The tile at the specified coordinates
+     */
+    public Tile getTile(int x, int y) {
+        return board[x][y];
     }
 
+    /**
+     * Returns the object beneath the player if it is an item that can be picked up.
+     * @param x The X coordinate.
+     * @param y The Y coordinate.
+     * @return The object to be picked up if one is found.
+     */
+    public Item getObjectOnTile(int x, int y) {
+
+        Tile tile = getTile(x, y);
+
+        if (tile instanceof TileKey || tile instanceof TileTreasure) {
+            Item item = new Item(tile.toString());
+            board[x][y] = new TileBlank(x, y);
+            return item;
+        } else {
+            return null;
+        }
+
+    }
 }

@@ -1,7 +1,5 @@
 package maze;
 
-import application.Player;
-
 import javax.swing.*;
 
 public class Tile {
@@ -23,11 +21,8 @@ public class Tile {
         return player;
     }
 
-    public void setPlayer() {
-        player = true;
+    public void setPlayer(boolean value) {
+        player = value;
     }
 
-    public void removePlayer() {
-        player = false;
-    }
 }

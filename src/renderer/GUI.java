@@ -99,7 +99,7 @@ public class GUI implements WindowListener {
         // create board
         for (int row = 0; row < Main.ROWS; row++) {
             for (int col = 0; col < Main.COLS; col++) {
-                tileGrid[col][row] = new JLabel(board.getBoard()[col][row].getIcon());
+                tileGrid[col][row] = new JLabel(board.getTile(col, row).getIcon());
                 boardPanel.add(tileGrid[col][row]);
             }
         }
@@ -189,7 +189,7 @@ public class GUI implements WindowListener {
 
         for (int row = 0; row < Main.ROWS; row++) {
             for (int col = 0; col < Main.COLS; col++) {
-                tileGrid[col][row].setIcon(board.getBoard()[col][row].getIcon());
+                tileGrid[col][row].setIcon(board.getTile(col, row).getIcon());
             }
         }
 

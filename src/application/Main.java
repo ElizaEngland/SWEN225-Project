@@ -24,15 +24,15 @@ public class Main implements KeyListener {
         gui = new GUI(board, this);
         player = new Player(0, 0);
 
-        board.update(0, 0, 0, 0); // FIXME: 16/09/2019 Should be done a bit clearner
+        board.update(0, 0, 0, 0); // FIXME: 16/09/2019 Should be done a bit cleaner
         gui.update();
 
     }
 
-    public static void main(String[] args) {
-        new Main();
-    }
-
+    /**
+     * Handles key press events and makes the corresponding changes to the game.
+     * @param e The key which was pressed
+     */
     @Override
     public void keyPressed(KeyEvent e) {
 
@@ -42,9 +42,16 @@ public class Main implements KeyListener {
         if (key == KeyEvent.VK_DOWN) player.move(Direction.SOUTH, board);
         if (key == KeyEvent.VK_LEFT) player.move(Direction.WEST, board);
         if (key == KeyEvent.VK_RIGHT) player.move(Direction.EAST, board);
+        if (key == KeyEvent.VK_I) System.out.println(player.getInventory()); // FIXME: 16/09/2019 Won't work like this in the final version.
 
         gui.update();
     }
+
+    public static void main(String[] args) {
+        new Main();
+    }
+
+    // Unused methods:
 
     @Override
     public void keyTyped(KeyEvent e) {
