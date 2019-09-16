@@ -5,11 +5,13 @@ import maze.Board;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 
 /**
  * GUI class for Chip's Challenge.
  */
-public class GUI extends JFrame {
+public class GUI extends JFrame implements WindowListener {
 
     private Board board;
 
@@ -20,6 +22,7 @@ public class GUI extends JFrame {
         this.board = board;
         createFrame();
 
+        addWindowListener(this);
         pack();
         setLocationRelativeTo(null);
         setVisible(true);
@@ -49,4 +52,44 @@ public class GUI extends JFrame {
 
     }
 
+    @Override
+    public void windowOpened(WindowEvent e) {
+
+    }
+
+    @Override
+    public void windowClosing(WindowEvent e) {
+        // Ask the user to confirm they wanted to do this
+        int r = JOptionPane.showConfirmDialog(this,
+                new JLabel("Exit Cluedo?"), "Confirm Exit",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE);
+
+        if (r == JOptionPane.YES_OPTION) System.exit(0);
+    }
+
+    @Override
+    public void windowClosed(WindowEvent e) {
+
+    }
+
+    @Override
+    public void windowIconified(WindowEvent e) {
+
+    }
+
+    @Override
+    public void windowDeiconified(WindowEvent e) {
+
+    }
+
+    @Override
+    public void windowActivated(WindowEvent e) {
+
+    }
+
+    @Override
+    public void windowDeactivated(WindowEvent e) {
+
+    }
 }
