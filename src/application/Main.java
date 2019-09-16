@@ -32,28 +32,25 @@ public class Main implements KeyListener {
     }
 
     @Override
-    public void keyTyped(KeyEvent e) {
-
-    }
-
-    @Override
     public void keyPressed(KeyEvent e) {
 
         int key = e.getKeyCode();
 
-        if (key == KeyEvent.VK_UP) {
-            player.move(Direction.NORTH);
-        } else if (key == KeyEvent.VK_DOWN) {
-            player.move(Direction.SOUTH);
-        } else if (key == KeyEvent.VK_LEFT) {
-            player.move(Direction.WEST);
-        } else if (key == KeyEvent.VK_RIGHT) {
-            player.move(Direction.EAST);
-        }
+        if (key == KeyEvent.VK_UP) player.move(Direction.NORTH);
+        if (key == KeyEvent.VK_DOWN) player.move(Direction.SOUTH);
+        if (key == KeyEvent.VK_LEFT) player.move(Direction.WEST);
+        if (key == KeyEvent.VK_RIGHT) player.move(Direction.EAST);
+
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
 
     }
+
 }
