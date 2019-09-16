@@ -24,6 +24,9 @@ public class Main implements KeyListener {
         gui = new GUI(board, this);
         player = new Player(0, 0);
 
+        board.update(0, 0, 0, 0); // FIXME: 16/09/2019 Should be done a bit clearner
+        gui.update();
+
     }
 
     public static void main(String[] args) {

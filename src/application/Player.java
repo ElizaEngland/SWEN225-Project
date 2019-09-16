@@ -4,6 +4,7 @@ import maze.Board;
 import maze.TileWall;
 
 import java.util.ArrayList;
+import java.util.Base64;
 
 /**
  * The player class which handles player movement, inventory etc...
@@ -16,19 +17,16 @@ public class Player {
 
     /**
      * Player constructor.
-     *
      * @param startX The starting x position of the player
      * @param startY The starting y position of the player
      */
     Player(int startX, int startY) {
-
         this.x = startX;
         this.y = startY;
     }
 
     /**
      * Allows the movement of a player around the board.
-     *
      * @param direction The direction to be moved
      */
     void move(Direction direction, Board board) {
@@ -61,21 +59,23 @@ public class Player {
         }
 
         board.update(oldX, oldY, x, y);
+
     }
 
     boolean validMove(int x, int y, Board board) {
-        if (board.getBoard()[x][y] instanceof TileWall
-                || x < 0
-                || y < 0
-                || x >= Main.COLS
-                || y >= Main.ROWS) return false;
+        if (y < 0 || x < 0 || y >= Main.ROWS || x >= Main.COLS) {
+            return false;
+        }
+
+        if (board.getBoard()[x][y] instanceof TileWall) {
+            return false;
+        }
+
         return true;
     }
 
-
     /**
      * Allows the addition of items to the player inventory.
-     *
      * @param item The item which will be added to the players inventory
      */
     void addItemToInventory(Item item) {
