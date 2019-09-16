@@ -1,6 +1,7 @@
 package application;
 
 import maze.Board;
+import maze.TileWall;
 
 import java.util.ArrayList;
 
@@ -15,16 +16,19 @@ public class Player {
 
     /**
      * Player constructor.
+     *
      * @param startX The starting x position of the player
      * @param startY The starting y position of the player
      */
     Player(int startX, int startY) {
+
         this.x = startX;
         this.y = startY;
     }
 
     /**
      * Allows the movement of a player around the board.
+     *
      * @param direction The direction to be moved
      */
     void move(Direction direction, Board board) {
@@ -33,35 +37,45 @@ public class Player {
         int oldY = y;
 
         if (direction == Direction.NORTH) {
-            if (y > 0) {
+            if (validMove(x, y - 1, board)) {
                 y--;
             }
         }
 
         if (direction == Direction.SOUTH) {
-            if (y < Main.COLS - 1) {
+            if (validMove(x, y + 1, board)) {
                 y++;
             }
         }
 
         if (direction == Direction.WEST) {
-            if (x > 0) {
+            if (validMove(x - 1, y, board)) {
                 x--;
             }
         }
 
         if (direction == Direction.EAST) {
-            if (x < Main.ROWS - 1) {
+            if (validMove(x + 1, y, board)) {
                 x++;
             }
         }
 
         board.update(oldX, oldY, x, y);
-
     }
+
+    boolean validMove(int x, int y, Board board) {
+        if (board.getBoard()[x][y] instanceof TileWall
+                || x < 0
+                || y < 0
+                || x >= Main.COLS
+                || y >= Main.ROWS) return false;
+        return true;
+    }
+
 
     /**
      * Allows the addition of items to the player inventory.
+     *
      * @param item The item which will be added to the players inventory
      */
     void addItemToInventory(Item item) {
