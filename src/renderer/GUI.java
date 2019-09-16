@@ -159,6 +159,7 @@ public class GUI implements WindowListener {
 
         for (int row = 0; row < Main.ROWS; row++) {
             for (int col = 0; col < Main.COLS; col++) {
+//                tileGrid[col][row].setBorder(BorderFactory.createLineBorder(Color.BLACK, 0));
                 tileGrid[col][row].setIcon(board.getTile(col, row).getIcon());
             }
         }

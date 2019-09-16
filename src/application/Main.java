@@ -43,8 +43,15 @@ public class Main implements KeyListener {
         if (key == KeyEvent.VK_DOWN) player.move(Direction.SOUTH, board);
         if (key == KeyEvent.VK_LEFT) player.move(Direction.WEST, board);
         if (key == KeyEvent.VK_RIGHT) player.move(Direction.EAST, board);
-        if (key == KeyEvent.VK_I)
-            System.out.println(player.getInventory()); // FIXME: 16/09/2019 Won't work like this in the final version.
+        if (key == KeyEvent.VK_I) System.out.println(player.getInventory());
+        if (key == KeyEvent.VK_SPACE) System.out.println("Pause");
+        if (key == KeyEvent.VK_ESCAPE) System.out.println("Close the “game is paused” dialog and resume the game\n");
+
+        if (key == KeyEvent.VK_X && e.isControlDown()) System.exit(0);
+        if (key == KeyEvent.VK_S && e.isControlDown()) System.out.println("Save");
+        if (key == KeyEvent.VK_R && e.isControlDown()) System.out.println("Resume");
+        if (key == KeyEvent.VK_P && e.isControlDown()) System.out.println("Start a new game at the last unfinished level");
+        if (key == KeyEvent.VK_1 && e.isControlDown()) System.out.println("Start a new game at level 1");
 
         gui.update();
     }
