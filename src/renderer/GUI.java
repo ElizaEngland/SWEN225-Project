@@ -65,7 +65,7 @@ public class GUI implements WindowListener {
 
         Border blackline = BorderFactory.createLineBorder(Color.black);
         p1.setBackground(Color.GRAY);
-        p2.setBackground(Color.green);
+        p2.setBackground(Color.GRAY);
         mainPanel.setBackground(Color.GRAY);
         sidePanel.setBorder(blackline);
         mainPanel.setBorder(blackline);
