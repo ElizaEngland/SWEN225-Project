@@ -15,6 +15,9 @@ import java.awt.event.WindowListener;
 public class GUI extends JFrame implements WindowListener {
 
     private Board board;
+    private static JMenuBar menuBar;
+    private static JMenu file;
+    private static JMenuItem loadGame, saveGame;
 
     public GUI(Board board, KeyListener keyListener) {
 
@@ -22,6 +25,7 @@ public class GUI extends JFrame implements WindowListener {
         addKeyListener(keyListener);
 
         this.board = board;
+        makeMenuBar();
         createFrame();
 
         addWindowListener(this);
@@ -31,8 +35,23 @@ public class GUI extends JFrame implements WindowListener {
 
     }
 
-    private void createFrame() {
+    private void makeMenuBar() {
+        menuBar = new JMenuBar();
 
+        file = new JMenu("File");
+
+        loadGame = new JMenuItem("Load Game");
+        saveGame = new JMenuItem("Save Game");
+
+        file.add(loadGame);
+        file.add(saveGame);
+
+        menuBar.add(file);
+
+        setJMenuBar(menuBar);
+    }
+
+    private void createFrame() {
         JPanel mainPanel = new JPanel();
         JPanel boardPanel = new JPanel();
         JLabel[][] tileGrid = new JLabel[Main.WIDTH][Main.HEIGHT];
@@ -63,7 +82,7 @@ public class GUI extends JFrame implements WindowListener {
     public void windowClosing(WindowEvent e) {
         // Ask the user to confirm they wanted to do this
         int r = JOptionPane.showConfirmDialog(this,
-                new JLabel("Exit Cluedo?"), "Confirm Exit",
+                new JLabel("Exit Game?"), "Confirm Exit",
                 JOptionPane.YES_NO_OPTION,
                 JOptionPane.QUESTION_MESSAGE);
 
