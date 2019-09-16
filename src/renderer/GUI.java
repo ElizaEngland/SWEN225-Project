@@ -80,7 +80,7 @@ public class GUI extends JFrame implements WindowListener {
     public void windowClosing(WindowEvent e) {
         // Ask the user to confirm they wanted to do this
         int r = JOptionPane.showConfirmDialog(this,
-                new JLabel("Exit Cluedo?"), "Confirm Exit",
+                new JLabel("Exit Game?"), "Confirm Exit",
                 JOptionPane.YES_NO_OPTION,
                 JOptionPane.QUESTION_MESSAGE);
 
