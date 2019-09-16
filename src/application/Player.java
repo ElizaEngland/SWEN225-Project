@@ -80,19 +80,15 @@ class Player {
             return false;
         }
 
-        boolean foundKey = true;
         if (board.getTile(x, y) instanceof TileDoor) {
-            foundKey = false;
+            boolean foundKey = false;
             String colour = ((TileDoor) board.getTile(x, y)).getColour();
             for (Item item : getInventory()) {
                 if (item.toString().equals(colour)) {
                     foundKey = true;
                 }
             }
-        }
-
-        if (!foundKey) {
-            return false;
+            return foundKey;
         }
 
         return true;
@@ -114,7 +110,11 @@ class Player {
         }
     }
 
-    public ArrayList<Item> getInventory() {
+    /**
+     * Get the players inventory.
+     * @return Player inventory.
+     */
+    ArrayList<Item> getInventory() {
         return inventory;
     }
 }
