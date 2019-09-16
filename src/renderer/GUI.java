@@ -5,6 +5,7 @@ import maze.Board;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
@@ -15,9 +16,10 @@ public class GUI extends JFrame implements WindowListener {
 
     private Board board;
 
-    public GUI(Board board) {
+    public GUI(Board board, KeyListener keyListener) {
 
         super("Chap’s Challenge");
+        addKeyListener(keyListener);
 
         this.board = board;
         createFrame();
