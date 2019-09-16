@@ -8,21 +8,30 @@ public class Player {
     int x;
     int y;
 
-    public Player(int startX, int startY) {
+    Player(int startX, int startY) {
         this.x = startX;
         this.y = startY;
     }
 
-    public void move(String direction) {
+    void move(Direction direction) {
 
-        if (direction.equals("N")) {
-            y--;
-        } else if (direction.equals("S")) {
-            y++;
-        } else if (direction.equals("W")) {
-            x--;
-        } else if (direction.equals("E")) {
-            x++;
+        switch (direction) {
+            case NORTH:
+                y--;
+                System.out.println("moved north");
+                break;
+            case SOUTH:
+                y++;
+                System.out.println("moved south");
+                break;
+            case EAST:
+                x--;
+                System.out.println("moved east");
+                break;
+            case WEST:
+                x++;
+                System.out.println("moved west");
+                break;
         }
 
     }

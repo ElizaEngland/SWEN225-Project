@@ -2,7 +2,6 @@ package application;
 
 import maze.Board;
 import renderer.GUI;
-import sun.awt.SunHints;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -26,12 +25,6 @@ public class Main implements KeyListener {
         gui = new GUI(board, this);
         player = new Player(5, 5);
 
-        while (!hasWon) {
-
-        }
-
-        // end the level
-
     }
 
     public static void main(String[] args) {
@@ -45,7 +38,18 @@ public class Main implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        System.out.println("key pressed");
+
+        int key = e.getKeyCode();
+
+        if (key == KeyEvent.VK_UP) {
+            player.move(Direction.NORTH);
+        } else if (key == KeyEvent.VK_DOWN) {
+            player.move(Direction.SOUTH);
+        } else if (key == KeyEvent.VK_LEFT) {
+            player.move(Direction.WEST);
+        } else if (key == KeyEvent.VK_RIGHT) {
+            player.move(Direction.EAST);
+        }
     }
 
     @Override
