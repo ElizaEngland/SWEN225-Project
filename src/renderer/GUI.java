@@ -20,8 +20,14 @@ public class GUI implements WindowListener {
     private static JMenuBar menuBar;
     private static JMenu file;
     private static JMenuItem loadGame, saveGame;
+
     private static JFrame mainFrame;
+    private JPanel mainPanel;
     private static JLabel[][] tileGrid = new JLabel[Main.COLS][Main.ROWS];
+    private JPanel boardPanel;
+    private JPanel sidePanel;
+    private JPanel p1,p2,p3,p4;
+
 
     public GUI(Board board, KeyListener keyListener) {
 
@@ -57,63 +63,79 @@ public class GUI implements WindowListener {
     }
 
     private void createFrame() {
-        System.out.println(mainFrame.WIDTH + "," + mainFrame.HEIGHT);
-        JPanel mainPanel = new JPanel();
-        mainFrame.setPreferredSize(new Dimension(725, 625));
-        JPanel boardPanel = new JPanel();
-        JPanel sidePanel = new JPanel();
-        JPanel p1 = new JPanel();
-        JPanel p2 = new JPanel();
-
+        mainPanel = new JPanel();
         Border blackline = BorderFactory.createLineBorder(Color.black);
+        mainFrame.setPreferredSize(new Dimension(725, 625));
+
+        //create panels
+        boardPanel = new JPanel();
+        sidePanel = new JPanel();
+        p1 = new JPanel();
+        p2 = new JPanel();
+        p3 = new JPanel();
+        p4 = new JPanel();
+
+        JPanel side1 = new JPanel();
+        JPanel side2 = new JPanel();
+
         p1.setBackground(Color.GRAY);
         p2.setBackground(Color.GRAY);
+        p3.setBackground(Color.GRAY);
+        p4.setBackground(Color.GRAY);
         mainPanel.setBackground(Color.GRAY);
         sidePanel.setBorder(blackline);
         mainPanel.setBorder(blackline);
 
-        sidePanel.setLayout(new BoxLayout(sidePanel, BoxLayout.Y_AXIS));
-
-
-        JLabel levelcount = new JLabel();
+        JLabel levelCount = new JLabel();
         JLabel timeLeft = new JLabel();
         JLabel mavsLeft = new JLabel();
         JLabel inventory = new JLabel();
 
         boardPanel.setLayout(new GridLayout(Main.ROWS, Main.COLS, 0, 0));
+        sidePanel.setLayout(new GridLayout(2, 0));
+        side1.setLayout(new GridLayout(3, 0));
+        side2.setLayout(new GridLayout(2, 0));
 
+        // create board
         for (int row = 0; row < Main.ROWS; row++) {
             for (int col = 0; col < Main.COLS; col++) {
-
                 tileGrid[col][row] = new JLabel(board.getBoard()[col][row].getIcon());
                 boardPanel.add(tileGrid[col][row]);
-
             }
         }
 
-
-        levelcount.setText("LEVEL");
+        levelCount.setText("LEVEL");
         timeLeft.setText("TIME");
         mavsLeft.setText("TREASURE");
         inventory.setText("INVENTORY");
 
-
-        levelcount.setAlignmentX(Component.CENTER_ALIGNMENT);
-        timeLeft.setAlignmentX(Component.CENTER_ALIGNMENT);
-        mavsLeft.setAlignmentX(Component.CENTER_ALIGNMENT);
-
-        levelcount.setForeground(Color.green);
+        levelCount.setForeground(Color.green);
         timeLeft.setForeground(Color.green);
         mavsLeft.setForeground(Color.green);
         inventory.setForeground(Color.green);
-        sidePanel.setLayout(new GridLayout(3, 0));
-        p1.add(levelcount, "North");
-        p1.add(timeLeft, "South");
-        p2.add(mavsLeft, "North");
-        p2.add(inventory, "South");
 
-        sidePanel.add(p1, "North");
-        sidePanel.add(p2, "South");
+        levelCount.setAlignmentX(Component.CENTER_ALIGNMENT);
+        timeLeft.setAlignmentX(Component.CENTER_ALIGNMENT);
+        mavsLeft.setAlignmentX(Component.CENTER_ALIGNMENT);
+        inventory.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+
+        p1.add(levelCount);
+        p2.add(timeLeft);
+        p3.add(mavsLeft);
+        p4.add(inventory);
+
+
+
+
+        side1.add(p1, "North");
+        side1.add(p2, "Center");
+        side1.add(p3, "North");
+        side2.add(p4, "South");
+
+        sidePanel.add(side1);
+        sidePanel.add(side2);
+
         mainPanel.add(boardPanel);
         mainPanel.add(sidePanel);
 
