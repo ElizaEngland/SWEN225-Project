@@ -8,6 +8,10 @@ public class TileExit extends Tile{
 
     @Override
     public ImageIcon getIcon() {
-        return new ImageIcon("resources/exit.png");
+        if (isPlayer()) {
+            return new ImageIcon("resources/chap.png");
+        } else {
+            return new ImageIcon("resources/exit.png");
+        }
     }
 }

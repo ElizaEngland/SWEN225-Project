@@ -70,4 +70,8 @@ public class Board {
         return board;
     }
 
+    public void update(int oldX, int oldY, int x, int y) {
+        board[oldX][oldY].removePlayer();
+        board[x][y].setPlayer();
+    }
 }

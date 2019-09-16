@@ -1,5 +1,7 @@
 package application;
 
+import maze.Board;
+
 import java.util.ArrayList;
 
 /**
@@ -25,26 +27,36 @@ public class Player {
      * Allows the movement of a player around the board.
      * @param direction The direction to be moved
      */
-    void move(Direction direction) {
+    void move(Direction direction, Board board) {
 
-        switch (direction) {
-            case NORTH:
+        int oldX = x;
+        int oldY = y;
+
+        if (direction == Direction.NORTH) {
+            if (y > 0) {
                 y--;
-                System.out.println("moved north");
-                break;
-            case SOUTH:
-                y++;
-                System.out.println("moved south");
-                break;
-            case EAST:
-                x--;
-                System.out.println("moved east");
-                break;
-            case WEST:
-                x++;
-                System.out.println("moved west");
-                break;
+            }
         }
+
+        if (direction == Direction.SOUTH) {
+            if (y < Main.COLS - 1) {
+                y++;
+            }
+        }
+
+        if (direction == Direction.WEST) {
+            if (x > 0) {
+                x--;
+            }
+        }
+
+        if (direction == Direction.EAST) {
+            if (x < Main.ROWS - 1) {
+                x++;
+            }
+        }
+
+        board.update(oldX, oldY, x, y);
 
     }
 

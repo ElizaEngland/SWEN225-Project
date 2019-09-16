@@ -17,13 +17,12 @@ public class Main implements KeyListener {
     private final Board board;
     private final GUI gui;
     private final Player player;
-    private boolean hasWon = false;
 
     private Main() {
 
         board = new Board();
         gui = new GUI(board, this);
-        player = new Player(5, 5);
+        player = new Player(0, 0);
 
     }
 
@@ -36,11 +35,12 @@ public class Main implements KeyListener {
 
         int key = e.getKeyCode();
 
-        if (key == KeyEvent.VK_UP) player.move(Direction.NORTH);
-        if (key == KeyEvent.VK_DOWN) player.move(Direction.SOUTH);
-        if (key == KeyEvent.VK_LEFT) player.move(Direction.WEST);
-        if (key == KeyEvent.VK_RIGHT) player.move(Direction.EAST);
+        if (key == KeyEvent.VK_UP) player.move(Direction.NORTH, board);
+        if (key == KeyEvent.VK_DOWN) player.move(Direction.SOUTH, board);
+        if (key == KeyEvent.VK_LEFT) player.move(Direction.WEST, board);
+        if (key == KeyEvent.VK_RIGHT) player.move(Direction.EAST, board);
 
+        gui.update();
     }
 
     @Override

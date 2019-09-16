@@ -8,7 +8,11 @@ public class TileInfo extends Tile{
 
     @Override
     public ImageIcon getIcon() {
-        return new ImageIcon("resources/info.png");
+        if (isPlayer()) {
+            return new ImageIcon("resources/chap.png");
+        } else {
+            return new ImageIcon("resources/info.png");
+        }
     }
 
     public void showHelp(){

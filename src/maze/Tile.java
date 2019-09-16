@@ -1,11 +1,14 @@
 package maze;
 
+import application.Player;
+
 import javax.swing.*;
 
 public class Tile {
 
     private int x;
     private int y;
+    private boolean player;
 
     Tile(int x, int y) {
         this.x = x;
@@ -16,4 +19,15 @@ public class Tile {
         return null;
     }
 
+    public boolean isPlayer() {
+        return player;
+    }
+
+    public void setPlayer() {
+        player = true;
+    }
+
+    public void removePlayer() {
+        player = false;
+    }
 }

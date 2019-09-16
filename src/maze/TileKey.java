@@ -13,6 +13,10 @@ public class TileKey extends Tile {
 
     @Override
     public ImageIcon getIcon() {
-        return new ImageIcon("resources/key_" + colour + ".png");
+        if (isPlayer()) {
+            return new ImageIcon("resources/chap.png");
+        } else {
+            return new ImageIcon("resources/key_" + colour + ".png");
+        }
     }
 }
