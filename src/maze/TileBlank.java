@@ -1,5 +1,6 @@
 package maze;
 
+
 import javax.swing.*;
 
 public class TileBlank extends Tile {
