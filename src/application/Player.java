@@ -71,6 +71,10 @@ public class Player {
             return false;
         }
 
+        //if (door)
+            //for(player invent)
+                //if inventory !(has key)
+                    //return false
         return true;
     }
 
