@@ -84,10 +84,12 @@ public class Player {
 
         if (nextMove instanceof TileDoor) {
             boolean foundKey = false;
-            String colour = ((TileDoor) nextMove).getColour();
             for (Item item : getInventory()) {
-                if (item.toString().equals("key_" + colour)) {
-                    foundKey = true;
+                if (item instanceof ItemKey) {
+                    ItemKey key = (ItemKey) item;
+                    if (key.getColour().equals(((TileDoor) nextMove).getColour())){
+                        foundKey = true;
+                    }
                 }
             }
             return foundKey;
@@ -97,7 +99,7 @@ public class Player {
             ArrayList<Item> playerInventory = getInventory();
             int count = 0;
             for (Item current : playerInventory) {
-                if (current.toString().equals("billy_maverick")) {
+                if (current instanceof ItemTreasure) {
                     count++;
                 }
             }

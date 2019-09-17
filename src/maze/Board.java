@@ -1,6 +1,8 @@
 package maze;
 
 import application.Item;
+import application.ItemKey;
+import application.ItemTreasure;
 import application.Main;
 
 import java.io.BufferedReader;
@@ -122,8 +124,12 @@ public class Board {
 
         Tile tile = getTile(x, y);
 
-        if (tile instanceof TileKey || tile instanceof TileTreasure) {
-            Item item = new Item(tile.toString());
+        if (tile instanceof TileKey) {
+            Item item = new ItemKey(((TileKey) tile).getColour());
+            board[x][y] = new TileBlank(x, y);
+            return item;
+        } else if (tile instanceof TileTreasure) {
+            Item item = new ItemTreasure();
             board[x][y] = new TileBlank(x, y);
             return item;
         } else {

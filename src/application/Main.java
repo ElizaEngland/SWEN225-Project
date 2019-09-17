@@ -45,7 +45,6 @@ public class Main implements KeyListener {
         if (key == KeyEvent.VK_DOWN) player.move(Direction.SOUTH, board);
         if (key == KeyEvent.VK_LEFT) player.move(Direction.WEST, board);
         if (key == KeyEvent.VK_RIGHT) player.move(Direction.EAST, board);
-        if (key == KeyEvent.VK_I) System.out.println(player.getInventory());
         if (key == KeyEvent.VK_SPACE) System.out.println("Pause");
         if (key == KeyEvent.VK_ESCAPE) System.out.println("Close the “game is paused” dialog and resume the game\n");
 
@@ -77,4 +76,5 @@ public class Main implements KeyListener {
     public void keyReleased(KeyEvent e) {
 
     }
+
 }

@@ -20,6 +20,10 @@ public class TileKey extends Tile {
         }
     }
 
+    public String getColour() {
+        return colour;
+    }
+
     @Override
     public String toString() {
         return "key_" + colour;

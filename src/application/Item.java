@@ -1,15 +1,9 @@
 package application;
 
-public class Item {
+import javax.swing.*;
 
-    private String name;
+public interface Item {
 
-    public Item(String name) {
-        this.name = name;
-    }
+    ImageIcon getIcon();
 
-    @Override
-    public String toString() {
-        return name;
-    }
 }
