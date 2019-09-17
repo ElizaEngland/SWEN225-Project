@@ -5,6 +5,7 @@ import renderer.GUI;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.ArrayList;
 
 /**
  * Main class for Chip's Challenge.
@@ -13,16 +14,18 @@ public class Main implements KeyListener {
 
     public static final int COLS = 9;
     public static final int ROWS = 9;
+    public static int MAX_TREASURE = 0;
 
     private final Board board;
     private final GUI gui;
-    private final Player player;
+    private static Player player;
 
     private Main() {
 
         board = new Board();
         gui = new GUI(board, this);
         player = new Player(5, 5);
+        MAX_TREASURE = board.getTreasureCount();
 
         board.update(5, 5, 5, 5); // FIXME: 16/09/2019 Should be done a bit cleaner
         gui.update();

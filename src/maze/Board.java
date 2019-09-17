@@ -11,6 +11,7 @@ import java.io.IOException;
 public class Board {
 
     private Tile[][] board = new Tile[Main.COLS][Main.ROWS];
+    private int treasureCount = 0;
 
     /**
      * Load the board from a text file and generate a two-dimensional array of tiles.
@@ -45,6 +46,7 @@ public class Board {
                     tile = new TileBlank(x, y);
                 } else if (type.equals("treasure")) {
                     tile = new TileTreasure(x, y);
+                    treasureCount++;
                 } else if (type.equals("wall")) {
                     tile = new TileWall(x, y);
                 } else if (type.equals("door")) {
@@ -116,5 +118,9 @@ public class Board {
             return null;
         }
 
+    }
+
+    public int getTreasureCount() {
+        return treasureCount;
     }
 }

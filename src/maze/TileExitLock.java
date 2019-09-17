@@ -1,6 +1,11 @@
 package maze;
 
+
+import application.Item;
+import application.Main;
+
 import javax.swing.*;
+import java.util.ArrayList;
 
 public class TileExitLock extends Tile {
 

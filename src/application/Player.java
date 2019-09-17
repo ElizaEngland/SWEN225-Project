@@ -1,9 +1,6 @@
 package application;
 
-import maze.Board;
-import maze.Tile;
-import maze.TileDoor;
-import maze.TileWall;
+import maze.*;
 
 import java.util.ArrayList;
 
@@ -92,9 +89,23 @@ class Player {
             }
             return foundKey;
         }
-
-        return true;
-
+        if (nextMove instanceof TileExitLock) {
+            ArrayList<Item> playerInventory = getInventory();
+            int mavGoal = Main.MAX_TREASURE;
+            int count = 0;
+            for (Item current : playerInventory) {
+                if (current.toString().equals("billy_maverick")) {
+                    count++;
+                }
+            }
+            if (count == mavGoal) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return true;
+        }
     }
 
     /**

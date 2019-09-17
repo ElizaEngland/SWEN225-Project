@@ -6,9 +6,7 @@ import maze.Board;
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
-import java.awt.event.KeyListener;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
+import java.awt.event.*;
 
 /**
  * GUI class for Chip's Challenge.
@@ -26,6 +24,7 @@ public class GUI implements WindowListener {
     private JPanel boardPanel;
     private JPanel sidePanel;
     private JPanel p1, p2, p3, p4;
+    private int time = 1000;
 
     public GUI(Board board, KeyListener keyListener) {
 
@@ -85,12 +84,16 @@ public class GUI implements WindowListener {
         sidePanel.setBorder(blackline);
         mainPanel.setBorder(blackline);
 
+        //Creates JLabels
         JLabel levelCount = new JLabel();
         JLabel timeLeft = new JLabel();
         JLabel mavsLeft = new JLabel();
         JLabel inventory = new JLabel();
 
-        boardPanel.setLayout(new GridLayout(Main.ROWS, Main.COLS, 0, 0));
+
+
+
+                boardPanel.setLayout(new GridLayout(Main.ROWS, Main.COLS, 0, 0));
         sidePanel.setLayout(new GridLayout(2, 0));
         side1.setLayout(new GridLayout(3, 0));
         side2.setLayout(new GridLayout(2, 0));
