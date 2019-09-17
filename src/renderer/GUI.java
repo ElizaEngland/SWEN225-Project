@@ -229,8 +229,9 @@ public class GUI implements WindowListener {
             }
         }
 
+        //TODO 17/9/19 replace the message with the actual information
         if (Main.getPlayer().isInfoRequested()) {
-            JOptionPane.showMessageDialog(mainFrame, "Test");
+            JOptionPane.showMessageDialog(mainFrame, "Test", "Information", JOptionPane.INFORMATION_MESSAGE);
         }
     }
 

@@ -44,25 +44,35 @@ public class Board {
 
                 Tile tile;
 
-                if (type.equals("blank")) {
-                    tile = new TileBlank(x, y);
-                } else if (type.equals("treasure")) {
-                    tile = new TileTreasure(x, y);
-                    treasureCount++;
-                } else if (type.equals("wall")) {
-                    tile = new TileWall(x, y);
-                } else if (type.equals("door")) {
-                    tile = new TileDoor(x, y, colour);
-                } else if (type.equals("exit")) {
-                    tile = new TileExit(x, y);
-                } else if (type.equals("info")) {
-                    tile = new TileInfo(x, y);
-                } else if (type.equals("key")) {
-                    tile = new TileKey(x, y, colour);
-                } else if (type.equals("exitlock")) {
-                    tile = new TileExitLock(x, y);
-                } else {
-                    tile = null;
+                switch (type) {
+                    case "blank":
+                        tile = new TileBlank(x, y);
+                        break;
+                    case "treasure":
+                        tile = new TileTreasure(x, y);
+                        treasureCount++;
+                        break;
+                    case "wall":
+                        tile = new TileWall(x, y);
+                        break;
+                    case "door":
+                        tile = new TileDoor(x, y, colour);
+                        break;
+                    case "exit":
+                        tile = new TileExit(x, y);
+                        break;
+                    case "info":
+                        tile = new TileInfo(x, y);
+                        break;
+                    case "key":
+                        tile = new TileKey(x, y, colour);
+                        break;
+                    case "exitlock":
+                        tile = new TileExitLock(x, y);
+                        break;
+                    default:
+                        tile = null;
+                        break;
                 }
 
                 board[x][y] = tile;
