@@ -13,6 +13,7 @@ public class Player {
     private int x;
     private int y;
     private int mavsCollected = 0;
+    private boolean infoRequested;
 
     /**
      * Player constructor.
@@ -73,6 +74,7 @@ public class Player {
      * @return Whether or not the move is valid.
      */
     private boolean validMove(int x, int y, Board board) {
+        infoRequested = false;
 
         if (y < 0 || x < 0 || y >= Main.ROWS || x >= Main.COLS) return false;
 
@@ -92,19 +94,17 @@ public class Player {
         }
         if (nextMove instanceof TileExitLock) {
             ArrayList<Item> playerInventory = getInventory();
-            int mavGoal = Main.MAX_TREASURE;
             int count = 0;
             for (Item current : playerInventory) {
                 if (current.toString().equals("billy_maverick")) {
                     count++;
                 }
             }
-            if (count == mavGoal) {
+            return (count == Main.MAX_TREASURE);
+        } if( nextMove instanceof TileInfo){
+            infoRequested = true;
                 return true;
-            } else {
-                return false;
-            }
-        } else {
+        }else {
             return true;
         }
     }
@@ -122,7 +122,6 @@ public class Player {
             inventory.add(item);
             if(item.toString().equals("billy_maverick")){
                 mavsCollected++;
-                System.out.println(Main.MAX_TREASURE - mavsCollected);
             }
         } else {
             System.out.println("Cannot have more than 8 items in the inventory.");
@@ -138,7 +137,21 @@ public class Player {
         return inventory;
     }
 
+    /**
+     * Gets the number of Treasure the player has collected
+     *
+     * @return Number of Treasure the player has
+     */
     public int getMavsCollected() {
         return mavsCollected;
+    }
+
+    /**
+     * Checks the boolean variable to see if information is being requested
+     *
+     * @return if the information Tile is being stood on
+     */
+    public boolean isInfoRequested() {
+        return infoRequested;
     }
 }

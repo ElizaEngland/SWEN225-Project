@@ -2,8 +2,6 @@ package renderer;
 
 import application.Main;
 import maze.Board;
-import maze.TileBlank;
-
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
@@ -25,7 +23,7 @@ public class GUI implements WindowListener {
     private JPanel boardPanel;
     private JPanel sidePanel;
     private JPanel p1, p2, p3, p4;
-    private int time = 1000;
+
 
     //Creates JLabels
     JLabel levelCountTitle, timeLeftTitle, mavsLeftTitle, inventoryTile, mavsLeft, timeLeft, levelCount;
@@ -127,6 +125,8 @@ public class GUI implements WindowListener {
         mavsLeftTitle.setForeground(Color.green);
         inventoryTile.setForeground(Color.green);
         mavsLeft.setForeground(Color.green);
+        timeLeft.setForeground(Color.green);
+        levelCount.setForeground(Color.green);
 
         levelCountTitle.setAlignmentX(Component.CENTER_ALIGNMENT);
         timeLeftTitle.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -137,10 +137,14 @@ public class GUI implements WindowListener {
         mavsLeftTitle.setHorizontalAlignment(SwingConstants.CENTER);
         inventoryTile.setHorizontalAlignment(SwingConstants.CENTER);
         mavsLeft.setHorizontalAlignment(SwingConstants.CENTER);
+        timeLeft.setHorizontalAlignment(SwingConstants.CENTER);
+        levelCount.setHorizontalAlignment(SwingConstants.CENTER);
 
 
         Font largeFont = new Font("Courier", Font.BOLD, 50);
         mavsLeft.setFont(largeFont);
+        timeLeft.setFont(largeFont);
+        levelCount.setFont(largeFont);
 
         p1.add(levelCountTitle);
         p1.add(levelCount);
@@ -189,6 +193,9 @@ public class GUI implements WindowListener {
 //                tileGrid[col][row].setBorder(BorderFactory.createLineBorder(Color.BLACK, 0));
                 tileGrid[col][row].setIcon(board.getTile(col, row).getIcon());
                 mavsLeft.setText("" + (Main.MAX_TREASURE - Main.getPlayer().getMavsCollected()));
+                //TODO change from place holders to actual time and level number
+                levelCount.setText("1");
+                timeLeft.setText("100");
 
             }
         }
@@ -198,7 +205,9 @@ public class GUI implements WindowListener {
 //                inventoryGrid[row][col].setBackground(Color.BLUE);
             }
         }
-
+        if(Main.getPlayer().isInfoRequested()) {
+            JOptionPane.showMessageDialog(mainFrame, "Test");
+        }
     }
 
     // Unused methods:
