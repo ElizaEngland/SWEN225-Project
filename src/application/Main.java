@@ -23,8 +23,8 @@ public class Main implements KeyListener {
     private Main() {
 
         board = new Board();
-        gui = new GUI(board, this);
         player = new Player(5, 5);
+        gui = new GUI(board, this);
         MAX_TREASURE = board.getTreasureCount();
 
         board.update(5, 5, 5, 5); // FIXME: 16/09/2019 Should be done a bit cleaner
@@ -75,4 +75,7 @@ public class Main implements KeyListener {
 
     }
 
+    public static Player getPlayer() {
+        return player;
+    }
 }

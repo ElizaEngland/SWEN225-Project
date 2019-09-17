@@ -2,6 +2,7 @@ package renderer;
 
 import application.Main;
 import maze.Board;
+import maze.TileBlank;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -25,6 +26,11 @@ public class GUI implements WindowListener {
     private JPanel sidePanel;
     private JPanel p1, p2, p3, p4;
     private int time = 1000;
+
+    //Creates JLabels
+    JLabel levelCountTitle, timeLeftTitle, mavsLeftTitle, inventoryTile, mavsLeft, timeLeft, levelCount;
+    JLabel[][] inventoryGrid = new JLabel[4][2];
+
 
     public GUI(Board board, KeyListener keyListener) {
 
@@ -72,6 +78,10 @@ public class GUI implements WindowListener {
         p2 = new JPanel();
         p3 = new JPanel();
         p4 = new JPanel();
+        p1.setLayout(new GridLayout(2, 1));
+        p2.setLayout(new GridLayout(2, 1));
+        p3.setLayout(new GridLayout(2, 1));
+        p4.setLayout(new GridLayout(2, 1));
 
         JPanel side1 = new JPanel();
         JPanel side2 = new JPanel();
@@ -85,15 +95,16 @@ public class GUI implements WindowListener {
         mainPanel.setBorder(blackline);
 
         //Creates JLabels
-        JLabel levelCount = new JLabel();
-        JLabel timeLeft = new JLabel();
-        JLabel mavsLeft = new JLabel();
-        JLabel inventory = new JLabel();
+        levelCountTitle = new JLabel();
+        timeLeftTitle = new JLabel();
+        mavsLeftTitle = new JLabel();
+        inventoryTile = new JLabel();
+        timeLeft = new JLabel();
+        levelCount = new JLabel();
+        mavsLeft = new JLabel();
+        inventoryGrid = new JLabel[4][2];
 
-
-
-
-                boardPanel.setLayout(new GridLayout(Main.ROWS, Main.COLS, 0, 0));
+        boardPanel.setLayout(new GridLayout(Main.ROWS, Main.COLS, 0, 0));
         sidePanel.setLayout(new GridLayout(2, 0));
         side1.setLayout(new GridLayout(3, 0));
         side2.setLayout(new GridLayout(2, 0));
@@ -106,26 +117,39 @@ public class GUI implements WindowListener {
             }
         }
 
-        levelCount.setText("LEVEL");
-        timeLeft.setText("TIME");
-        mavsLeft.setText("TREASURE");
-        inventory.setText("INVENTORY");
+        levelCountTitle.setText("LEVEL");
+        timeLeftTitle.setText("TIME");
+        mavsLeftTitle.setText("TREASURE REMAINING:");
+        inventoryTile.setText("INVENTORY");
 
-        levelCount.setForeground(Color.green);
-        timeLeft.setForeground(Color.green);
+        levelCountTitle.setForeground(Color.green);
+        timeLeftTitle.setForeground(Color.green);
+        mavsLeftTitle.setForeground(Color.green);
+        inventoryTile.setForeground(Color.green);
         mavsLeft.setForeground(Color.green);
-        inventory.setForeground(Color.green);
 
-        levelCount.setAlignmentX(Component.CENTER_ALIGNMENT);
-        timeLeft.setAlignmentX(Component.CENTER_ALIGNMENT);
-        mavsLeft.setAlignmentX(Component.CENTER_ALIGNMENT);
-        inventory.setAlignmentX(Component.CENTER_ALIGNMENT);
+        levelCountTitle.setAlignmentX(Component.CENTER_ALIGNMENT);
+        timeLeftTitle.setAlignmentX(Component.CENTER_ALIGNMENT);
+        mavsLeftTitle.setAlignmentX(Component.CENTER_ALIGNMENT);
+        inventoryTile.setAlignmentX(Component.CENTER_ALIGNMENT);
+        levelCountTitle.setHorizontalAlignment(SwingConstants.CENTER);
+        timeLeftTitle.setHorizontalAlignment(SwingConstants.CENTER);
+        mavsLeftTitle.setHorizontalAlignment(SwingConstants.CENTER);
+        inventoryTile.setHorizontalAlignment(SwingConstants.CENTER);
+        mavsLeft.setHorizontalAlignment(SwingConstants.CENTER);
 
 
+        Font largeFont = new Font("Courier", Font.BOLD, 50);
+        mavsLeft.setFont(largeFont);
+
+        p1.add(levelCountTitle);
         p1.add(levelCount);
+        p2.add(timeLeftTitle);
         p2.add(timeLeft);
+        p3.add(mavsLeftTitle);
         p3.add(mavsLeft);
-        p4.add(inventory);
+        p4.add(inventoryTile);
+        //TODO add a grid in the south of p4
 
 
         side1.add(p1, "North");
@@ -164,6 +188,14 @@ public class GUI implements WindowListener {
             for (int col = 0; col < Main.COLS; col++) {
 //                tileGrid[col][row].setBorder(BorderFactory.createLineBorder(Color.BLACK, 0));
                 tileGrid[col][row].setIcon(board.getTile(col, row).getIcon());
+                mavsLeft.setText("" + (Main.MAX_TREASURE - Main.getPlayer().getMavsCollected()));
+
+            }
+        }
+
+        for (int row = 0; row < 2; row++) {
+            for (int col = 0; col < 4; col++) {
+//                inventoryGrid[row][col].setBackground(Color.BLUE);
             }
         }
 

@@ -7,11 +7,12 @@ import java.util.ArrayList;
 /**
  * The player class which handles player movement, inventory etc...
  */
-class Player {
+public class Player {
 
     private ArrayList<Item> inventory = new ArrayList<>();
     private int x;
     private int y;
+    private int mavsCollected = 0;
 
     /**
      * Player constructor.
@@ -119,6 +120,10 @@ class Player {
 
         if (inventory.size() <= 8) {
             inventory.add(item);
+            if(item.toString().equals("billy_maverick")){
+                mavsCollected++;
+                System.out.println(Main.MAX_TREASURE - mavsCollected);
+            }
         } else {
             System.out.println("Cannot have more than 8 items in the inventory.");
         }
@@ -131,5 +136,9 @@ class Player {
      */
     ArrayList<Item> getInventory() {
         return inventory;
+    }
+
+    public int getMavsCollected() {
+        return mavsCollected;
     }
 }

@@ -5,7 +5,7 @@ import javax.swing.*;
 
 public class TileBlank extends Tile {
 
-    TileBlank(int x, int y) {
+    public TileBlank(int x, int y) {
         super(x, y);
     }
 
