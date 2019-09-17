@@ -10,12 +10,12 @@ public class ItemKey implements Item {
         this.colour = colour;
     }
 
-    public String getColour() {
+    String getColour() {
         return colour;
     }
 
     @Override
     public ImageIcon getIcon() {
-        return new ImageIcon("resources/key_" + colour + ".png");
+        return new ImageIcon("resources/inventory/key_" + colour + ".png");
     }
 }

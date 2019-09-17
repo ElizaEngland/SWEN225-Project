@@ -12,7 +12,7 @@ public class Player {
     private ArrayList<Item> inventory = new ArrayList<>();
     private int x;
     private int y;
-    private int mavsCollected = 0;
+    private int treasureCollected = 0;
     private boolean infoRequested;
 
     /**
@@ -87,7 +87,7 @@ public class Player {
             for (Item item : getInventory()) {
                 if (item instanceof ItemKey) {
                     ItemKey key = (ItemKey) item;
-                    if (key.getColour().equals(((TileDoor) nextMove).getColour())){
+                    if (key.getColour().equals(((TileDoor) nextMove).getColour())) {
                         foundKey = true;
                     }
                 }
@@ -124,13 +124,15 @@ public class Player {
         if (item == null) return;
 
         if (inventory.size() <= 8) {
+
             inventory.add(item);
-            if (item.toString().equals("billy_maverick")) {
-                mavsCollected++;
+
+            if (item instanceof ItemTreasure) {
+                treasureCollected++;
             }
-        } else {
-            System.out.println("Cannot have more than 8 items in the inventory.");
+
         }
+
     }
 
     /**
@@ -147,8 +149,8 @@ public class Player {
      *
      * @return Number of Treasure the player has
      */
-    public int getMavsCollected() {
-        return mavsCollected;
+    public int getTreasureCollected() {
+        return treasureCollected;
     }
 
     /**

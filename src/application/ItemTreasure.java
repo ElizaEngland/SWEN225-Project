@@ -6,7 +6,7 @@ public class ItemTreasure implements Item {
 
     @Override
     public ImageIcon getIcon() {
-        return new ImageIcon("resources/billy_maverick.png");
+        return new ImageIcon("resources/inventory/treasure.png");
     }
 
 }

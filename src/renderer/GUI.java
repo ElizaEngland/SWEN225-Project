@@ -210,7 +210,7 @@ public class GUI implements WindowListener {
 //                                tileGrid[col][row].setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
                 tileGrid[col][row].setIcon(board.getTile(col, row).getIcon());
 
-                mavsLeft.setText(String.valueOf(Main.MAX_TREASURE - Main.getPlayer().getMavsCollected()));
+                mavsLeft.setText(String.valueOf(Main.MAX_TREASURE - Main.getPlayer().getTreasureCollected()));
                 levelCount.setText(board.getLevelName());
                 timeLeft.setText("100"); // TODO: 17/09/2019 should be the actual time remaining not just 100
 
@@ -220,7 +220,8 @@ public class GUI implements WindowListener {
         int row = 0;
         int col = 0;
         for (Item item : Main.getPlayer().getInventory()) {
-            inventoryGrid[col][row].setBorder(BorderFactory.createLineBorder(Color.BLACK)); // TODO: 17/09/2019 Just need to make this an icon for the item
+//            inventoryGrid[col][row].setBorder(BorderFactory.createLineBorder(Color.BLACK)); // TODO: 17/09/2019 Just need to make this an icon for the item
+            inventoryGrid[col][row].setIcon(item.getIcon()); // TODO: 17/09/2019 Just need to make this an icon for the item
             if (col == 3) {
                 row++;
                 col = 0;

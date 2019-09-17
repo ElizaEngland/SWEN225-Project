@@ -46,7 +46,6 @@ public class Main implements KeyListener {
         if (key == KeyEvent.VK_DOWN) player.move(Direction.SOUTH, board);
         if (key == KeyEvent.VK_LEFT) player.move(Direction.WEST, board);
         if (key == KeyEvent.VK_RIGHT) player.move(Direction.EAST, board);
-        if (key == KeyEvent.VK_I) System.out.println(player.getInventory());
         if (key == KeyEvent.VK_SPACE) JOptionPane.showMessageDialog(JOptionPane.getRootFrame(), "Game is paused", "PAUSE MENU", JOptionPane.INFORMATION_MESSAGE);
         if (key == KeyEvent.VK_ESCAPE)System.out.println("ESC pressed, close pause");
 
