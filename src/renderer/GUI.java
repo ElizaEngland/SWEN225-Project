@@ -2,10 +2,15 @@ package renderer;
 
 import application.Main;
 import maze.Board;
+import maze.TileBlank;
+import maze.TileInfo;
+
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.KeyListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 
 /**
  * GUI class for Chip's Challenge.
@@ -24,10 +29,10 @@ public class GUI implements WindowListener {
     private JPanel sidePanel;
     private JPanel p1, p2, p3, p4;
 
-
     //Creates JLabels
     JLabel levelCountTitle, timeLeftTitle, mavsLeftTitle, inventoryTile, mavsLeft, timeLeft, levelCount;
-    JLabel[][] inventoryGrid = new JLabel[4][2];
+    JPanel inventoryPanel;
+    JLabel[][] inventoryGrid;
 
 
     public GUI(Board board, KeyListener keyListener) {
@@ -94,13 +99,20 @@ public class GUI implements WindowListener {
 
         //Creates JLabels
         levelCountTitle = new JLabel();
-        timeLeftTitle = new JLabel();
-        mavsLeftTitle = new JLabel();
-        inventoryTile = new JLabel();
-        timeLeft = new JLabel();
         levelCount = new JLabel();
+
+        timeLeftTitle = new JLabel();
+        timeLeft = new JLabel();
+
+        mavsLeftTitle = new JLabel();
         mavsLeft = new JLabel();
+
+        inventoryTile = new JLabel();
+        inventoryPanel = new JPanel();
         inventoryGrid = new JLabel[4][2];
+
+        inventoryPanel.setLayout(new GridLayout(2, 4, 0, 0));
+        inventoryPanel.setBackground(Color.GRAY);
 
         boardPanel.setLayout(new GridLayout(Main.ROWS, Main.COLS, 0, 0));
         sidePanel.setLayout(new GridLayout(2, 0));
@@ -110,8 +122,16 @@ public class GUI implements WindowListener {
         // create board
         for (int row = 0; row < Main.ROWS; row++) {
             for (int col = 0; col < Main.COLS; col++) {
-                tileGrid[col][row] = new JLabel(board.getTile(col, row).getIcon());
+                tileGrid[col][row] = new JLabel();
                 boardPanel.add(tileGrid[col][row]);
+            }
+        }
+
+        // create inventory
+        for (int row = 0; row < 2; row++) {
+            for (int col = 0; col < 4; col++) {
+                inventoryGrid[col][row] = new JLabel();
+                inventoryPanel.add(inventoryGrid[col][row]);
             }
         }
 
@@ -140,7 +160,6 @@ public class GUI implements WindowListener {
         timeLeft.setHorizontalAlignment(SwingConstants.CENTER);
         levelCount.setHorizontalAlignment(SwingConstants.CENTER);
 
-
         Font largeFont = new Font("Courier", Font.BOLD, 50);
         mavsLeft.setFont(largeFont);
         timeLeft.setFont(largeFont);
@@ -153,6 +172,7 @@ public class GUI implements WindowListener {
         p3.add(mavsLeftTitle);
         p3.add(mavsLeft);
         p4.add(inventoryTile);
+        p4.add(inventoryPanel);
         //TODO add a grid in the south of p4
 
 
@@ -192,7 +212,7 @@ public class GUI implements WindowListener {
             for (int col = 0; col < Main.COLS; col++) {
 //                tileGrid[col][row].setBorder(BorderFactory.createLineBorder(Color.BLACK, 0));
                 tileGrid[col][row].setIcon(board.getTile(col, row).getIcon());
-                mavsLeft.setText("" + (Main.MAX_TREASURE - Main.getPlayer().getMavsCollected()));
+                mavsLeft.setText(String.valueOf(Main.MAX_TREASURE - Main.getPlayer().getMavsCollected()));
                 //TODO change from place holders to actual time and level number
                 levelCount.setText("1");
                 timeLeft.setText("100");
@@ -202,10 +222,11 @@ public class GUI implements WindowListener {
 
         for (int row = 0; row < 2; row++) {
             for (int col = 0; col < 4; col++) {
-//                inventoryGrid[row][col].setBackground(Color.BLUE);
+                inventoryGrid[col][row].setText("test");
             }
         }
-        if(Main.getPlayer().isInfoRequested()) {
+
+        if (Main.getPlayer().isInfoRequested()) {
             JOptionPane.showMessageDialog(mainFrame, "Test");
         }
     }

@@ -58,6 +58,10 @@ public class Main implements KeyListener {
         gui.update();
     }
 
+    public static Player getPlayer() {
+        return player;
+    }
+
     public static void main(String[] args) {
         new Main();
     }
@@ -72,9 +76,5 @@ public class Main implements KeyListener {
     @Override
     public void keyReleased(KeyEvent e) {
 
-    }
-
-    public static Player getPlayer() {
-        return player;
     }
 }
