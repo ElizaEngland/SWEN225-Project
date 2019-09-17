@@ -1,9 +1,8 @@
 package renderer;
 
+import application.Item;
 import application.Main;
 import maze.Board;
-import maze.TileBlank;
-import maze.TileInfo;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -137,7 +136,7 @@ public class GUI implements WindowListener {
 
         levelCountTitle.setText("LEVEL");
         timeLeftTitle.setText("TIME");
-        mavsLeftTitle.setText("TREASURE REMAINING:");
+        mavsLeftTitle.setText("TREASURE REMAINING");
         inventoryTile.setText("INVENTORY");
 
         levelCountTitle.setForeground(Color.green);
@@ -173,8 +172,6 @@ public class GUI implements WindowListener {
         p3.add(mavsLeft);
         p4.add(inventoryTile);
         p4.add(inventoryPanel);
-        //TODO add a grid in the south of p4
-
 
         side1.add(p1, "North");
         side1.add(p2, "Center");
@@ -210,19 +207,25 @@ public class GUI implements WindowListener {
 
         for (int row = 0; row < Main.ROWS; row++) {
             for (int col = 0; col < Main.COLS; col++) {
-//                tileGrid[col][row].setBorder(BorderFactory.createLineBorder(Color.BLACK, 0));
+//                                tileGrid[col][row].setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
                 tileGrid[col][row].setIcon(board.getTile(col, row).getIcon());
+
                 mavsLeft.setText(String.valueOf(Main.MAX_TREASURE - Main.getPlayer().getMavsCollected()));
-                //TODO change from place holders to actual time and level number
-                levelCount.setText("1");
-                timeLeft.setText("100");
+                levelCount.setText(board.getLevelName());
+                timeLeft.setText("100"); // TODO: 17/09/2019 should be the actual time remaining not just 100
 
             }
         }
 
-        for (int row = 0; row < 2; row++) {
-            for (int col = 0; col < 4; col++) {
-                inventoryGrid[col][row].setText("test");
+        int row = 0;
+        int col = 0;
+        for (Item item : Main.getPlayer().getInventory()) {
+            inventoryGrid[col][row].setBorder(BorderFactory.createLineBorder(Color.BLACK)); // TODO: 17/09/2019 Just need to make this an icon for the item
+            if (col == 3) {
+                row++;
+                col = 0;
+            } else {
+                col++;
             }
         }
 

@@ -12,20 +12,22 @@ public class Board {
 
     private Tile[][] board = new Tile[Main.COLS][Main.ROWS];
     private int treasureCount = 0;
+    private String levelName;
 
     /**
      * Load the board from a text file and generate a two-dimensional array of tiles.
      */
-    @SuppressWarnings("IfCanBeSwitch")
     public Board() {
 
         try {
 
-            File rooms = new File("./src/level1.map");   // MARKER: Please ensure this file is in the correct directory
+            File level = new File("./src/level1.map");   // MARKER: Please ensure this file is in the correct directory
 
-            BufferedReader reader = new BufferedReader(new FileReader(rooms));
+            BufferedReader reader = new BufferedReader(new FileReader(level));
 
             String targetLine;
+
+            levelName = reader.readLine();
 
             while ((targetLine = reader.readLine()) != null) {
 
@@ -120,7 +122,15 @@ public class Board {
 
     }
 
+    /**
+     * Gets the number of pieces of treasure in a loaded level.
+     * @return The amount of treasure in the level.
+     */
     public int getTreasureCount() {
         return treasureCount;
+    }
+
+    public String getLevelName() {
+        return levelName;
     }
 }

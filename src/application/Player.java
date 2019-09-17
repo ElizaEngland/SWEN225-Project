@@ -92,6 +92,7 @@ public class Player {
             }
             return foundKey;
         }
+
         if (nextMove instanceof TileExitLock) {
             ArrayList<Item> playerInventory = getInventory();
             int count = 0;
@@ -101,12 +102,14 @@ public class Player {
                 }
             }
             return (count == Main.MAX_TREASURE);
-        } if( nextMove instanceof TileInfo){
-            infoRequested = true;
-                return true;
-        }else {
-            return true;
         }
+
+        if (nextMove instanceof TileInfo) {
+            infoRequested = true;
+        }
+
+        return true;
+
     }
 
     /**
@@ -120,7 +123,7 @@ public class Player {
 
         if (inventory.size() <= 8) {
             inventory.add(item);
-            if(item.toString().equals("billy_maverick")){
+            if (item.toString().equals("billy_maverick")) {
                 mavsCollected++;
             }
         } else {
@@ -133,7 +136,7 @@ public class Player {
      *
      * @return Player inventory.
      */
-    ArrayList<Item> getInventory() {
+    public ArrayList<Item> getInventory() {
         return inventory;
     }
 
