@@ -1,16 +1,21 @@
 package maze;
 
+
 import javax.swing.*;
 
-public class TileBlank extends Tile {
+class TileBlank extends Tile {
 
-    TileBlank(int x, int y) {
+    public TileBlank(int x, int y) {
         super(x, y);
     }
 
     @Override
     public ImageIcon getIcon() {
-        return new ImageIcon("resources/blank.png");
+        if (isPlayer()) {
+            return new ImageIcon("resources/chap.png");
+        } else {
+            return new ImageIcon("resources/blank.png");
+        }
     }
 
 }

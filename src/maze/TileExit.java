@@ -2,12 +2,18 @@ package maze;
 
 import javax.swing.*;
 
-public class TileExit extends Tile{
+public class TileExit extends Tile {
 
-    TileExit(int x, int y) { super(x, y); }
+    TileExit(int x, int y) {
+        super(x, y);
+    }
 
     @Override
     public ImageIcon getIcon() {
-        return new ImageIcon("resources/exit.png");
+        if (isPlayer()) {
+            return new ImageIcon("resources/chap.png");
+        } else {
+            return new ImageIcon("resources/exit.png");
+        }
     }
 }

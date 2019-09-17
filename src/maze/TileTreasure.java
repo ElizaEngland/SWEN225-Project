@@ -10,7 +10,17 @@ public class TileTreasure extends Tile {
 
     @Override
     public ImageIcon getIcon() {
-        return new ImageIcon("resources/treasure.png");
+        if (isPlayer()) {
+            return new ImageIcon("resources/chap.png");
+        } else {
+            return new ImageIcon("resources/treasure.png");
+        }
     }
+
+    @Override
+    public String toString() {
+        return "billy_maverick";
+    }
+
 
 }

@@ -11,8 +11,16 @@ public class TileDoor extends Tile {
         this.colour = colour;
     }
 
+    public String getColour() {
+        return colour;
+    }
+
     @Override
     public ImageIcon getIcon() {
-        return new ImageIcon("resources/door_" + colour + ".png");
+        if (isPlayer()) {
+            return new ImageIcon("resources/chap.png");
+        } else {
+            return new ImageIcon("resources/door_" + colour + ".png");
+        }
     }
 }

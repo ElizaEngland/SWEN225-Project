@@ -1,5 +1,6 @@
 package maze;
 
+import application.Item;
 import application.Main;
 
 import java.io.BufferedReader;
@@ -9,17 +10,24 @@ import java.io.IOException;
 
 public class Board {
 
-    private Tile[][] board = new Tile[Main.WIDTH][Main.HEIGHT];
+    private Tile[][] board = new Tile[Main.COLS][Main.ROWS];
+    private int treasureCount = 0;
+    private String levelName;
 
+    /**
+     * Load the board from a text file and generate a two-dimensional array of tiles.
+     */
     public Board() {
 
         try {
 
-            File rooms = new File("./src/level1.txt");   // MARKER: Please ensure this file is in the correct directory
+            File level = new File("./src/level1.map");   // MARKER: Please ensure this file is in the correct directory
 
-            BufferedReader reader = new BufferedReader(new FileReader(rooms));
+            BufferedReader reader = new BufferedReader(new FileReader(level));
 
             String targetLine;
+
+            levelName = reader.readLine();
 
             while ((targetLine = reader.readLine()) != null) {
 
@@ -31,34 +39,47 @@ public class Board {
                 String colour = "";
 
                 if (tokens.length == 4) {   // for colour coded keys/doors
-                     colour = tokens[3];
+                    colour = tokens[3];
                 }
 
                 Tile tile;
 
-                if (type.equals("blank")) {
-                    tile = new TileBlank(x, y);
-                } else if (type.equals("treasure")) {
-                    tile = new TileTreasure(x, y);
-                } else if (type.equals("wall")) {
-                    tile = new TileWall(x, y);
-                } else if (type.equals("door")) {
-                    tile = new TileDoor(x, y, colour);
-                } else if (type.equals("exit")) {
-                    tile = new TileExit(x, y);
-                } else if (type.equals("info")) {
-                    tile = new TileInfo(x, y);
-                } else if (type.equals("key")) {
-                    tile = new TileKey(x, y, colour);
-                } else if (type.equals("exitlock")) {
-                    tile = new TileExitLock(x, y);
-                }else {
-                    tile = null;
+                switch (type) {
+                    case "blank":
+                        tile = new TileBlank(x, y);
+                        break;
+                    case "treasure":
+                        tile = new TileTreasure(x, y);
+                        treasureCount++;
+                        break;
+                    case "wall":
+                        tile = new TileWall(x, y);
+                        break;
+                    case "door":
+                        tile = new TileDoor(x, y, colour);
+                        break;
+                    case "exit":
+                        tile = new TileExit(x, y);
+                        break;
+                    case "info":
+                        tile = new TileInfo(x, y);
+                        break;
+                    case "key":
+                        tile = new TileKey(x, y, colour);
+                        break;
+                    case "exitlock":
+                        tile = new TileExitLock(x, y);
+                        break;
+                    default:
+                        tile = null;
+                        break;
                 }
 
                 board[x][y] = tile;
 
             }
+
+            reader.close();
 
         } catch (IOException e) {
             System.out.println("Error: " + e);
@@ -66,8 +87,60 @@ public class Board {
 
     }
 
-    public Tile[][] getBoard() {
-        return board;
+    /**
+     * Move the player from one coordinate to another.
+     *
+     * @param oldX The X coordinate of the position moved from.
+     * @param oldY The Y coordinate of the position moved from.
+     * @param x    The X coordinate of the position moved to.
+     * @param y    The Y coordinate of the position moved to.
+     */
+    public void update(int oldX, int oldY, int x, int y) {
+        board[oldX][oldY].setPlayer(false);
+        board[x][y].setPlayer(true);
     }
 
+    /**
+     * Get a specific tile from the board at a specified coordinate.
+     *
+     * @param x The X coordinate
+     * @param y The Y coordinate
+     * @return The tile at the specified coordinates
+     */
+    public Tile getTile(int x, int y) {
+        return board[x][y];
+    }
+
+    /**
+     * Returns the object beneath the player if it is an item that can be picked up.
+     *
+     * @param x The X coordinate.
+     * @param y The Y coordinate.
+     * @return The object to be picked up if one is found.
+     */
+    public Item getObjectOnTile(int x, int y) {
+
+        Tile tile = getTile(x, y);
+
+        if (tile instanceof TileKey || tile instanceof TileTreasure) {
+            Item item = new Item(tile.toString());
+            board[x][y] = new TileBlank(x, y);
+            return item;
+        } else {
+            return null;
+        }
+
+    }
+
+    /**
+     * Gets the number of pieces of treasure in a loaded level.
+     * @return The amount of treasure in the level.
+     */
+    public int getTreasureCount() {
+        return treasureCount;
+    }
+
+    public String getLevelName() {
+        return levelName;
+    }
 }
