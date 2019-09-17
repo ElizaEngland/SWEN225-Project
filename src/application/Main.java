@@ -3,6 +3,7 @@ package application;
 import maze.Board;
 import renderer.GUI;
 
+import javax.swing.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -46,8 +47,8 @@ public class Main implements KeyListener {
         if (key == KeyEvent.VK_LEFT) player.move(Direction.WEST, board);
         if (key == KeyEvent.VK_RIGHT) player.move(Direction.EAST, board);
         if (key == KeyEvent.VK_I) System.out.println(player.getInventory());
-        if (key == KeyEvent.VK_SPACE) System.out.println("Pause");
-        if (key == KeyEvent.VK_ESCAPE) System.out.println("Close the “game is paused” dialog and resume the game\n");
+        if (key == KeyEvent.VK_SPACE) JOptionPane.showMessageDialog(JOptionPane.getRootFrame(), "Game is paused", "PAUSE MENU", JOptionPane.INFORMATION_MESSAGE);
+        if (key == KeyEvent.VK_ESCAPE)System.out.println("ESC pressed, close pause");
 
         if (key == KeyEvent.VK_X && e.isControlDown()) System.exit(0);
         if (key == KeyEvent.VK_S && e.isControlDown()) System.out.println("Save");
