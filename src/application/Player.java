@@ -108,6 +108,11 @@ public class Player {
 
         if (nextMove instanceof TileInfo) {
             infoRequested = true;
+            return true;
+        }
+
+        if ( nextMove instanceof TileExit){
+            System.out.println("Level Complete");
         }
 
         return true;
