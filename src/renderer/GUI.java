@@ -86,7 +86,7 @@ public class GUI implements WindowListener {
         p4.setLayout(new GridLayout(2, 1));
 
         JPanel side1 = new JPanel();
-        JPanel side2 = new JPanel();
+//        JPanel side2 = new JPanel();
 
         p1.setBackground(Color.GRAY);
         p2.setBackground(Color.GRAY);
@@ -114,9 +114,9 @@ public class GUI implements WindowListener {
         inventoryPanel.setBackground(Color.GRAY);
 
         boardPanel.setLayout(new GridLayout(Main.ROWS, Main.COLS, 0, 0));
-        sidePanel.setLayout(new GridLayout(2, 0));
-        side1.setLayout(new GridLayout(3, 0));
-        side2.setLayout(new GridLayout(2, 0));
+        sidePanel.setLayout(new GridLayout(1, 1));
+        side1.setLayout(new GridLayout(4, 1));
+//        side2.setLayout(new GridLayout(2, 0));
 
         // create board
         for (int row = 0; row < Main.ROWS; row++) {
@@ -147,10 +147,10 @@ public class GUI implements WindowListener {
         timeLeft.setForeground(Color.green);
         levelCount.setForeground(Color.green);
 
-        levelCountTitle.setAlignmentX(Component.CENTER_ALIGNMENT);
-        timeLeftTitle.setAlignmentX(Component.CENTER_ALIGNMENT);
-        mavsLeftTitle.setAlignmentX(Component.CENTER_ALIGNMENT);
-        inventoryTile.setAlignmentX(Component.CENTER_ALIGNMENT);
+//        levelCountTitle.setAlignmentX(Component.CENTER_ALIGNMENT);
+//        timeLeftTitle.setAlignmentX(Component.CENTER_ALIGNMENT);
+//        mavsLeftTitle.setAlignmentX(Component.CENTER_ALIGNMENT);
+//        inventoryTile.setAlignmentX(Component.CENTER_ALIGNMENT);
         levelCountTitle.setHorizontalAlignment(SwingConstants.CENTER);
         timeLeftTitle.setHorizontalAlignment(SwingConstants.CENTER);
         mavsLeftTitle.setHorizontalAlignment(SwingConstants.CENTER);
@@ -176,10 +176,10 @@ public class GUI implements WindowListener {
         side1.add(p1, "North");
         side1.add(p2, "Center");
         side1.add(p3, "North");
-        side2.add(p4, "South");
+        side1.add(p4, "South");
 
         sidePanel.add(side1);
-        sidePanel.add(side2);
+//        sidePanel.add(side2);
 
         mainPanel.add(boardPanel);
         mainPanel.add(sidePanel);
