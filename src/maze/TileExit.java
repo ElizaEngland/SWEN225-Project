@@ -16,4 +16,9 @@ public class TileExit extends Tile {
             return new ImageIcon("resources/exit.png");
         }
     }
+
+    @Override
+    public String getType() {
+        return "exit";
+    }
 }

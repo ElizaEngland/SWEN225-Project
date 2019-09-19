@@ -23,4 +23,9 @@ public class TileDoor extends Tile {
             return new ImageIcon("resources/door_" + colour + ".png");
         }
     }
+
+    @Override
+    public String getType() {
+        return "door " +colour;
+    }
 }

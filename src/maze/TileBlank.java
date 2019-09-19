@@ -18,4 +18,9 @@ class TileBlank extends Tile {
         }
     }
 
+    @Override
+    public String getType() {
+        return "blank";
+    }
+
 }

@@ -20,4 +20,9 @@ public class TileInfo extends Tile {
 //    public void showHelp() {
 //        JFrame instructions = new JFrame();
 //    }
+
+    @Override
+    public String getType() {
+        return "info";
+    }
 }

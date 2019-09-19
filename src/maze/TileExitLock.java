@@ -17,4 +17,9 @@ public class TileExitLock extends Tile {
             return new ImageIcon("resources/exitLock.png");
         }
     }
+
+    @Override
+    public String getType() {
+        return "exitlock";
+    }
 }

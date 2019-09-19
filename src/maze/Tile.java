@@ -40,4 +40,9 @@ public class Tile {
         player = value;
     }
 
+    /**
+     * Returns type of tile for jSon file output
+     * @return
+     */
+    public String getType() { return null; }
 }

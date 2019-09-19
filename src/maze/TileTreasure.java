@@ -22,5 +22,8 @@ public class TileTreasure extends Tile {
         return "billy_maverick";
     }
 
-
+    @Override
+    public String getType() {
+        return "treasure";
+    }
 }
