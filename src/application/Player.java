@@ -31,7 +31,7 @@ public class Player {
      *
      * @param direction The direction to be moved
      */
-    void move(Direction direction, Board board) {
+    public void move(Direction direction, Board board) {
 
         int oldX = x;
         int oldY = y;

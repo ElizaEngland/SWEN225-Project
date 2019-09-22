@@ -212,7 +212,7 @@ public class GUI implements WindowListener {
 
                 mavsLeft.setText(String.valueOf(Main.MAX_TREASURE - Main.getPlayer().getTreasureCollected()));
                 levelCount.setText(board.getLevelName());
-                timeLeft.setText("100"); // TODO: 17/09/2019 should be the actual time remaining not just 100
+                timeLeft.setText(Integer.toString(100 - Main.getTime())); // TODO: 17/09/2019 should be the actual time remaining not just 100
 
             }
         }
@@ -266,6 +266,10 @@ public class GUI implements WindowListener {
     @Override
     public void windowDeactivated(WindowEvent e) {
 
+    }
+
+    public void GameOver(){
+        JOptionPane.showMessageDialog(mainFrame, "GAME OVER", "GAME OVER", JOptionPane.INFORMATION_MESSAGE);
     }
 
 }

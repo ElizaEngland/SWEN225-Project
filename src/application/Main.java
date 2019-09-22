@@ -19,17 +19,17 @@ public class Main implements KeyListener {
     private final Board board;
     private final GUI gui;
     private static Player player;
+    private boolean running = false;
+    private static int time = 0;
 
     private Main() {
-
         board = new Board();
         player = new Player(5, 5);
         gui = new GUI(board, this);
         MAX_TREASURE = board.getTreasureCount();
-
         board.update(5, 5, 5, 5); // FIXME: 16/09/2019 Should be done a bit cleaner
+        tick();
         gui.update();
-
     }
 
     /**
@@ -60,6 +60,28 @@ public class Main implements KeyListener {
 
     public static Player getPlayer() {
         return player;
+    }
+
+    public void tick(){
+        running = true;
+        long previous = System.nanoTime();
+        long current;
+        while(running){
+            current = System.nanoTime();
+            if(current - previous > 1000000000){
+                previous = current;
+                time++;
+                gui.update();
+            }
+            if(time == 100){
+                running = false;
+                gui.GameOver();
+            }
+        }
+    }
+
+    public static int getTime() {
+        return time;
     }
 
     public static void main(String[] args) {
