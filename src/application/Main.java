@@ -20,6 +20,7 @@ public class Main implements KeyListener {
     private final GUI gui;
     private static Player player;
     private boolean running = false;
+    private static boolean paused = false;
     private static int time = 0;
 
     private Main() {
@@ -46,8 +47,15 @@ public class Main implements KeyListener {
         if (key == KeyEvent.VK_DOWN) player.move(Direction.SOUTH, board);
         if (key == KeyEvent.VK_LEFT) player.move(Direction.WEST, board);
         if (key == KeyEvent.VK_RIGHT) player.move(Direction.EAST, board);
-        if (key == KeyEvent.VK_SPACE) JOptionPane.showMessageDialog(JOptionPane.getRootFrame(), "Game is paused", "PAUSE MENU", JOptionPane.INFORMATION_MESSAGE);
-        if (key == KeyEvent.VK_ESCAPE)System.out.println("ESC pressed, close pause");
+        if (key == KeyEvent.VK_SPACE) {
+            paused = true;
+            JOptionPane pauseMenu = new JOptionPane();
+            pauseMenu.showOptionDialog(JOptionPane.getRootFrame(), "Game is paused \n Press ESC to return to game", "PAUSE MENU",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, new Object[]{}, null);
+
+        }
+        if (key == KeyEvent.VK_ESCAPE){//FIXME: 22/09/19 have to press esc twice to resume timer
+            paused = false;
+        }
 
         if (key == KeyEvent.VK_X && e.isControlDown()) System.exit(0);
         if (key == KeyEvent.VK_S && e.isControlDown()) System.out.println("Save");
@@ -66,16 +74,18 @@ public class Main implements KeyListener {
         running = true;
         long previous = System.nanoTime();
         long current;
-        while(running){
-            current = System.nanoTime();
-            if(current - previous > 1000000000){
-                previous = current;
-                time++;
-                gui.update();
-            }
-            if(time == 100){
-                running = false;
-                gui.GameOver();
+        while(running) {
+            if (!paused) {
+                current = System.nanoTime();
+                if (current - previous > 1000000000) {
+                    previous = current;
+                    time++;
+                    gui.update();
+                }
+                if (time == 100) {
+                    running = false;
+                    gui.GameOver();
+                }
             }
         }
     }
