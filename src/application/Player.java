@@ -1,6 +1,7 @@
 package application;
 
 import maze.*;
+import renderer.GUINextLevel;
 
 import java.util.ArrayList;
 
@@ -97,13 +98,8 @@ public class Player {
 
         if (nextMove instanceof TileExitLock) {
             ArrayList<Item> playerInventory = getInventory();
-            int count = 0;
-            for (Item current : playerInventory) {
-                if (current instanceof ItemTreasure) {
-                    count++;
-                }
-            }
-            return (count == Main.MAX_TREASURE);
+
+            return (treasureCollected == Main.MAX_TREASURE);
         }
 
         if (nextMove instanceof TileInfo) {
@@ -112,7 +108,8 @@ public class Player {
         }
 
         if ( nextMove instanceof TileExit){
-            System.out.println("Level Complete");
+            new GUINextLevel();
+            //System.out.println("Level Complete");
         }
 
         return true;
