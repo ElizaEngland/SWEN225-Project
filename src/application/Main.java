@@ -29,18 +29,18 @@ public class Main implements KeyListener {
 
     private Main() {
         currLevel = 1;
-        loadLevel("./src/level"+getCurrLevel()+".map");
+        loadLevel("./src/level" + getCurrLevel() + ".map");
+
         gui = new GUI(board, this);
 
-        MAX_TREASURE = board.getTreasureCount();
-        board.update(5, 5, 5, 5); // FIXME: 16/09/2019 Should be done a bit cleaner
-        gui.updateBoard();
         tick();
     }
 
     public void loadLevel(String file) {
         board = new Board(new File(file));
-        player = new Player(Integer.parseInt(board.getStartX()), Integer.parseInt(board.getStartY()));
+        player = new Player(board.getStartX(), board.getStartY());
+        board.update(board.getStartX(), board.getStartY(), board.getStartX(), board.getStartY());
+        MAX_TREASURE = board.getTreasureCount();
     }
 
     /**
@@ -51,10 +51,8 @@ public class Main implements KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
 
-        if (paused) {
-            return;
-        }
-        
+        if (paused) return;
+
         int key = e.getKeyCode();
 
         if (key == KeyEvent.VK_UP) player.move(Direction.NORTH, board);
@@ -67,10 +65,11 @@ public class Main implements KeyListener {
         if (key == KeyEvent.VK_S && e.isControlDown()) gui.savePopup();
         if (key == KeyEvent.VK_L && e.isControlDown()) gui.loadPopup();
         if (key == KeyEvent.VK_R && e.isControlDown()) System.out.println("Resume");
-        if (key == KeyEvent.VK_P && e.isControlDown()) System.out.println("Start a new game at the last unfinished level");
+        if (key == KeyEvent.VK_P && e.isControlDown()) System.out.println("Start a game at the last unfinished level");
         if (key == KeyEvent.VK_1 && e.isControlDown()) System.out.println("Start a new game at level 1");
 
         gui.updateBoard();
+
     }
 
     public static Player getPlayer() {
@@ -108,7 +107,9 @@ public class Main implements KeyListener {
         Main.paused = paused;
     }
 
-    public static int getCurrLevel() { return currLevel; }
+    public static int getCurrLevel() {
+        return currLevel;
+    }
 
     public static void main(String[] args) {
         new Main();

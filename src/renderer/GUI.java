@@ -50,6 +50,9 @@ public class GUI implements WindowListener {
         mainFrame.setLocationRelativeTo(null);
         mainFrame.setVisible(true);
 
+        updateBoard();
+        updatePanel();
+
     }
 
     /**
@@ -249,6 +252,10 @@ public class GUI implements WindowListener {
      */
     public void updateBoard() {
 
+        if (board == null) {
+            return;
+        }
+
         for (int row = 0; row < Main.ROWS; row++) {
             for (int col = 0; col < Main.COLS; col++) {
 
@@ -318,7 +325,6 @@ public class GUI implements WindowListener {
     public void GameOver() {
         JOptionPane.showMessageDialog(mainFrame, "GAME OVER", "GAME OVER", JOptionPane.INFORMATION_MESSAGE);
     }
-
 
 
 }

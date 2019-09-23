@@ -117,9 +117,13 @@ public class Board {
         return board[x][y];
     }
 
-    public String getStartX() { return startX; }
+    public int getStartX() {
+        return Integer.parseInt(startX);
+    }
 
-    public String getStartY() { return startY; }
+    public int getStartY() {
+        return Integer.parseInt(startY);
+    }
 
     /**
      * Returns the object beneath the player if it is an item that can be picked up.
@@ -148,6 +152,7 @@ public class Board {
 
     /**
      * Gets the number of pieces of treasure in a loaded level.
+     *
      * @return The amount of treasure in the level.
      */
     public int getTreasureCount() {
