@@ -37,13 +37,15 @@ public class Write {
         File  file = new File(filePath + ".map");
         file.createNewFile();
         FileWriter fileWriter = new FileWriter(file);
-        fileWriter.write(board.getLevelName() );
+        fileWriter.write(board.getLevelName());
+        fileWriter.write(time);
+        fileWriter.write(Main.getPlayer().getX());
+        fileWriter.write(Main.getPlayer().getY());
         for (int row = 0; row < Main.ROWS; row++){
             for (int col = 0; col < Main.COLS; col++){
                 fileWriter.write("\n" + col + ", " + row + ", " + board.getTile(col, row).getType() );
             }
         }
-//        fileWriter.write(time);
         fileWriter.close();
         return file.getPath();
     }
@@ -59,13 +61,11 @@ public class Write {
     public void saveJSONFile(String filePath, String time, Board board ){
         try{
             JSONObject jsonObj = new JSONObject(); // create a new obj
-            jsonObj.put("time", time); // int
             jsonObj.put("inventory", Main.getPlayer().getInventory().toString()); // arrayList SUSS
             jsonObj.put("level", board.getLevelName()); // txt file
             jsonObj.put("treasure", board.getTreasureCount());
             jsonObj.put("boardMapFile", convertBoardMap(board, filePath, time));
-            jsonObj.put("x", Main.getPlayer().getX());
-            jsonObj.put("y", Main.getPlayer().getY());
+
 
             Files.write(Paths.get(filePath+".json"), jsonObj.toJSONString().getBytes());
 
