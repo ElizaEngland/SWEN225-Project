@@ -127,14 +127,14 @@ public class Player {
     private void addItemToInventory(Item item) {
 
         if (item == null) return;
+        if(item instanceof ItemTreasure){
+            treasureCollected++;
+            return;
+        }
 
         if (inventory.size() <= 8) {
 
             inventory.add(item);
-
-            if (item instanceof ItemTreasure) {
-                treasureCollected++;
-            }
 
         }
 

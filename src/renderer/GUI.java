@@ -51,6 +51,10 @@ public class GUI implements WindowListener {
 
     }
 
+
+    /**
+     * Creates the menubar up the top of the JFrame
+     */
     private void makeMenuBar() {
         menuBar = new JMenuBar();
 
@@ -147,10 +151,6 @@ public class GUI implements WindowListener {
         timeLeft.setForeground(Color.green);
         levelCount.setForeground(Color.green);
 
-//        levelCountTitle.setAlignmentX(Component.CENTER_ALIGNMENT);
-//        timeLeftTitle.setAlignmentX(Component.CENTER_ALIGNMENT);
-//        mavsLeftTitle.setAlignmentX(Component.CENTER_ALIGNMENT);
-//        inventoryTile.setAlignmentX(Component.CENTER_ALIGNMENT);
         levelCountTitle.setHorizontalAlignment(SwingConstants.CENTER);
         timeLeftTitle.setHorizontalAlignment(SwingConstants.CENTER);
         mavsLeftTitle.setHorizontalAlignment(SwingConstants.CENTER);
@@ -179,7 +179,6 @@ public class GUI implements WindowListener {
         side1.add(p4, "South");
 
         sidePanel.add(side1);
-//        sidePanel.add(side2);
 
         mainPanel.add(boardPanel);
         mainPanel.add(sidePanel);
@@ -207,7 +206,6 @@ public class GUI implements WindowListener {
 
         for (int row = 0; row < Main.ROWS; row++) {
             for (int col = 0; col < Main.COLS; col++) {
-//                                tileGrid[col][row].setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
                 tileGrid[col][row].setIcon(board.getTile(col, row).getIcon());
 
                 mavsLeft.setText(String.valueOf(Main.MAX_TREASURE - Main.getPlayer().getTreasureCollected()));
