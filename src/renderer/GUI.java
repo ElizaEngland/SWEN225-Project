@@ -86,8 +86,8 @@ public class GUI implements WindowListener {
     private void loadPopup() {
         System.out.println("LOADING GAME");
         Read r = new Read();
-        JFileChooser fileChooser = new JFileChooser("../group-project/src");
-
+        JFileChooser fileChooser = new JFileChooser("../group-project/savedGame");
+        fileChooser.setDialogTitle("Loading file...");
         int address = fileChooser.showOpenDialog(null);
 
         if (address == JFileChooser.APPROVE_OPTION) {
@@ -98,7 +98,7 @@ public class GUI implements WindowListener {
 
     private void savePopup() {
         Write w = new Write();
-        JFileChooser fileChooser = new JFileChooser("../group-project/src");
+        JFileChooser fileChooser = new JFileChooser("../group-project/savedGame");
         fileChooser.setDialogTitle("Saving file...");
         int returnValue = fileChooser.showSaveDialog(null);
 
