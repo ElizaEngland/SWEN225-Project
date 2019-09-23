@@ -2,8 +2,8 @@ package application;
 
 import maze.Board;
 import renderer.GUI;
+import renderer.GUIPause;
 
-import javax.swing.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -48,13 +48,8 @@ public class Main implements KeyListener {
         if (key == KeyEvent.VK_LEFT) player.move(Direction.WEST, board);
         if (key == KeyEvent.VK_RIGHT) player.move(Direction.EAST, board);
         if (key == KeyEvent.VK_SPACE) {
-            paused = true;
-//            JOptionPane pauseMenu = new JOptionPane();
-            JOptionPane.showOptionDialog(JOptionPane.getRootFrame(), "Game is paused \n Press ESC to return to game", "PAUSE MENU",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, new Object[]{}, null);
-
-        }
-        if (key == KeyEvent.VK_ESCAPE){//FIXME: 22/09/19 have to press esc twice to resume timer
-            paused = false;
+            setPaused(true);
+            new GUIPause();
         }
 
         if (key == KeyEvent.VK_X && e.isControlDown()) System.exit(0);
@@ -95,6 +90,10 @@ public class Main implements KeyListener {
 
     public static int getTime() {
         return time;
+    }
+
+    public static void setPaused(boolean paused) {
+        Main.paused = paused;
     }
 
     public static void main(String[] args) {

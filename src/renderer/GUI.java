@@ -264,7 +264,6 @@ public class GUI implements WindowListener {
         }
 
         //TODO: 17/9/19 replace the message with the actual information
-        //FIXME: fix the popup so it doesnt reopen after closing
         if (Main.getPlayer().isInfoRequested()) {
             JOptionPane.showMessageDialog(mainFrame, "Test", "Information", JOptionPane.INFORMATION_MESSAGE);
         }
