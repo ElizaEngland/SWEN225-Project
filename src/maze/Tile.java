@@ -8,6 +8,13 @@ public class Tile {
     private int y;
     private boolean player;
 
+    /**
+     * Tile for the board x and y axis
+     *
+     * @param x x axis for tile
+     * @param y y axis for tile
+     */
+
     Tile(int x, int y) {
         this.x = x;
         this.y = y;
