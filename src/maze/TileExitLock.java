@@ -2,9 +2,12 @@ package maze;
 
 import javax.swing.*;
 
-public class TileExitLock extends Tile{
 
-    TileExitLock(int x, int y) { super(x, y); }
+public class TileExitLock extends Tile {
+
+    TileExitLock(int x, int y) {
+        super(x, y);
+    }
 
     @Override
     public ImageIcon getIcon() {
@@ -13,5 +16,10 @@ public class TileExitLock extends Tile{
         } else {
             return new ImageIcon("resources/exitLock.png");
         }
+    }
+
+    @Override
+    public String getType() {
+        return "exitlock";
     }
 }

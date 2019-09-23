@@ -1,5 +1,9 @@
 package application;
 
-public class Item {
+import javax.swing.*;
+
+public interface Item {
+
+    ImageIcon getIcon();
 
 }

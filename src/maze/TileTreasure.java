@@ -17,4 +17,13 @@ public class TileTreasure extends Tile {
         }
     }
 
+    @Override
+    public String toString() {
+        return "billy_maverick";
+    }
+
+    @Override
+    public String getType() {
+        return "treasure";
+    }
 }

@@ -19,4 +19,18 @@ public class TileKey extends Tile {
             return new ImageIcon("resources/key_" + colour + ".png");
         }
     }
+
+    public String getColour() {
+        return colour;
+    }
+
+    @Override
+    public String toString() {
+        return "key_" + colour;
+    }
+
+    @Override
+    public String getType() {
+        return "key " +colour;
+    }
 }
