@@ -19,13 +19,11 @@ public class Board {
     /**
      * Load the board from a text file and generate a two-dimensional array of tiles.
      */
-    public Board() {
+    public Board(File fileName) {
 
         try {
 
-            File level = new File("./src/level1.map");   // MARKER: Please ensure this file is in the correct directory
-
-            BufferedReader reader = new BufferedReader(new FileReader(level));
+            BufferedReader reader = new BufferedReader(new FileReader(fileName));
 
             String targetLine;
 
@@ -71,6 +69,9 @@ public class Board {
                         break;
                     case "exitlock":
                         tile = new TileExitLock(x, y);
+                        break;
+                    case "spilleddrink":
+                        tile = new TileSpilledDrink(x, y);
                         break;
                     default:
                         tile = null;

@@ -81,6 +81,10 @@ public class Player {
 
         Tile nextMove = board.getTile(x, y);
 
+        if (nextMove instanceof TileSpilledDrink) {
+            System.out.println("should slip");
+        }
+
         if (nextMove instanceof TileWall) return false;
 
         if (nextMove instanceof TileDoor) {

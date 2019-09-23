@@ -6,6 +6,7 @@ import renderer.GUIPause;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.File;
 
 /**
  * Main class for Chip's Challenge.
@@ -24,7 +25,7 @@ public class Main implements KeyListener {
     private static int time = 0;
 
     private Main() {
-        board = new Board();
+        board = new Board(new File("./src/level1.map"));
         player = new Player(5, 5);
         gui = new GUI(board, this);
         MAX_TREASURE = board.getTreasureCount();

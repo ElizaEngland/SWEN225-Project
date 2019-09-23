@@ -251,6 +251,7 @@ public class GUI implements WindowListener {
 
         for (int row = 0; row < Main.ROWS; row++) {
             for (int col = 0; col < Main.COLS; col++) {
+
                 tileGrid[col][row].setIcon(board.getTile(col, row).getIcon());
 
                 mavsLeft.setText(String.valueOf(Main.MAX_TREASURE - Main.getPlayer().getTreasureCollected()));
