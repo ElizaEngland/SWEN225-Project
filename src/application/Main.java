@@ -44,6 +44,7 @@ public class Main implements KeyListener {
         if (paused) {
             return;
         }
+
         int key = e.getKeyCode();
 
         if (key == KeyEvent.VK_UP) player.move(Direction.NORTH, board);
