@@ -70,6 +70,9 @@ public class Main implements KeyListener {
         return player;
     }
 
+    /**
+     * Main loop of the game
+     */
     public void tick(){
         running = true;
         long previous = System.nanoTime();
