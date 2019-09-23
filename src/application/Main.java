@@ -29,8 +29,8 @@ public class Main implements KeyListener {
         gui = new GUI(board, this);
         MAX_TREASURE = board.getTreasureCount();
         board.update(5, 5, 5, 5); // FIXME: 16/09/2019 Should be done a bit cleaner
+        gui.updateBoard();
         tick();
-        gui.update();
     }
 
     /**
@@ -49,8 +49,8 @@ public class Main implements KeyListener {
         if (key == KeyEvent.VK_RIGHT) player.move(Direction.EAST, board);
         if (key == KeyEvent.VK_SPACE) {
             paused = true;
-            JOptionPane pauseMenu = new JOptionPane();
-            pauseMenu.showOptionDialog(JOptionPane.getRootFrame(), "Game is paused \n Press ESC to return to game", "PAUSE MENU",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, new Object[]{}, null);
+//            JOptionPane pauseMenu = new JOptionPane();
+            JOptionPane.showOptionDialog(JOptionPane.getRootFrame(), "Game is paused \n Press ESC to return to game", "PAUSE MENU",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, new Object[]{}, null);
 
         }
         if (key == KeyEvent.VK_ESCAPE){//FIXME: 22/09/19 have to press esc twice to resume timer
@@ -63,7 +63,7 @@ public class Main implements KeyListener {
         if (key == KeyEvent.VK_P && e.isControlDown()) System.out.println("Start a new game at the last unfinished level");
         if (key == KeyEvent.VK_1 && e.isControlDown()) System.out.println("Start a new game at level 1");
 
-        gui.update();
+        gui.updateBoard();
     }
 
     public static Player getPlayer() {
@@ -80,7 +80,7 @@ public class Main implements KeyListener {
                 if (current - previous > 1000000000) {
                     previous = current;
                     time++;
-                    gui.update();
+                    gui.updatePanel();
                 }
                 if (time == 100) {
                     running = false;

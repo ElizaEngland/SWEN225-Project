@@ -203,7 +203,7 @@ public class GUI implements WindowListener {
     /**
      * Update the icons on the board (called each time a move is made).
      */
-    public void update() {
+    public void updateBoard() {
 
         for (int row = 0; row < Main.ROWS; row++) {
             for (int col = 0; col < Main.COLS; col++) {
@@ -212,7 +212,6 @@ public class GUI implements WindowListener {
 
                 mavsLeft.setText(String.valueOf(Main.MAX_TREASURE - Main.getPlayer().getTreasureCollected()));
                 levelCount.setText(board.getLevelName());
-                timeLeft.setText(Integer.toString(100 - Main.getTime())); // TODO: 17/09/2019 should be the actual time remaining not just 100
 
             }
         }
@@ -235,6 +234,10 @@ public class GUI implements WindowListener {
         if (Main.getPlayer().isInfoRequested()) {
             JOptionPane.showMessageDialog(mainFrame, "Test", "Information", JOptionPane.INFORMATION_MESSAGE);
         }
+    }
+
+    public void updatePanel() {
+        timeLeft.setText(Integer.toString(100 - Main.getTime())); // TODO: 17/09/2019 should be the actual time remaining not just 100
     }
 
     // Unused methods:
