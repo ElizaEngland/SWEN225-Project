@@ -26,13 +26,15 @@ public class Read {
 
             System.out.println(fileInfo);
             String time = (String) fileInfo.get("time"); // int
-            JSONArray inventory = (JSONArray) fileInfo.get("inventory"); // arrayList SUSS
+//            JSONArray inventory = (JSONArray) fileInfo.get("inventory"); // arrayList SUSS
             String level = (String)fileInfo.get("level"); // txt file
-            String treasure = (String)fileInfo.get("treasure");
+            long treasure = (long)fileInfo.get("treasure");
             String boardmap = (String)fileInfo.get("boardMapFile");
-            String x = (String)fileInfo.get("x");
-            String y = (String)fileInfo.get("y");
+            long x = (long)fileInfo.get("x");
+            long y = (long)fileInfo.get("y");
 
+            System.out.println(time  + "\n" +  level + "\n" +  treasure + "\n" +  boardmap+ "\n" + x+ "\n" + y);
+//            System.out.println(inventory);
 
 //            fileInfo.forEach( info -> parseInfoObject((JSONObject) info));
         } catch (ParseException ex) {
