@@ -17,21 +17,30 @@ public class Main implements KeyListener {
     public static final int ROWS = 9;
     public static int MAX_TREASURE = 0;
 
-    private final Board board;
-    private final GUI gui;
+    private static Board board;
+    private static GUI gui;
     private static Player player;
     private boolean running = false;
     private static boolean paused = false;
     private static int time = 0;
+    private File file;
+
+    private static int currLevel;
 
     private Main() {
-        board = new Board(new File("./src/level1.map"));
-        player = new Player(5, 5);
+        currLevel = 1;
+        loadLevel("./src/level"+getCurrLevel()+".map");
         gui = new GUI(board, this);
+
         MAX_TREASURE = board.getTreasureCount();
         board.update(5, 5, 5, 5); // FIXME: 16/09/2019 Should be done a bit cleaner
         gui.updateBoard();
         tick();
+    }
+
+    public void loadLevel(String file) {
+        board = new Board(new File(file));
+        player = new Player(Integer.parseInt(board.getStartX()), Integer.parseInt(board.getStartY()));
     }
 
     /**
@@ -98,6 +107,8 @@ public class Main implements KeyListener {
     public static void setPaused(boolean paused) {
         Main.paused = paused;
     }
+
+    public static int getCurrLevel() { return currLevel; }
 
     public static void main(String[] args) {
         new Main();
