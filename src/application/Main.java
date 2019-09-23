@@ -41,6 +41,9 @@ public class Main implements KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
 
+        if (paused) {
+            return;
+        }
         int key = e.getKeyCode();
 
         if (key == KeyEvent.VK_UP) player.move(Direction.NORTH, board);
@@ -55,7 +58,8 @@ public class Main implements KeyListener {
         if (key == KeyEvent.VK_X && e.isControlDown()) System.exit(0);
         if (key == KeyEvent.VK_S && e.isControlDown()) System.out.println("Save");
         if (key == KeyEvent.VK_R && e.isControlDown()) System.out.println("Resume");
-        if (key == KeyEvent.VK_P && e.isControlDown()) System.out.println("Start a new game at the last unfinished level");
+        if (key == KeyEvent.VK_P && e.isControlDown())
+            System.out.println("Start a new game at the last unfinished level");
         if (key == KeyEvent.VK_1 && e.isControlDown()) System.out.println("Start a new game at level 1");
 
         gui.updateBoard();
@@ -68,11 +72,11 @@ public class Main implements KeyListener {
     /**
      * Main loop of the game
      */
-    public void tick(){
+    public void tick() {
         running = true;
         long previous = System.nanoTime();
         long current;
-        while(running) {
+        while (running) {
             if (!paused) {
                 current = System.nanoTime();
                 if (current - previous > 1000000000) {
