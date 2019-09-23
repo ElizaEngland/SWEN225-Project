@@ -4,15 +4,12 @@ import application.Item;
 import application.Main;
 import maze.Board;
 import persistence.Read;
-import persistence.Write;
 
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
 
 /**
  * GUI class for Chip's Challenge.
@@ -90,7 +87,6 @@ public class GUI implements WindowListener {
 
         file.add(loadGame);
         file.add(saveGame);
-
 
         menuBar.add(file);
 
