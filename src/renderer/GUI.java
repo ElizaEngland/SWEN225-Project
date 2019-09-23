@@ -4,6 +4,7 @@ import application.Item;
 import application.Main;
 import maze.Board;
 import persistence.Read;
+import persistence.Write;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -51,22 +52,6 @@ public class GUI implements WindowListener {
 
     }
 
-
-    public void loadPopup(){
-            System.out.println("LOADING GAME");
-            Read r = new Read();
-            JFileChooser fileChooser = new JFileChooser("../group-project/src");
-
-            int address = fileChooser.showOpenDialog(null);
-
-            if (address == JFileChooser.APPROVE_OPTION){
-                File selectedFile = fileChooser.getSelectedFile();
-                r.readFile(selectedFile.getAbsolutePath());
-            }
-
-    }
-
-
     /**
      * Creates the menubar up the top of the JFrame
      */
@@ -79,9 +64,14 @@ public class GUI implements WindowListener {
         saveGame = new JMenuItem("Save Game");
 
         loadGame.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(ActionEvent ev) {
                 loadPopup();
+            }
+        });
+
+        saveGame.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent ev) {
+                savePopup();
             }
         });
 
@@ -89,8 +79,40 @@ public class GUI implements WindowListener {
         file.add(saveGame);
 
         menuBar.add(file);
-
         mainFrame.setJMenuBar(menuBar);
+    }
+
+
+    /**
+     * Create the pop up for loading in a level
+     */
+    public void loadPopup() {
+        System.out.println("LOADING GAME");
+        Read r = new Read();
+        JFileChooser fileChooser = new JFileChooser("../group-project/savedGame");
+        fileChooser.setDialogTitle("Loading file...");
+        int address = fileChooser.showOpenDialog(null);
+
+        if (address == JFileChooser.APPROVE_OPTION) {
+            File selectedFile = fileChooser.getSelectedFile();
+            r.readFile(selectedFile.getAbsolutePath());
+        }
+    }
+
+    /**
+     * Create the pop up for saving a level
+     */
+    public void savePopup() {
+        Write w = new Write();
+        JFileChooser fileChooser = new JFileChooser("../group-project/savedGame");
+        fileChooser.setDialogTitle("Saving file...");
+        int returnValue = fileChooser.showSaveDialog(null);
+
+        if (returnValue == JFileChooser.APPROVE_OPTION) {
+            File toSave = fileChooser.getSelectedFile();
+            System.out.println(Main.getPlayer().getInventory().toString());
+            w.saveJSONFile(toSave.getAbsolutePath(), timeLeft.getText(), board);
+        }
     }
 
     private void createFrame() {
@@ -112,7 +134,6 @@ public class GUI implements WindowListener {
         p4.setLayout(new GridLayout(2, 1));
 
         JPanel side1 = new JPanel();
-//        JPanel side2 = new JPanel();
 
         p1.setBackground(Color.GRAY);
         p2.setBackground(Color.GRAY);
@@ -211,8 +232,10 @@ public class GUI implements WindowListener {
     }
 
     @Override
+    /**
+     * Used to confirm whether a player wants to exit the game or not
+     */
     public void windowClosing(WindowEvent e) {
-        // Ask the user to confirm they wanted to do this
         int r = JOptionPane.showConfirmDialog(mainFrame,
                 new JLabel("Exit Game?"), "Confirm Exit",
                 JOptionPane.YES_NO_OPTION,
@@ -228,6 +251,7 @@ public class GUI implements WindowListener {
 
         for (int row = 0; row < Main.ROWS; row++) {
             for (int col = 0; col < Main.COLS; col++) {
+
                 tileGrid[col][row].setIcon(board.getTile(col, row).getIcon());
 
                 mavsLeft.setText(String.valueOf(Main.MAX_TREASURE - Main.getPlayer().getTreasureCollected()));
@@ -291,8 +315,10 @@ public class GUI implements WindowListener {
 
     }
 
-    public void GameOver(){
+    public void GameOver() {
         JOptionPane.showMessageDialog(mainFrame, "GAME OVER", "GAME OVER", JOptionPane.INFORMATION_MESSAGE);
     }
+
+
 
 }
