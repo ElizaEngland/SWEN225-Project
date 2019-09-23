@@ -55,6 +55,21 @@ public class GUI implements WindowListener {
     }
 
 
+    public void loadPopup(){
+            System.out.println("LOADING GAME");
+            Read r = new Read();
+            JFileChooser fileChooser = new JFileChooser("../group-project/src");
+
+            int address = fileChooser.showOpenDialog(null);
+
+            if (address == JFileChooser.APPROVE_OPTION){
+                File selectedFile = fileChooser.getSelectedFile();
+                r.readFile(selectedFile.getAbsolutePath());
+            }
+
+    }
+
+
     /**
      * Creates the menubar up the top of the JFrame
      */
@@ -67,36 +82,11 @@ public class GUI implements WindowListener {
         saveGame = new JMenuItem("Save Game");
 
         loadGame.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent ev) {
-                System.out.println("LOADING GAME");
-                Read r = new Read();
-                JFileChooser fileChooser = new JFileChooser("../group-project/src");
-
-                int address = fileChooser.showOpenDialog(null);
-
-                if (address == JFileChooser.APPROVE_OPTION){
-                    File selectedFile = fileChooser.getSelectedFile();
-                    r.readFile(selectedFile.getAbsolutePath());
-                }
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                loadPopup();
             }
         });
-
-        saveGame.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent ev) {
-                Write w = new Write();
-                JFileChooser fileChooser = new JFileChooser("../group-project/src");
-                fileChooser.setDialogTitle("Saving file...");
-                int returnValue = fileChooser.showSaveDialog(null);
-
-                if (returnValue == JFileChooser.APPROVE_OPTION){
-                    File toSave = fileChooser.getSelectedFile();
-                    System.out.println(Main.getPlayer().getInventory().toString());
-                    w.saveJSONFile(toSave.getAbsolutePath(), timeLeft.getText(), board);
-                }
-            }
-        });
-
-
 
         file.add(loadGame);
         file.add(saveGame);
