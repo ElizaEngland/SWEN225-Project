@@ -1,13 +1,17 @@
 package renderer;
 
 import javax.swing.*;
+import javax.swing.plaf.basic.BasicOptionPaneUI;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 
-public class GUINextLevel {
+public class GUINextLevel implements ActionListener {
     private JFrame mainFrame;
     private JPanel panel;
-
+    private JButton nextLevel;
+    private JButton exit;
 
     public GUINextLevel() {
         mainFrame = new JFrame();
@@ -17,9 +21,11 @@ public class GUINextLevel {
         panel.setLayout(new FlowLayout());
         panel1.setLayout(new FlowLayout());
         JLabel text = new JLabel("Completed Level!");
-        JButton nextLevel = new JButton("Next Level");
-        JButton exit = new JButton("Exit");
+        nextLevel = new JButton("Next Level");
+        exit = new JButton("Exit");
 
+        nextLevel.addActionListener(this);
+        exit.addActionListener(this);
         panel.add(text);
         panel1.add(nextLevel);
         panel1.add(exit);
@@ -31,4 +37,15 @@ public class GUINextLevel {
         mainFrame.setVisible(true);
     }
 
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
+        if(e.getSource() == nextLevel ){
+            System.out.println("Next level");
+        }
+        else if(e.getSource()==exit){
+            System.out.println("Exit");
+        }
+    }
 }

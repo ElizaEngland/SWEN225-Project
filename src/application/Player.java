@@ -109,7 +109,7 @@ public class Player {
 
         if ( nextMove instanceof TileExit){
             new GUINextLevel();
-            //System.out.println("Level Complete");
+
         }
 
         return true;
