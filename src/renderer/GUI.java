@@ -4,6 +4,7 @@ import application.Item;
 import application.Main;
 import maze.Board;
 import persistence.Read;
+import persistence.Write;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -51,22 +52,6 @@ public class GUI implements WindowListener {
 
     }
 
-
-    public void loadPopup(){
-            System.out.println("LOADING GAME");
-            Read r = new Read();
-            JFileChooser fileChooser = new JFileChooser("../group-project/src");
-
-            int address = fileChooser.showOpenDialog(null);
-
-            if (address == JFileChooser.APPROVE_OPTION){
-                File selectedFile = fileChooser.getSelectedFile();
-                r.readFile(selectedFile.getAbsolutePath());
-            }
-
-    }
-
-
     /**
      * Creates the menubar up the top of the JFrame
      */
@@ -79,9 +64,14 @@ public class GUI implements WindowListener {
         saveGame = new JMenuItem("Save Game");
 
         loadGame.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(ActionEvent ev) {
                 loadPopup();
+            }
+        });
+
+        saveGame.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent ev) {
+                savePopup();
             }
         });
 
@@ -91,6 +81,32 @@ public class GUI implements WindowListener {
         menuBar.add(file);
 
         mainFrame.setJMenuBar(menuBar);
+    }
+
+    private void loadPopup() {
+        System.out.println("LOADING GAME");
+        Read r = new Read();
+        JFileChooser fileChooser = new JFileChooser("../group-project/src");
+
+        int address = fileChooser.showOpenDialog(null);
+
+        if (address == JFileChooser.APPROVE_OPTION) {
+            File selectedFile = fileChooser.getSelectedFile();
+            r.readFile(selectedFile.getAbsolutePath());
+        }
+    }
+
+    private void savePopup() {
+        Write w = new Write();
+        JFileChooser fileChooser = new JFileChooser("../group-project/src");
+        fileChooser.setDialogTitle("Saving file...");
+        int returnValue = fileChooser.showSaveDialog(null);
+
+        if (returnValue == JFileChooser.APPROVE_OPTION) {
+            File toSave = fileChooser.getSelectedFile();
+            System.out.println(Main.getPlayer().getInventory().toString());
+            w.saveJSONFile(toSave.getAbsolutePath(), timeLeft.getText(), board);
+        }
     }
 
     private void createFrame() {
@@ -291,7 +307,7 @@ public class GUI implements WindowListener {
 
     }
 
-    public void GameOver(){
+    public void GameOver() {
         JOptionPane.showMessageDialog(mainFrame, "GAME OVER", "GAME OVER", JOptionPane.INFORMATION_MESSAGE);
     }
 
