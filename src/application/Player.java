@@ -98,12 +98,12 @@ public class Player {
         if (nextMove instanceof TileExitLock) {
             ArrayList<Item> playerInventory = getInventory();
             int count = 0;
-            for (Item current : playerInventory) {
-                if (current instanceof ItemTreasure) {
-                    count++;
-                }
-            }
-            return (count == Main.MAX_TREASURE);
+//            for (Item current : playerInventory) {
+//                if (current instanceof ItemTreasure) {
+//                    count++;
+//                }
+//            }
+            return (treasureCollected == Main.MAX_TREASURE);
         }
 
         if (nextMove instanceof TileInfo) {
