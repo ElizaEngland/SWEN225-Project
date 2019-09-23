@@ -79,7 +79,6 @@ public class GUI implements WindowListener {
         file.add(saveGame);
 
         menuBar.add(file);
-
         mainFrame.setJMenuBar(menuBar);
     }
 
@@ -128,7 +127,6 @@ public class GUI implements WindowListener {
         p4.setLayout(new GridLayout(2, 1));
 
         JPanel side1 = new JPanel();
-//        JPanel side2 = new JPanel();
 
         p1.setBackground(Color.GRAY);
         p2.setBackground(Color.GRAY);
@@ -227,8 +225,10 @@ public class GUI implements WindowListener {
     }
 
     @Override
+    /**
+     * Used to confirm whether a player wants to exit the game or not
+     */
     public void windowClosing(WindowEvent e) {
-        // Ask the user to confirm they wanted to do this
         int r = JOptionPane.showConfirmDialog(mainFrame,
                 new JLabel("Exit Game?"), "Confirm Exit",
                 JOptionPane.YES_NO_OPTION,
@@ -310,5 +310,7 @@ public class GUI implements WindowListener {
     public void GameOver() {
         JOptionPane.showMessageDialog(mainFrame, "GAME OVER", "GAME OVER", JOptionPane.INFORMATION_MESSAGE);
     }
+
+
 
 }
