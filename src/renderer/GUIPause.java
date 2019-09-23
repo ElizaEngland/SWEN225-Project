@@ -17,7 +17,7 @@ public class GUIPause implements KeyListener {
         mainFrame.addKeyListener(this);
         mainFrame.pack();
         mainFrame.setLocationRelativeTo(null);
-        mainFrame.setVisible(true); //d
+        mainFrame.setVisible(true);
     }
 
     @Override
