@@ -3,13 +3,16 @@ package renderer;
 import application.Item;
 import application.Main;
 import maze.Board;
+import persistence.Read;
+import persistence.Write;
 
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
-import java.awt.event.KeyListener;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
+import java.awt.event.*;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * GUI class for Chip's Challenge.
@@ -63,8 +66,41 @@ public class GUI implements WindowListener {
         loadGame = new JMenuItem("Load Game");
         saveGame = new JMenuItem("Save Game");
 
+        loadGame.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent ev) {
+                System.out.println("LOADING GAME");
+                Read r = new Read();
+                JFileChooser fileChooser = new JFileChooser("../group-project/src");
+
+                int address = fileChooser.showOpenDialog(null);
+
+                if (address == JFileChooser.APPROVE_OPTION){
+                    File selectedFile = fileChooser.getSelectedFile();
+                    r.readFile(selectedFile.getAbsolutePath());
+                }
+            }
+        });
+
+        saveGame.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent ev) {
+                Write w = new Write();
+                JFileChooser fileChooser = new JFileChooser("../group-project/src");
+                fileChooser.setDialogTitle("Saving file...");
+                int returnValue = fileChooser.showSaveDialog(null);
+
+                if (returnValue == JFileChooser.APPROVE_OPTION){
+                    File toSave = fileChooser.getSelectedFile();
+                    System.out.println(Main.getPlayer().getInventory().toString());
+                    w.saveJSONFile(toSave.getAbsolutePath(), timeLeft.getText(), board);
+                }
+            }
+        });
+
+
+
         file.add(loadGame);
         file.add(saveGame);
+
 
         menuBar.add(file);
 

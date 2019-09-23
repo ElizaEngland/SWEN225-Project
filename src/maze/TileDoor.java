@@ -26,6 +26,6 @@ public class TileDoor extends Tile {
 
     @Override
     public String getType() {
-        return "door " +colour;
+        return "door, " + colour;
     }
 }

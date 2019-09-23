@@ -1,0 +1,82 @@
+L1
+0, 0, blank
+1, 0, blank
+2, 0, treasure
+3, 0, wall
+4, 0, wall
+5, 0, wall
+6, 0, blank
+7, 0, blank
+8, 0, treasure
+0, 1, blank
+1, 1, blank
+2, 1, blank
+3, 1, wall
+4, 1, exit
+5, 1, wall
+6, 1, blank
+7, 1, blank
+8, 1, blank
+0, 2, blank
+1, 2, wall
+2, 2, wall
+3, 2, wall
+4, 2, exitlock
+5, 2, wall
+6, 2, door, purple
+7, 2, wall
+8, 2, blank
+0, 3, blank
+1, 3, door, green
+2, 3, blank
+3, 3, blank
+4, 3, blank
+5, 3, blank
+6, 3, blank
+7, 3, wall
+8, 3, wall
+0, 4, wall
+1, 4, wall
+2, 4, blank
+3, 4, key, red
+4, 4, info
+5, 4, blank
+6, 4, blank
+7, 4, door, purple
+8, 4, blank
+0, 5, blank
+1, 5, door, red
+2, 5, blank
+3, 5, blank
+4, 5, blank
+5, 5, blank
+6, 5, blank
+7, 5, wall
+8, 5, treasure
+0, 6, treasure
+1, 6, wall
+2, 6, blank
+3, 6, blank
+4, 6, blank
+5, 6, blank
+6, 6, blank
+7, 6, wall
+8, 6, blank
+0, 7, wall
+1, 7, wall
+2, 7, wall
+3, 7, door, red
+4, 7, wall
+5, 7, door, green
+6, 7, wall
+7, 7, wall
+8, 7, wall
+0, 8, key, purple
+1, 8, blank
+2, 8, blank
+3, 8, blank
+4, 8, wall
+5, 8, blank
+6, 8, blank
+7, 8, blank
+8, 8, blank

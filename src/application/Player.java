@@ -149,6 +149,16 @@ public class Player {
         return inventory;
     }
 
+    @Override
+    public String toString() {
+        String s="";
+        for (Item i : inventory) {
+            s += ", " + i.getIcon();
+        }
+        System.out.println(s);
+        return s;
+    }
+
     /**
      * Gets the number of Treasure the player has collected
      *
@@ -165,5 +175,23 @@ public class Player {
      */
     public boolean isInfoRequested() {
         return infoRequested;
+    }
+
+    /**
+     * Gets the x co-ordinate of player
+     *
+     * @return x value
+     */
+    public int getX() {
+        return x;
+    }
+
+    /**
+     * Gets the y co-ordinate of player
+     *
+     * @return y value
+     */
+    public int getY() {
+        return y;
     }
 }
