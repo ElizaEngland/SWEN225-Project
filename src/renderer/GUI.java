@@ -82,6 +82,10 @@ public class GUI implements WindowListener {
         mainFrame.setJMenuBar(menuBar);
     }
 
+
+    /**
+     * Create the pop up for loading in a level
+     */
     public void loadPopup() {
         System.out.println("LOADING GAME");
         Read r = new Read();
@@ -95,6 +99,9 @@ public class GUI implements WindowListener {
         }
     }
 
+    /**
+     * Create the pop up for saving a level
+     */
     public void savePopup() {
         Write w = new Write();
         JFileChooser fileChooser = new JFileChooser("../group-project/savedGame");
