@@ -30,7 +30,5 @@ public class TileKey extends Tile {
     }
 
     @Override
-    public String getType() {
-        return "key " +colour;
-    }
+    public String getType() { return "key, " + colour; }
 }
