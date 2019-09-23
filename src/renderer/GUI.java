@@ -83,7 +83,7 @@ public class GUI implements WindowListener {
         mainFrame.setJMenuBar(menuBar);
     }
 
-    private void loadPopup() {
+    public void loadPopup() {
         System.out.println("LOADING GAME");
         Read r = new Read();
         JFileChooser fileChooser = new JFileChooser("../group-project/src");
@@ -96,7 +96,7 @@ public class GUI implements WindowListener {
         }
     }
 
-    private void savePopup() {
+    public void savePopup() {
         Write w = new Write();
         JFileChooser fileChooser = new JFileChooser("../group-project/src");
         fileChooser.setDialogTitle("Saving file...");
