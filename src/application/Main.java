@@ -20,16 +20,15 @@ public class Main implements KeyListener {
     private static Board board;
     private static GUI gui;
     private static Player player;
-    private boolean running = false;
     private static boolean paused = false;
     private static int time = 0;
-    private File file;
+    private static int currLevel = 1;
+    private static int maxTime = 100;
+    private String filename;
 
-    private static int currLevel;
-
-    private Main() {
-        currLevel = 1;
-        loadLevel("./src/level" + getCurrLevel() + ".map");
+    private void init() {
+        filename = "./src/level" + getCurrLevel() + ".map";
+        loadLevel(filename);
 
         gui = new GUI(board, this);
 
@@ -37,10 +36,14 @@ public class Main implements KeyListener {
     }
 
     public void loadLevel(String file) {
-        board = new Board(new File(file));
-        player = new Player(board.getStartX(), board.getStartY());
-        board.update(board.getStartX(), board.getStartY(), board.getStartX(), board.getStartY());
-        MAX_TREASURE = board.getTreasureCount();
+        try {
+            board = new Board(new File(file));
+            player = new Player(board.getStartX(), board.getStartY());
+            board.update(board.getStartX(), board.getStartY(), board.getStartX(), board.getStartY());
+            MAX_TREASURE = board.getTreasureCount();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -72,15 +75,12 @@ public class Main implements KeyListener {
 
     }
 
-    public static Player getPlayer() {
-        return player;
-    }
 
     /**
      * Main loop of the game
      */
     public void tick() {
-        running = true;
+        boolean running = true;
         long previous = System.nanoTime();
         long current;
         while (running) {
@@ -89,30 +89,54 @@ public class Main implements KeyListener {
                 if (current - previous > 1000000000) {
                     previous = current;
                     time++;
-                    gui.updatePanel();
+                    try {gui.updatePanel();}
+                    catch (NullPointerException e){
+                        e.printStackTrace();
+                    }
                 }
-                if (time == 100) {
+                if (time == maxTime) {
                     running = false;
-                    gui.GameOver();
+                    try {gui.GameOver();}
+                    catch (NullPointerException e){
+                        e.printStackTrace();
+                    }
                 }
             }
         }
     }
 
+    /** GETTERS & SETTERS **/
+
     public static int getTime() {
         return time;
+    }
+
+    public static Player getPlayer() {
+        return player;
     }
 
     public static void setPaused(boolean paused) {
         Main.paused = paused;
     }
 
-    public static int getCurrLevel() {
-        return currLevel;
+    public static int getCurrLevel() {return currLevel;}
+
+    public void setFilename(String filename) {
+        this.filename = filename;
+    }
+
+    public String getFilename() {
+        return filename;
+    }
+
+    public static int getMaxTime() {return maxTime;}
+
+    public void setMaxTime(int maxTime) {
+        this.maxTime = maxTime;
     }
 
     public static void main(String[] args) {
-        new Main();
+        new Main().init();
     }
 
     // Unused methods:

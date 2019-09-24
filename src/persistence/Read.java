@@ -37,11 +37,7 @@ public class Read {
 //            System.out.println(inventory);
 
 //            fileInfo.forEach( info -> parseInfoObject((JSONObject) info));
-        } catch (ParseException ex) {
-            ex.printStackTrace();
-        } catch (FileNotFoundException ex) {
-            ex.printStackTrace();
-        } catch (IOException ex) {
+        } catch (ParseException | IOException ex) {
             ex.printStackTrace();
         }
     }

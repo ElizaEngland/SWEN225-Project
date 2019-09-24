@@ -1,7 +1,6 @@
 package renderer;
 
 import javax.swing.*;
-import javax.swing.plaf.basic.BasicOptionPaneUI;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -45,7 +44,7 @@ public class GUINextLevel implements ActionListener {
             System.out.println("Next level");
         }
         else if(e.getSource()==exit){
-            System.out.println("Exit");
+            System.exit(0);
         }
     }
 }

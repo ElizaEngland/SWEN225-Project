@@ -66,17 +66,9 @@ public class GUI implements WindowListener {
         loadGame = new JMenuItem("Load Game");
         saveGame = new JMenuItem("Save Game");
 
-        loadGame.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent ev) {
-                loadPopup();
-            }
-        });
+        loadGame.addActionListener(ev -> loadPopup());
 
-        saveGame.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent ev) {
-                savePopup();
-            }
-        });
+        saveGame.addActionListener(ev -> savePopup());
 
         file.add(loadGame);
         file.add(saveGame);
@@ -234,10 +226,10 @@ public class GUI implements WindowListener {
 
     }
 
-    @Override
     /**
      * Used to confirm whether a player wants to exit the game or not
      */
+    @Override
     public void windowClosing(WindowEvent e) {
         int r = JOptionPane.showConfirmDialog(mainFrame,
                 new JLabel("Exit Game?"), "Confirm Exit",
@@ -270,8 +262,8 @@ public class GUI implements WindowListener {
         int row = 0;
         int col = 0;
         for (Item item : Main.getPlayer().getInventory()) {
-//            inventoryGrid[col][row].setBorder(BorderFactory.createLineBorder(Color.BLACK)); // TODO: 17/09/2019 Just need to make this an icon for the item
-            inventoryGrid[col][row].setIcon(item.getIcon()); // TODO: 17/09/2019 Just need to make this an icon for the item
+//            inventoryGrid[col][row].setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            inventoryGrid[col][row].setIcon(item.getIcon());
             if (col == 3) {
                 row++;
                 col = 0;
@@ -287,7 +279,7 @@ public class GUI implements WindowListener {
     }
 
     public void updatePanel() {
-        timeLeft.setText(Integer.toString(100 - Main.getTime())); // TODO: 17/09/2019 should be the actual time remaining not just 100
+        timeLeft.setText(Integer.toString(Main.getMaxTime() - Main.getTime()));
     }
 
     // Unused methods:

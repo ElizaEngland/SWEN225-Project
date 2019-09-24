@@ -102,8 +102,6 @@ public class Player {
         }
 
         if (nextMove instanceof TileExitLock) {
-            ArrayList<Item> playerInventory = getInventory();
-
             return (treasureCollected == Main.MAX_TREASURE);
         }
 
