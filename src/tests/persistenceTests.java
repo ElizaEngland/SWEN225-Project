@@ -13,13 +13,16 @@ class persistenceTests {
 
     @Test
     void readFile() {
+        fail();
     }
 
     @Test
     void convertBoardMap() {
+        fail();
     }
 
     @Test
     void saveJSONFile() {
+        fail();
     }
 }

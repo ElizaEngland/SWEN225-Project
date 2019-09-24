@@ -1,7 +1,11 @@
 package tests;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeEach;
 
 class RenderTests {
+
+    @BeforeEach
+    void setUp() {
+    }
 
 }
