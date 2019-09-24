@@ -23,13 +23,13 @@ public class Main implements KeyListener {
     private boolean running = false;
     private static boolean paused = false;
     private static int time = 0;
-    private File file;
+    private String filename;
 
-    private static int currLevel;
+    private static int currLevel =1;
 
-    private Main() {
-        currLevel = 1;
-        loadLevel("./src/level" + getCurrLevel() + ".map");
+    private void init() {
+        filename = "./src/level" + getCurrLevel() + ".map";
+        loadLevel(filename);
 
         gui = new GUI(board, this);
 
@@ -37,10 +37,14 @@ public class Main implements KeyListener {
     }
 
     public void loadLevel(String file) {
-        board = new Board(new File(file));
-        player = new Player(board.getStartX(), board.getStartY());
-        board.update(board.getStartX(), board.getStartY(), board.getStartX(), board.getStartY());
-        MAX_TREASURE = board.getTreasureCount();
+        try {
+            board = new Board(new File(file));
+            player = new Player(board.getStartX(), board.getStartY());
+            board.update(board.getStartX(), board.getStartY(), board.getStartX(), board.getStartY());
+            MAX_TREASURE = board.getTreasureCount();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -112,7 +116,7 @@ public class Main implements KeyListener {
     }
 
     public static void main(String[] args) {
-        new Main();
+        new Main().init();
     }
 
     // Unused methods:
@@ -125,5 +129,17 @@ public class Main implements KeyListener {
     @Override
     public void keyReleased(KeyEvent e) {
 
+    }
+
+    public void setFilename(String filename) {
+        this.filename = filename;
+    }
+
+    public String getFilename() {
+        return filename;
+    }
+
+    public void testinit(){
+        init();
     }
 }
