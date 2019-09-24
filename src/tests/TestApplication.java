@@ -47,6 +47,11 @@ class TestApplication {
     }
 
     @Test
+    void invalidMove() {
+        fail();
+    }
+
+    @Test
     void getInventory() {
         fail();
     }
