@@ -98,6 +98,7 @@ public class Player {
                     }
                 }
             }
+            if(foundKey) ((TileDoor) nextMove).setUnlocked();
             return foundKey;
         }
 
@@ -110,7 +111,7 @@ public class Player {
             return true;
         }
 
-        if ( nextMove instanceof TileExit){
+        if (nextMove instanceof TileExit){
             new GUINextLevel();
 
         }
