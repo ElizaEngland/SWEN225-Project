@@ -25,6 +25,7 @@ public class Player {
     Player(int startX, int startY) {
         this.x = startX;
         this.y = startY;
+
     }
 
     /**

@@ -15,6 +15,7 @@ public class Board {
     private Tile[][] board = new Tile[Main.COLS][Main.ROWS];
     private int treasureCount = 0;
     private String levelName;
+    private String startX, startY;
 
     /**
      * Load the board from a text file and generate a two-dimensional array of tiles.
@@ -28,6 +29,8 @@ public class Board {
             String targetLine;
 
             levelName = reader.readLine();
+            startX = reader.readLine();
+            startY = reader.readLine();
 
             while ((targetLine = reader.readLine()) != null) {
 
@@ -114,6 +117,14 @@ public class Board {
         return board[x][y];
     }
 
+    public int getStartX() {
+        return Integer.parseInt(startX);
+    }
+
+    public int getStartY() {
+        return Integer.parseInt(startY);
+    }
+
     /**
      * Returns the object beneath the player if it is an item that can be picked up.
      *
@@ -141,6 +152,7 @@ public class Board {
 
     /**
      * Gets the number of pieces of treasure in a loaded level.
+     *
      * @return The amount of treasure in the level.
      */
     public int getTreasureCount() {
