@@ -30,11 +30,6 @@ class TestApplication {
     }
 
     @Test
-    void keyPressed() {
-        fail();
-    }
-
-    @Test
     void timer() {
         instance.setMaxTime(3);
         instance.tick();
@@ -48,9 +43,11 @@ class TestApplication {
     /**PLAYER TESTS **/
     @Test
     void move() {
+        fail();
     }
 
     @Test
     void getInventory() {
+        fail();
     }
 }

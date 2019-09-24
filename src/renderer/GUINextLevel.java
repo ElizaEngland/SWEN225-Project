@@ -45,7 +45,7 @@ public class GUINextLevel implements ActionListener {
             System.out.println("Next level");
         }
         else if(e.getSource()==exit){
-            System.out.println("Exit");
+            System.exit(0);
         }
     }
 }

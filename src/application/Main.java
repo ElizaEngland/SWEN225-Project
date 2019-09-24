@@ -20,12 +20,11 @@ public class Main implements KeyListener {
     private static Board board;
     private static GUI gui;
     private static Player player;
-    private boolean running = false;
     private static boolean paused = false;
     private static int time = 0;
-    private int maxTime = 100;
+    private static int currLevel = 1;
+    private static int maxTime = 100;
     private String filename;
-    private static int currLevel =1;
 
     private void init() {
         filename = "./src/level" + getCurrLevel() + ".map";
@@ -81,7 +80,7 @@ public class Main implements KeyListener {
      * Main loop of the game
      */
     public void tick() {
-        running = true;
+        boolean running = true;
         long previous = System.nanoTime();
         long current;
         while (running) {
@@ -91,12 +90,16 @@ public class Main implements KeyListener {
                     previous = current;
                     time++;
                     try {gui.updatePanel();}
-                    catch (NullPointerException e){}
+                    catch (NullPointerException e){
+                        e.printStackTrace();
+                    }
                 }
                 if (time == maxTime) {
                     running = false;
                     try {gui.GameOver();}
-                    catch (NullPointerException e){}
+                    catch (NullPointerException e){
+                        e.printStackTrace();
+                    }
                 }
             }
         }
@@ -116,9 +119,8 @@ public class Main implements KeyListener {
         Main.paused = paused;
     }
 
-    public static int getCurrLevel() {
-        return currLevel;
-    }
+    public static int getCurrLevel() {return currLevel;}
+
     public void setFilename(String filename) {
         this.filename = filename;
     }
@@ -127,9 +129,7 @@ public class Main implements KeyListener {
         return filename;
     }
 
-    public int getMaxTime() {
-        return maxTime;
-    }
+    public static int getMaxTime() {return maxTime;}
 
     public void setMaxTime(int maxTime) {
         this.maxTime = maxTime;
