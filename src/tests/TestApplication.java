@@ -3,16 +3,10 @@ package tests;
 import application.Main;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import javax.swing.*;
-
-import java.awt.event.KeyEvent;
-import java.io.FileNotFoundException;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class TestApplication {
-    Main instance;
+    private Main instance;
     @BeforeEach
     void setUp() throws Exception {
         try {
@@ -21,6 +15,8 @@ class TestApplication {
             e.printStackTrace();
         }
     }
+
+/**MAIN TESTS **/
 
     @Test
     void loadValidLevel() {
@@ -35,25 +31,26 @@ class TestApplication {
 
     @Test
     void keyPressed() {
-    }
-
-    @Test
-    void getPlayer() {
         fail();
     }
 
     @Test
-    void tick() {
-        fail();
+    void timer() {
+        instance.setMaxTime(3);
+        instance.tick();
     }
 
     @Test
-    void getTime() {
+    void checkPaused() {
         fail();
     }
 
+    /**PLAYER TESTS **/
     @Test
-    void checkpaused() {
-        fail();
+    void move() {
+    }
+
+    @Test
+    void getInventory() {
     }
 }

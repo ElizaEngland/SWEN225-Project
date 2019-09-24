@@ -23,8 +23,8 @@ public class Main implements KeyListener {
     private boolean running = false;
     private static boolean paused = false;
     private static int time = 0;
+    private int maxTime = 100;
     private String filename;
-
     private static int currLevel =1;
 
     private void init() {
@@ -76,9 +76,6 @@ public class Main implements KeyListener {
 
     }
 
-    public static Player getPlayer() {
-        return player;
-    }
 
     /**
      * Main loop of the game
@@ -93,18 +90,26 @@ public class Main implements KeyListener {
                 if (current - previous > 1000000000) {
                     previous = current;
                     time++;
-                    gui.updatePanel();
+                    try {gui.updatePanel();}
+                    catch (NullPointerException e){}
                 }
-                if (time == 100) {
+                if (time == maxTime) {
                     running = false;
-                    gui.GameOver();
+                    try {gui.GameOver();}
+                    catch (NullPointerException e){}
                 }
             }
         }
     }
 
+    /** GETTERS & SETTERS **/
+
     public static int getTime() {
         return time;
+    }
+
+    public static Player getPlayer() {
+        return player;
     }
 
     public static void setPaused(boolean paused) {
@@ -113,6 +118,21 @@ public class Main implements KeyListener {
 
     public static int getCurrLevel() {
         return currLevel;
+    }
+    public void setFilename(String filename) {
+        this.filename = filename;
+    }
+
+    public String getFilename() {
+        return filename;
+    }
+
+    public int getMaxTime() {
+        return maxTime;
+    }
+
+    public void setMaxTime(int maxTime) {
+        this.maxTime = maxTime;
     }
 
     public static void main(String[] args) {
@@ -129,17 +149,5 @@ public class Main implements KeyListener {
     @Override
     public void keyReleased(KeyEvent e) {
 
-    }
-
-    public void setFilename(String filename) {
-        this.filename = filename;
-    }
-
-    public String getFilename() {
-        return filename;
-    }
-
-    public void testinit(){
-        init();
     }
 }
