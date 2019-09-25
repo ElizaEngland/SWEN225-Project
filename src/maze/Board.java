@@ -76,6 +76,7 @@ public class Board {
                     case "spilleddrink":
                         tile = new TileSpilledDrink(x, y);
                         break;
+                    case "jaildoor":
                     default:
                         tile = null;
                         break;
