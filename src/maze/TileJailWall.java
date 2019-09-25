@@ -11,7 +11,6 @@ public class TileJailWall extends Tile {
 
     @Override
     public ImageIcon getIcon() {
-
         return new ImageIcon("resources/jailWall.png");
     }
 

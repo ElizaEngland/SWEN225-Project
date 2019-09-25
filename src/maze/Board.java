@@ -77,6 +77,15 @@ public class Board {
                         tile = new TileSpilledDrink(x, y);
                         break;
                     case "jaildoor":
+                        tile = new TileJailDoor(x, y);
+                        break;
+                    case "jailwall":
+                        tile = new TileJailWall(x, y);
+                        break;
+                    case "jailfloor":
+                        tile = new TileJailFloor(x, y);
+                        break;
+
                     default:
                         tile = null;
                         break;
