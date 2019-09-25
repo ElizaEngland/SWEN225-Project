@@ -20,7 +20,8 @@ public class GUI implements WindowListener {
     private Board board;
     private static JMenuBar menuBar;
     private static JMenu file;
-    private static JMenuItem loadGame, saveGame;
+    private static JMenu help;
+    private static JMenuItem loadGame, saveGame, controls;
 
     private JFrame mainFrame;
     private JPanel mainPanel;
@@ -62,9 +63,22 @@ public class GUI implements WindowListener {
         menuBar = new JMenuBar();
 
         file = new JMenu("File");
+        help = new JMenu("Help");
 
         loadGame = new JMenuItem("Load Game");
         saveGame = new JMenuItem("Save Game");
+        controls = new JMenuItem("Controls");
+
+        controls.addActionListener(ev -> JOptionPane.showMessageDialog(mainFrame, "COTROLS:\n " +
+                "CLT + X = exit the game\n" +
+                "CLT + S = save the game\n" +
+                "CLT + L = Load the game\n" +
+                "CLT + R = Resume a saved game\n" +
+                "CLT + P = restarts the level\n" +
+                "CLT + 1 = start a new game from level 1\n" +
+                "SPACE = pause the game\n" +
+                "ESC = close the pause menu\n" +
+                "MOVEMENT: Arrow keys","CONTROLS", JOptionPane.PLAIN_MESSAGE));
 
         loadGame.addActionListener(ev -> loadPopup());
 
@@ -72,8 +86,10 @@ public class GUI implements WindowListener {
 
         file.add(loadGame);
         file.add(saveGame);
+        help.add(controls);
 
         menuBar.add(file);
+        menuBar.add(help);
         mainFrame.setJMenuBar(menuBar);
     }
 
@@ -274,7 +290,8 @@ public class GUI implements WindowListener {
 
         //TODO: 17/9/19 replace the message with the actual information
         if (Main.getPlayer().isInfoRequested()) {
-            JOptionPane.showMessageDialog(mainFrame, "Test", "Information", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(mainFrame, "Once you have collected all the \n " +
+                    "billy mavs you can then pass through macas \n and your way to the taxi to complete the level", "Information", JOptionPane.INFORMATION_MESSAGE);
         }
     }
 
