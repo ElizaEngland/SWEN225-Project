@@ -98,7 +98,6 @@ public class Player {
                     }
                 }
             }
-            if (foundKey) ((TileDoor) nextMove).setUnlocked();
             return foundKey;
         }
 
