@@ -34,9 +34,8 @@ public class Main implements KeyListener {
         filename = "./src/level13x13.map";
         filename = "./src/level14x14.map";
 //        filename = "./src/level15x15.map";
+        gui = new GUI(this);
         loadLevel(filename);
-
-        gui = new GUI(board, this);
 
         tick();
     }
@@ -47,6 +46,8 @@ public class Main implements KeyListener {
             player = new Player(board.getStartX(), board.getStartY());
             board.update(board.getStartX(), board.getStartY(), board.getStartX(), board.getStartY());
             MAX_TREASURE = board.getTreasureCount();
+            gui.setBoard(board);
+            gui.updateOnMove();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -68,6 +69,7 @@ public class Main implements KeyListener {
         if (key == KeyEvent.VK_LEFT) player.move(Direction.WEST, board);
         if (key == KeyEvent.VK_RIGHT) player.move(Direction.EAST, board);
         if (key == KeyEvent.VK_SPACE) new GUIPause();
+        if (key == KeyEvent.VK_Z) loadLevel("./src/level1.map");
 
         if (key == KeyEvent.VK_X && e.isControlDown()) System.exit(0);
         if (key == KeyEvent.VK_S && e.isControlDown()) gui.savePopup();

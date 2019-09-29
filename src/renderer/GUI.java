@@ -38,13 +38,12 @@ public class GUI implements WindowListener {
     JLabel[][] inventoryGrid;
 
 
-    public GUI(Board board, KeyListener keyListener) {
+    public GUI(KeyListener keyListener) {
 
         mainFrame = new JFrame();
         mainFrame.setTitle("Chap's Challenge");
         mainFrame.addKeyListener(keyListener);
 
-        this.board = board;
         makeMenuBar();
         createFrame();
 
@@ -284,47 +283,46 @@ public class GUI implements WindowListener {
         if (bottomRight.x >= Main.COLS) right = true;
         if (bottomRight.y >= Main.ROWS) bottom = true;
 
+        int distanceX = playerX - charToEdge; // distance from the character position to the left edge of the screen
+        int distanceY = playerY - charToEdge; // distance from the character position to the top edge of the screen
+        int shiftX = Main.COLS - Main.WINDOW_COLS;
+        int shiftY = Main.ROWS - Main.WINDOW_ROWS;
+
         for (int row = 0, row2 = playerY - charToEdge; row < Main.WINDOW_ROWS; row++) {
             for (int col = 0, col2 = playerX - charToEdge; col < Main.WINDOW_COLS; col++) {
 
-                int distanceX = playerX - charToEdge; // distance from the character position to the left edge of the screen
-                int distanceY = playerY - charToEdge; // distance from the character position to the top edge of the screen
-
-                int shift = Main.ROWS - Main.WINDOW_ROWS;
                 int x, y;
 
                 if (left && !(top || bottom)) {
                     x = col;
                     y = row + distanceY;
                 } else if (right && !(top || bottom)) {
-                    x = col + shift;
+                    x = col + shiftX;
                     y = row + distanceY;
                 } else if (top && !(left || right)) {
                     x = col + distanceX;
                     y = row;
                 } else if (bottom && !(left || right)) {
                     x = col + distanceX;
-                    y = row + shift;
+                    y = row + shiftY;
                 } else if (left && top) {
                     x = col;
                     y = row;
                 } else if (right && top) {
-                    x = col + shift;
+                    x = col + shiftX;
                     y = row;
                 } else if (left && bottom) {
                     x = col;
-                    y = row + shift;
+                    y = row + shiftY;
                 } else if (right && bottom) {
-                    x = col + shift;
-                    y = row + shift;
+                    x = col + shiftX;
+                    y = row + shiftY;
                 } else {
                     x = col2;
                     y = row2;
                 }
 
-                if (board.getTile(x, y) != null) {
-                    tileGrid[col][row].setIcon(board.getTile(x, y).getIcon());
-                }
+                tileGrid[col][row].setIcon(board.getTile(x, y).getIcon());
 
                 col2++;
             }
@@ -393,5 +391,9 @@ public class GUI implements WindowListener {
 
     }
 
+
+    public void setBoard(Board board) {
+        this.board = board;
+    }
 
 }
