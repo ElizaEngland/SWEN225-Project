@@ -105,9 +105,6 @@ public class Board {
             System.out.println("Error: " + e);
         }
 
-        System.out.println(board.length);
-        System.out.println(board[0].length);
-
     }
 
     /**

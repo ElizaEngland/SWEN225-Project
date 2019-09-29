@@ -24,18 +24,14 @@ public class Main implements KeyListener {
     private static Player player;
     private static boolean paused = false;
     private static int time = 0;
-    private static int currLevel = 2;
+    private static int currLevel = 1;
     private static int maxTime = 100;
     private String filename;
 
     private void init() {
-        filename = "./src/level" + getCurrLevel() + ".map";
-        filename = "./src/level2test.map";
-        filename = "./src/level13x13.map";
-        filename = "./src/level14x14.map";
-//        filename = "./src/level15x15.map";
         gui = new GUI(this);
-        loadLevel(filename);
+
+        loadLevel("./src/level" + getCurrLevel() + ".map");
 
         tick();
     }
@@ -69,14 +65,17 @@ public class Main implements KeyListener {
         if (key == KeyEvent.VK_LEFT) player.move(Direction.WEST, board);
         if (key == KeyEvent.VK_RIGHT) player.move(Direction.EAST, board);
         if (key == KeyEvent.VK_SPACE) new GUIPause();
-        if (key == KeyEvent.VK_Z) loadLevel("./src/level1.map");
 
         if (key == KeyEvent.VK_X && e.isControlDown()) System.exit(0);
         if (key == KeyEvent.VK_S && e.isControlDown()) gui.savePopup();
         if (key == KeyEvent.VK_L && e.isControlDown()) gui.loadPopup();
         if (key == KeyEvent.VK_R && e.isControlDown()) System.out.println("Resume");
         if (key == KeyEvent.VK_P && e.isControlDown()) System.out.println("Start a game at the last unfinished level");
-        if (key == KeyEvent.VK_1 && e.isControlDown()) System.out.println("Start a new game at level 1");
+        if (key == KeyEvent.VK_1 && e.isControlDown()) loadLevel("./src/level1.map");
+//        if (key == KeyEvent.VK_2 && e.isControlDown()) loadLevel("./src/level2test.map");
+        if (key == KeyEvent.VK_3 && e.isControlDown()) loadLevel("./src/level13x13.map");
+        if (key == KeyEvent.VK_4 && e.isControlDown()) loadLevel("./src/level14x14.map");
+        if (key == KeyEvent.VK_5 && e.isControlDown()) loadLevel("./src/level15x15.map");
 
         gui.updateOnMove();
 
