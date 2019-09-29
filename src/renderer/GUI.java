@@ -268,10 +268,11 @@ public class GUI implements WindowListener {
         int playerX = player.getX();
         int playerY = player.getY();
 
-        int charToEdge = Main.WINDOW_COLS / 2;  // Distance either side of the character. Main.WINDOW_COLS must be an odd integer otherwise there will be no center.
+        int charToEdgeX = Main.WINDOW_COLS / 2;  // Distance either side of the character. Main.WINDOW_COLS must be an odd integer otherwise there will be no center.
+        int charToEdgeY = Main.WINDOW_ROWS / 2;  // Distance either side of the character. Main.WINDOW_COLS must be an odd integer otherwise there will be no center.
 
-        Point topLeft = new Point(playerX - charToEdge, playerY - charToEdge);
-        Point bottomRight = new Point(playerX + charToEdge, playerY + charToEdge);
+        Point topLeft = new Point(playerX - charToEdgeX, playerY - charToEdgeX);
+        Point bottomRight = new Point(playerX + charToEdgeY, playerY + charToEdgeY);
 
         boolean left = false;
         boolean right = false;
@@ -283,13 +284,13 @@ public class GUI implements WindowListener {
         if (bottomRight.x >= Main.COLS) right = true;
         if (bottomRight.y >= Main.ROWS) bottom = true;
 
-        int distanceX = playerX - charToEdge; // distance from the character position to the left edge of the screen
-        int distanceY = playerY - charToEdge; // distance from the character position to the top edge of the screen
+        int distanceX = playerX - charToEdgeX; // distance from the character position to the left edge of the screen
+        int distanceY = playerY - charToEdgeY; // distance from the character position to the top edge of the screen
         int shiftX = Main.COLS - Main.WINDOW_COLS;
         int shiftY = Main.ROWS - Main.WINDOW_ROWS;
 
-        for (int row = 0, row2 = playerY - charToEdge; row < Main.WINDOW_ROWS; row++) {
-            for (int col = 0, col2 = playerX - charToEdge; col < Main.WINDOW_COLS; col++) {
+        for (int row = 0, row2 = playerY - charToEdgeY; row < Main.WINDOW_ROWS; row++) {
+            for (int col = 0, col2 = playerX - charToEdgeY; col < Main.WINDOW_COLS; col++) {
 
                 int x, y;
 

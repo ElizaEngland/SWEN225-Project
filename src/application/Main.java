@@ -32,7 +32,8 @@ public class Main implements KeyListener {
         gui = new GUI(this);
 
 //        loadLevel("./src/level" + getCurrLevel() + ".map");
-        loadLevel("./src/level15x15.map");
+//        loadLevel("./src/level15x15.map");
+        loadLevel("./src/level15x18.map");
 
         tick();
     }
@@ -53,7 +54,8 @@ public class Main implements KeyListener {
     /**
      * Handles key press events and makes the corresponding changes to the game.
      *
-     * @param e The key which was pressed    */
+     * @param e The key which was pressed
+     */
     @Override
     public void keyPressed(KeyEvent e) {
 
@@ -96,15 +98,17 @@ public class Main implements KeyListener {
                 if (current - previous > 1000000000) {
                     previous = current;
                     time++;
-                    try {gui.updateOnTick();}
-                    catch (NullPointerException e){
+                    try {
+                        gui.updateOnTick();
+                    } catch (NullPointerException e) {
                         e.printStackTrace();
                     }
                 }
                 if (time == maxTime) {
                     running = false;
-                    try {gui.gameOver();}
-                    catch (NullPointerException e){
+                    try {
+                        gui.gameOver();
+                    } catch (NullPointerException e) {
                         e.printStackTrace();
                     }
                 }
@@ -112,7 +116,9 @@ public class Main implements KeyListener {
         }
     }
 
-    /** GETTERS & SETTERS **/
+    /**
+     * GETTERS & SETTERS
+     **/
 
     public static int getTime() {
         return time;
@@ -126,7 +132,9 @@ public class Main implements KeyListener {
         Main.paused = paused;
     }
 
-    public static int getCurrLevel() {return currLevel;}
+    public static int getCurrLevel() {
+        return currLevel;
+    }
 
     public void setFilename(String filename) {
         this.filename = filename;
@@ -136,7 +144,9 @@ public class Main implements KeyListener {
         return filename;
     }
 
-    public static int getMaxTime() {return maxTime;}
+    public static int getMaxTime() {
+        return maxTime;
+    }
 
     public void setMaxTime(int maxTime) {
         this.maxTime = maxTime;
