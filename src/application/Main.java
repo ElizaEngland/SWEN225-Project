@@ -13,10 +13,10 @@ import java.io.File;
  */
 public class Main implements KeyListener {
 
-    public static final int COLS = 9;
-    public static final int ROWS = 9;
     public static final int WINDOW_ROWS = 9;
     public static final int WINDOW_COLS = 9;
+    public static int COLS;
+    public static int ROWS;
     public static int MAX_TREASURE = 0;
 
     private static Board board;
@@ -30,10 +30,9 @@ public class Main implements KeyListener {
 
     private void init() {
         filename = "./src/level" + getCurrLevel() + ".map";
-        filename = "./src/level1.map";
-
-//        filename = "./src/level13x13.map";
-//        filename = "./src/level14x14.map";
+        filename = "./src/level2test.map";
+        filename = "./src/level13x13.map";
+        filename = "./src/level14x14.map";
 //        filename = "./src/level15x15.map";
         loadLevel(filename);
 
@@ -56,8 +55,7 @@ public class Main implements KeyListener {
     /**
      * Handles key press events and makes the corresponding changes to the game.
      *
-     * @param e The key which was pressed
-     */
+     * @param e The key which was pressed    */
     @Override
     public void keyPressed(KeyEvent e) {
 
@@ -78,7 +76,7 @@ public class Main implements KeyListener {
         if (key == KeyEvent.VK_P && e.isControlDown()) System.out.println("Start a game at the last unfinished level");
         if (key == KeyEvent.VK_1 && e.isControlDown()) System.out.println("Start a new game at level 1");
 
-        gui.updateBoard();
+        gui.updateOnMove();
 
     }
 
@@ -96,14 +94,14 @@ public class Main implements KeyListener {
                 if (current - previous > 1000000000) {
                     previous = current;
                     time++;
-                    try {gui.updatePanel();}
+                    try {gui.updateOnTick();}
                     catch (NullPointerException e){
                         e.printStackTrace();
                     }
                 }
                 if (time == maxTime) {
                     running = false;
-                    try {gui.GameOver();}
+                    try {gui.gameOver();}
                     catch (NullPointerException e){
                         e.printStackTrace();
                     }

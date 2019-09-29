@@ -90,7 +90,7 @@ public class Player {
 
         if (nextMove instanceof TileDoor) {
             boolean foundKey = false;
-            for (Item item : getInventory()) {
+            for (Item item : inventory) {
                 if (item instanceof ItemKey) {
                     ItemKey key = (ItemKey) item;
                     if (key.getColour().equals(((TileDoor) nextMove).getColour())) {
@@ -98,7 +98,7 @@ public class Player {
                     }
                 }
             }
-            if(foundKey) ((TileDoor) nextMove).setUnlocked();
+            if (foundKey) ((TileDoor) nextMove).setUnlocked();
             return foundKey;
         }
 
@@ -108,12 +108,10 @@ public class Player {
 
         if (nextMove instanceof TileInfo) {
             infoRequested = true;
-            return true;
         }
 
-        if (nextMove instanceof TileExit){
+        if (nextMove instanceof TileExit) {
             new GUINextLevel();
-
         }
 
         return true;
@@ -128,7 +126,7 @@ public class Player {
     private void addItemToInventory(Item item) {
 
         if (item == null) return;
-        if(item instanceof ItemTreasure){
+        if (item instanceof ItemTreasure) {
             treasureCollected++;
             return;
         }
@@ -152,7 +150,7 @@ public class Player {
 
     @Override
     public String toString() {
-        String s="";
+        String s = "";
         for (Item i : inventory) {
             s += ", " + i.getIcon();
         }

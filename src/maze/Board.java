@@ -12,7 +12,7 @@ import java.io.IOException;
 
 public class Board {
 
-    private Tile[][] board = new Tile[Main.COLS][Main.ROWS];
+    private Tile[][] board;
     private int treasureCount = 0;
     private String levelName;
     private String startX, startY;
@@ -31,6 +31,10 @@ public class Board {
             levelName = reader.readLine();
             startX = reader.readLine();
             startY = reader.readLine();
+            Main.COLS = Integer.parseInt(reader.readLine());
+            Main.ROWS = Integer.parseInt(reader.readLine());
+
+            board = new Tile[Main.COLS][Main.ROWS];
 
             while ((targetLine = reader.readLine()) != null) {
 
@@ -116,7 +120,6 @@ public class Board {
      */
     public void update(int oldX, int oldY, int x, int y) {
         board[oldX][oldY].setPlayer(false);
-        System.out.println(board[x][y]);
         board[x][y].setPlayer(true);
     }
 

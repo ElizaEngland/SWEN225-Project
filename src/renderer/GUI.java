@@ -53,8 +53,8 @@ public class GUI implements WindowListener {
         mainFrame.setLocationRelativeTo(null);
         mainFrame.setVisible(true);
 
-        updateBoard();
-        updatePanel();
+        updateOnMove();
+        updateOnTick();
 
     }
 
@@ -260,20 +260,19 @@ public class GUI implements WindowListener {
     /**
      * Update the icons on the board (called each time a move is made).
      */
-    public void updateBoard() {
+    public void updateOnMove() {
 
         if (board == null) return;
 
         Player player = Main.getPlayer();
-        int x = player.getX();
-        int y = player.getY();
-        System.out.println("x = " + x);
-        System.out.println("y = " + y);
+
+        int playerX = player.getX();
+        int playerY = player.getY();
 
         int charToEdge = Main.WINDOW_COLS / 2;  // Distance either side of the character. Main.WINDOW_COLS must be an odd integer otherwise there will be no center.
 
-        Point topLeft = new Point(x - charToEdge, y - charToEdge);
-        Point bottomRight = new Point(x + charToEdge, y + charToEdge);
+        Point topLeft = new Point(playerX - charToEdge, playerY - charToEdge);
+        Point bottomRight = new Point(playerX + charToEdge, playerY + charToEdge);
 
         boolean left = false;
         boolean right = false;
@@ -285,47 +284,46 @@ public class GUI implements WindowListener {
         if (bottomRight.x >= Main.COLS) right = true;
         if (bottomRight.y >= Main.ROWS) bottom = true;
 
-        for (int row = 0, row2 = y - charToEdge; row < Main.WINDOW_ROWS; row++) {
-            for (int col = 0, col2 = x - charToEdge; col < Main.WINDOW_COLS; col++) {
+        for (int row = 0, row2 = playerY - charToEdge; row < Main.WINDOW_ROWS; row++) {
+            for (int col = 0, col2 = playerX - charToEdge; col < Main.WINDOW_COLS; col++) {
 
-                int distanceX = x - charToEdge; // distance from the character position to the left edge of the screen
-                int distanceY = y - charToEdge; // distance from the character position to the top edge of the screen
+                int distanceX = playerX - charToEdge; // distance from the character position to the left edge of the screen
+                int distanceY = playerY - charToEdge; // distance from the character position to the top edge of the screen
 
                 int shift = Main.ROWS - Main.WINDOW_ROWS;
-                int x2;
-                int y2;
+                int x, y;
 
                 if (left && !(top || bottom)) {
-                    x2 = col;
-                    y2 = row + distanceY;
+                    x = col;
+                    y = row + distanceY;
                 } else if (right && !(top || bottom)) {
-                    x2 = col + shift;
-                    y2 = row + distanceY;
+                    x = col + shift;
+                    y = row + distanceY;
                 } else if (top && !(left || right)) {
-                    x2 = col + distanceX;
-                    y2 = row;
+                    x = col + distanceX;
+                    y = row;
                 } else if (bottom && !(left || right)) {
-                    x2 = col + distanceX;
-                    y2 = row + shift;
+                    x = col + distanceX;
+                    y = row + shift;
                 } else if (left && top) {
-                    x2 = col;
-                    y2 = row;
+                    x = col;
+                    y = row;
                 } else if (right && top) {
-                    x2 = col + shift;
-                    y2 = row;
+                    x = col + shift;
+                    y = row;
                 } else if (left && bottom) {
-                    x2 = col;
-                    y2 = row + shift;
+                    x = col;
+                    y = row + shift;
                 } else if (right && bottom) {
-                    x2 = col + shift;
-                    y2 = row + shift;
+                    x = col + shift;
+                    y = row + shift;
                 } else {
-                    x2 = col2;
-                    y2 = row2;
+                    x = col2;
+                    y = row2;
                 }
 
-                if (board.getTile(x2, y2) != null) {
-                    tileGrid[col][row].setIcon(board.getTile(x2, y2).getIcon());
+                if (board.getTile(x, y) != null) {
+                    tileGrid[col][row].setIcon(board.getTile(x, y).getIcon());
                 }
 
                 col2++;
@@ -339,7 +337,6 @@ public class GUI implements WindowListener {
         int row = 0;
         int col = 0;
         for (Item item : Main.getPlayer().getInventory()) {
-//            inventoryGrid[col][row].setBorder(BorderFactory.createLineBorder(Color.BLACK));
             inventoryGrid[col][row].setIcon(item.getIcon());
             if (col == 3) {
                 row++;
@@ -356,8 +353,12 @@ public class GUI implements WindowListener {
         }
     }
 
-    public void updatePanel() {
+    public void updateOnTick() {
         timeLeft.setText(Integer.toString(Main.getMaxTime() - Main.getTime()));
+    }
+
+    public void gameOver() {
+        JOptionPane.showMessageDialog(mainFrame, "GAME OVER", "GAME OVER", JOptionPane.INFORMATION_MESSAGE);
     }
 
     // Unused methods:
@@ -390,10 +391,6 @@ public class GUI implements WindowListener {
     @Override
     public void windowDeactivated(WindowEvent e) {
 
-    }
-
-    public void GameOver() {
-        JOptionPane.showMessageDialog(mainFrame, "GAME OVER", "GAME OVER", JOptionPane.INFORMATION_MESSAGE);
     }
 
 
