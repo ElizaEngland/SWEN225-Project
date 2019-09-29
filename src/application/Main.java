@@ -31,7 +31,8 @@ public class Main implements KeyListener {
     private void init() {
         gui = new GUI(this);
 
-        loadLevel("./src/level" + getCurrLevel() + ".map");
+//        loadLevel("./src/level" + getCurrLevel() + ".map");
+        loadLevel("./src/level15x15.map");
 
         tick();
     }
