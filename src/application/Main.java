@@ -15,6 +15,8 @@ public class Main implements KeyListener {
 
     public static final int COLS = 9;
     public static final int ROWS = 9;
+    public static final int WINDOW_ROWS = 9;
+    public static final int WINDOW_COLS = 9;
     public static int MAX_TREASURE = 0;
 
     private static Board board;
@@ -22,12 +24,17 @@ public class Main implements KeyListener {
     private static Player player;
     private static boolean paused = false;
     private static int time = 0;
-    private static int currLevel = 1;
+    private static int currLevel = 2;
     private static int maxTime = 100;
     private String filename;
 
     private void init() {
         filename = "./src/level" + getCurrLevel() + ".map";
+        filename = "./src/level1.map";
+
+//        filename = "./src/level13x13.map";
+//        filename = "./src/level14x14.map";
+//        filename = "./src/level15x15.map";
         loadLevel(filename);
 
         gui = new GUI(board, this);

@@ -2,6 +2,7 @@ package renderer;
 
 import application.Item;
 import application.Main;
+import application.Player;
 import maze.Board;
 import persistence.Read;
 import persistence.Write;
@@ -25,7 +26,8 @@ public class GUI implements WindowListener {
 
     private JFrame mainFrame;
     private JPanel mainPanel;
-    private JLabel[][] tileGrid = new JLabel[Main.COLS][Main.ROWS];
+    //    private JLabel[][] tileGrid = new JLabel[Main.COLS][Main.ROWS];
+    private JLabel[][] tileGrid = new JLabel[Main.WINDOW_COLS][Main.WINDOW_ROWS];
     private JPanel boardPanel;
     private JPanel sidePanel;
     private JPanel p1, p2, p3, p4;
@@ -78,7 +80,7 @@ public class GUI implements WindowListener {
                 "CLT + 1 = start a new game from level 1\n" +
                 "SPACE = pause the game\n" +
                 "ESC = close the pause menu\n" +
-                "MOVEMENT: Arrow keys","CONTROLS", JOptionPane.PLAIN_MESSAGE));
+                "MOVEMENT: Arrow keys", "CONTROLS", JOptionPane.PLAIN_MESSAGE));
 
         loadGame.addActionListener(ev -> loadPopup());
 
@@ -171,14 +173,14 @@ public class GUI implements WindowListener {
         inventoryPanel.setLayout(new GridLayout(2, 4, 0, 0));
         inventoryPanel.setBackground(Color.GRAY);
 
-        boardPanel.setLayout(new GridLayout(Main.ROWS, Main.COLS, 0, 0));
+        boardPanel.setLayout(new GridLayout(Main.WINDOW_ROWS, Main.WINDOW_COLS, 0, 0));
         sidePanel.setLayout(new GridLayout(1, 1));
         side1.setLayout(new GridLayout(4, 1));
 //        side2.setLayout(new GridLayout(2, 0));
 
         // create board
-        for (int row = 0; row < Main.ROWS; row++) {
-            for (int col = 0; col < Main.COLS; col++) {
+        for (int row = 0; row < Main.WINDOW_ROWS; row++) {
+            for (int col = 0; col < Main.WINDOW_COLS; col++) {
                 tileGrid[col][row] = new JLabel();
                 boardPanel.add(tileGrid[col][row]);
             }
@@ -260,20 +262,79 @@ public class GUI implements WindowListener {
      */
     public void updateBoard() {
 
-        if (board == null) {
-            return;
-        }
+        if (board == null) return;
 
-        for (int row = 0; row < Main.ROWS; row++) {
-            for (int col = 0; col < Main.COLS; col++) {
+        Player player = Main.getPlayer();
+        int x = player.getX();
+        int y = player.getY();
+        System.out.println("x = " + x);
+        System.out.println("y = " + y);
 
-                tileGrid[col][row].setIcon(board.getTile(col, row).getIcon());
+        int charToEdge = Main.WINDOW_COLS / 2;  // Distance either side of the character. Main.WINDOW_COLS must be an odd integer otherwise there will be no center.
 
-                mavsLeft.setText(String.valueOf(Main.MAX_TREASURE - Main.getPlayer().getTreasureCollected()));
-                levelCount.setText(board.getLevelName());
+        Point topLeft = new Point(x - charToEdge, y - charToEdge);
+        Point bottomRight = new Point(x + charToEdge, y + charToEdge);
 
+        boolean left = false;
+        boolean right = false;
+        boolean top = false;
+        boolean bottom = false;
+
+        if (topLeft.x < 0) left = true;
+        if (topLeft.y < 0) top = true;
+        if (bottomRight.x >= Main.COLS) right = true;
+        if (bottomRight.y >= Main.ROWS) bottom = true;
+
+        for (int row = 0, row2 = y - charToEdge; row < Main.WINDOW_ROWS; row++) {
+            for (int col = 0, col2 = x - charToEdge; col < Main.WINDOW_COLS; col++) {
+
+                int distanceX = x - charToEdge; // distance from the character position to the left edge of the screen
+                int distanceY = y - charToEdge; // distance from the character position to the top edge of the screen
+
+                int shift = Main.ROWS - Main.WINDOW_ROWS;
+                int x2;
+                int y2;
+
+                if (left && !(top || bottom)) {
+                    x2 = col;
+                    y2 = row + distanceY;
+                } else if (right && !(top || bottom)) {
+                    x2 = col + shift;
+                    y2 = row + distanceY;
+                } else if (top && !(left || right)) {
+                    x2 = col + distanceX;
+                    y2 = row;
+                } else if (bottom && !(left || right)) {
+                    x2 = col + distanceX;
+                    y2 = row + shift;
+                } else if (left && top) {
+                    x2 = col;
+                    y2 = row;
+                } else if (right && top) {
+                    x2 = col + shift;
+                    y2 = row;
+                } else if (left && bottom) {
+                    x2 = col;
+                    y2 = row + shift;
+                } else if (right && bottom) {
+                    x2 = col + shift;
+                    y2 = row + shift;
+                } else {
+                    x2 = col2;
+                    y2 = row2;
+                }
+
+                if (board.getTile(x2, y2) != null) {
+                    tileGrid[col][row].setIcon(board.getTile(x2, y2).getIcon());
+                }
+
+                col2++;
             }
+            row2++;
         }
+
+        mavsLeft.setText(String.valueOf(Main.MAX_TREASURE - Main.getPlayer().getTreasureCollected()));
+        levelCount.setText(board.getLevelName());
 
         int row = 0;
         int col = 0;

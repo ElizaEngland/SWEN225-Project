@@ -14,6 +14,7 @@ L1
 10 0 blank
 11 0 blank
 12 0 blank
+13 0 blank
 0 1 blank
 1 1 blank
 2 1 blank
@@ -27,6 +28,7 @@ L1
 10 1 blank
 11 1 blank
 12 1 blank
+13 1 blank
 0 2 blank
 1 2 wall
 2 2 wall
@@ -40,6 +42,7 @@ L1
 10 2 blank
 11 2 blank
 12 2 blank
+13 2 blank
 0 3 blank
 1 3 door green
 2 3 blank
@@ -53,6 +56,7 @@ L1
 10 3 blank
 11 3 blank
 12 3 blank
+13 3 blank
 0 4 wall
 1 4 wall
 2 4 blank
@@ -66,6 +70,7 @@ L1
 10 4 blank
 11 4 blank
 12 4 blank
+13 4 blank
 0 5 blank
 1 5 door red
 2 5 blank
@@ -79,6 +84,7 @@ L1
 10 5 blank
 11 5 blank
 12 5 blank
+13 5 blank
 0 6 treasure
 1 6 wall
 2 6 blank
@@ -92,6 +98,7 @@ L1
 10 6 blank
 11 6 blank
 12 6 blank
+13 6 blank
 0 7 wall
 1 7 wall
 2 7 wall
@@ -105,6 +112,7 @@ L1
 10 7 blank
 11 7 blank
 12 7 blank
+13 7 blank
 0 8 key purple
 1 8 blank
 2 8 blank
@@ -118,11 +126,12 @@ L1
 10 8 blank
 11 8 blank
 12 8 blank
+13 8 blank
 0 9 blank
 1 9 blank
 2 9 blank
 3 9 blank
-4 9 blank
+4 9 wall
 5 9 blank
 6 9 blank
 7 9 blank
@@ -131,11 +140,12 @@ L1
 10 9 blank
 11 9 blank
 12 9 blank
+13 9 blank
 0 10 blank
 1 10 blank
 2 10 blank
 3 10 blank
-4 10 blank
+4 10 wall
 5 10 blank
 6 10 blank
 7 10 blank
@@ -144,6 +154,7 @@ L1
 10 10 blank
 11 10 blank
 12 10 blank
+13 10 blank
 0 11 blank
 1 11 blank
 2 11 blank
@@ -157,11 +168,12 @@ L1
 10 11 blank
 11 11 blank
 12 11 blank
+13 11 blank
 0 12 blank
 1 12 blank
 2 12 blank
 3 12 blank
-4 12 blank
+4 12 wall
 5 12 blank
 6 12 blank
 7 12 blank
@@ -170,3 +182,18 @@ L1
 10 12 blank
 11 12 blank
 12 12 blank
+13 12 blank
+0 13 blank
+1 13 blank
+2 13 blank
+3 13 blank
+4 13 wall
+5 13 blank
+6 13 blank
+7 13 blank
+8 13 blank
+9 13 blank
+10 13 blank
+11 13 blank
+12 13 blank
+13 13 blank

@@ -101,6 +101,9 @@ public class Board {
             System.out.println("Error: " + e);
         }
 
+        System.out.println(board.length);
+        System.out.println(board[0].length);
+
     }
 
     /**
@@ -113,6 +116,7 @@ public class Board {
      */
     public void update(int oldX, int oldY, int x, int y) {
         board[oldX][oldY].setPlayer(false);
+        System.out.println(board[x][y]);
         board[x][y].setPlayer(true);
     }
 
