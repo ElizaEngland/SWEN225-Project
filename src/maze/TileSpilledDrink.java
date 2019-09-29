@@ -13,7 +13,7 @@ public class TileSpilledDrink extends Tile {
         if (isPlayer()) {
             return new ImageIcon("resources/chap.png");
         } else {
-            return new ImageIcon("resources/blank.png");
+            return new ImageIcon("resources/black.png");
         }
     }
 

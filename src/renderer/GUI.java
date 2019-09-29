@@ -290,7 +290,7 @@ public class GUI implements WindowListener {
         int shiftY = Main.ROWS - Main.WINDOW_ROWS;
 
         for (int row = 0, row2 = playerY - charToEdgeY; row < Main.WINDOW_ROWS; row++) {
-            for (int col = 0, col2 = playerX - charToEdgeY; col < Main.WINDOW_COLS; col++) {
+            for (int col = 0, col2 = playerX - charToEdgeX; col < Main.WINDOW_COLS; col++) {
 
                 int x, y;
 

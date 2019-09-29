@@ -39,25 +39,25 @@ public class Player {
         int oldY = y;
 
         if (direction == Direction.NORTH) {
-            if (validMove(x, y - 1, board)) {
+            if (validateMove(x, y - 1, board)) {
                 y--;
             }
         }
 
         if (direction == Direction.SOUTH) {
-            if (validMove(x, y + 1, board)) {
+            if (validateMove(x, y + 1, board)) {
                 y++;
             }
         }
 
         if (direction == Direction.WEST) {
-            if (validMove(x - 1, y, board)) {
+            if (validateMove(x - 1, y, board)) {
                 x--;
             }
         }
 
         if (direction == Direction.EAST) {
-            if (validMove(x + 1, y, board)) {
+            if (validateMove(x + 1, y, board)) {
                 x++;
             }
         }
@@ -75,7 +75,7 @@ public class Player {
      * @param board The board to be checked against.
      * @return Whether or not the move is valid.
      */
-    private boolean validMove(int x, int y, Board board) {
+    private boolean validateMove(int x, int y, Board board) {
         infoRequested = false;
 
         if (y < 0 || x < 0 || y >= Main.ROWS || x >= Main.COLS) return false;
