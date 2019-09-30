@@ -23,10 +23,10 @@ public class Player {
      * @param startX The starting x position of the player
      * @param startY The starting y position of the player
      */
-    Player(int startX, int startY) {
+    Player(int startX, int startY, Board board) {
         this.x = startX;
         this.y = startY;
-
+        board.getTile(x, y).setPlayer(true);
     }
 
     /**

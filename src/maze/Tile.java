@@ -43,7 +43,7 @@ public class Tile {
      *
      * @param value Whether the tile has a player or not.
      */
-    void setPlayer(boolean value) {
+    public void setPlayer(boolean value) {
         player = value;
     }
 
