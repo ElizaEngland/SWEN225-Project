@@ -89,7 +89,6 @@ public class Board {
                     case "jailfloor":
                         tile = new TileJailFloor(x, y);
                         break;
-
                     default:
                         tile = null;
                         break;
