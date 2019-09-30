@@ -37,6 +37,7 @@ public class GUI implements WindowListener, ComponentListener {
     JPanel inventoryPanel;
     JLabel[][] inventoryGrid;
 
+    private int ICON_SIZE = 50;
 
     public GUI(KeyListener keyListener) {
 
@@ -324,7 +325,7 @@ public class GUI implements WindowListener, ComponentListener {
                     y = row2;
                 }
 
-                tileGrid[col][row].setIcon(board.getTile(x, y).getIcon());
+                tileGrid[col][row].setIcon(new ImageIcon(board.getTile(x, y).getIcon().getImage().getScaledInstance(ICON_SIZE, ICON_SIZE, Image.SCALE_SMOOTH)));
 
                 col2++;
             }
@@ -400,7 +401,18 @@ public class GUI implements WindowListener, ComponentListener {
 
     @Override
     public void componentResized(ComponentEvent e) {
-        System.out.println("test");
+
+        int panelWidth = mainPanel.getWidth();
+        int panelHeight = mainPanel.getHeight();
+
+        if (panelHeight > panelWidth) {
+            ICON_SIZE = panelWidth / Main.WINDOW_COLS;
+        } else {
+            ICON_SIZE = panelHeight / Main.WINDOW_ROWS;
+        }
+
+        updateOnMove();
+
     }
 
     @Override
