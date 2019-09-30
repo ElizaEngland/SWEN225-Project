@@ -5,7 +5,7 @@ import javax.swing.*;
 
 public class TileExitLock extends Tile {
 
-    TileExitLock(int x, int y) {
+    public TileExitLock(int x, int y) {
         super(x, y);
     }
 

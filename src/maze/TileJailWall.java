@@ -5,7 +5,7 @@ import javax.swing.*;
 public class TileJailWall extends Tile {
 
 
-    TileJailWall(int x, int y) {
+    public TileJailWall(int x, int y) {
         super(x, y);
     }
 

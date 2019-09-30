@@ -33,16 +33,16 @@ public class Main implements KeyListener {
 
 //        loadLevel("./src/level" + getCurrLevel() + ".map");
 //        loadLevel("./src/level15x15.map");
-        loadLevel("./src/level15x18.map");
+//        loadLevel("./src/level15x15l15x18.map");
 
         tick();
     }
 
-    public void loadLevel(String file) {
+    public static void loadLevel(String file) {
         try {
-            board = new Board(new File(file));
+            board = new Board(file);
             player = new Player(board.getStartX(), board.getStartY());
-            board.update(board.getStartX(), board.getStartY(), board.getStartX(), board.getStartY());
+//            board.update(board.getStartX(), board.getStartY(), board.getStartX(), board.getStartY());
             MAX_TREASURE = board.getTreasureCount();
             gui.setBoard(board);
             gui.updateOnMove();

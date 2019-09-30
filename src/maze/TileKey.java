@@ -14,7 +14,7 @@ public class TileKey extends Tile {
      * @param colour string type of tile eg wall, blank
      */
 
-    TileKey(int x, int y, String colour) {
+    public TileKey(int x, int y, String colour) {
         super(x, y);
         this.colour = colour;
     }

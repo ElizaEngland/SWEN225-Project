@@ -3,7 +3,7 @@ package maze;
 
 import javax.swing.*;
 
-class TileBlank extends Tile {
+public class TileBlank extends Tile {
 
     public TileBlank(int x, int y) {
         super(x, y);

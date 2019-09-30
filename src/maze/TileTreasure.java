@@ -4,7 +4,7 @@ import javax.swing.*;
 
 public class TileTreasure extends Tile {
 
-    TileTreasure(int x, int y) {
+    public TileTreasure(int x, int y) {
         super(x, y);
     }
 

@@ -4,6 +4,7 @@ import application.Item;
 import application.ItemKey;
 import application.ItemTreasure;
 import application.Main;
+import persistence.Read;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -15,94 +16,19 @@ public class Board {
     private Tile[][] board;
     private int treasureCount = 0;
     private String levelName;
-    private String startX, startY;
+    private int startX, startY;
 
     /**
      * Load the board from a text file and generate a two-dimensional array of tiles.
      */
-    public Board(File fileName) {
+    public Board(String fileName) {
 
-        try {
+        System.out.println(fileName);
+        board = Read.readFile(fileName, this);
 
-            BufferedReader reader = new BufferedReader(new FileReader(fileName));
+    }
 
-            String targetLine;
-
-            levelName = reader.readLine();
-            startX = reader.readLine();
-            startY = reader.readLine();
-            Main.COLS = Integer.parseInt(reader.readLine());
-            Main.ROWS = Integer.parseInt(reader.readLine());
-
-            board = new Tile[Main.COLS][Main.ROWS];
-
-            while ((targetLine = reader.readLine()) != null) {
-
-                String[] tokens = targetLine.split(" ");
-
-                int x = Integer.parseInt(tokens[0]);    // x
-                int y = Integer.parseInt(tokens[1]);    // y
-                String type = tokens[2];            // tile type
-                String colour = "";
-
-                if (tokens.length == 4) {   // for colour coded keys/doors
-                    colour = tokens[3];
-                }
-
-                Tile tile;
-
-                switch (type) {
-                    case "blank":
-                        tile = new TileBlank(x, y);
-                        break;
-                    case "treasure":
-                        tile = new TileTreasure(x, y);
-                        treasureCount++;
-                        break;
-                    case "wall":
-                        tile = new TileWall(x, y);
-                        break;
-                    case "door":
-                        tile = new TileDoor(x, y, colour);
-                        break;
-                    case "exit":
-                        tile = new TileExit(x, y);
-                        break;
-                    case "info":
-                        tile = new TileInfo(x, y);
-                        break;
-                    case "key":
-                        tile = new TileKey(x, y, colour);
-                        break;
-                    case "exitlock":
-                        tile = new TileExitLock(x, y);
-                        break;
-                    case "spilleddrink":
-                        tile = new TileSpilledDrink(x, y);
-                        break;
-                    case "jaildoor":
-                        tile = new TileJailDoor(x, y);
-                        break;
-                    case "jailwall":
-                        tile = new TileJailWall(x, y);
-                        break;
-                    case "jailfloor":
-                        tile = new TileJailFloor(x, y);
-                        break;
-                    default:
-                        tile = null;
-                        break;
-                }
-
-                board[x][y] = tile;
-
-            }
-
-            reader.close();
-
-        } catch (IOException e) {
-            System.out.println("Error: " + e);
-        }
+    public static void helperMethod(String tok){
 
     }
 
@@ -130,12 +56,24 @@ public class Board {
         return board[x][y];
     }
 
+    public void setLevelName(String levelName) {
+        this.levelName = levelName;
+    }
+
     public int getStartX() {
-        return Integer.parseInt(startX);
+        return startX;
+    }
+
+    public void setStartX(int startX) {
+        this.startX = startX;
     }
 
     public int getStartY() {
-        return Integer.parseInt(startY);
+        return startY;
+    }
+
+    public void setStartY(int startY) {
+        this.startY = startY;
     }
 
     /**

@@ -6,7 +6,7 @@ public class TileDoor extends Tile {
 
     private String colour;
 
-    TileDoor(int x, int y, String colour) {
+    public TileDoor(int x, int y, String colour) {
         super(x, y);
         this.colour = colour;
     }

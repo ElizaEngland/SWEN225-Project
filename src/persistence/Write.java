@@ -25,28 +25,6 @@ public class Write {
     public Write() {
     }
 
-    /**
-     * Convert board into .map file
-     * @param board
-     * @param filePath
-     * @param time
-     * @return
-     * @throws IOException
-     */
-    public String convertBoardMap(Board board,  String filePath, String time) throws IOException {
-        File  file = new File(filePath + ".map");
-        file.createNewFile();
-        FileWriter fileWriter = new FileWriter(file);
-        fileWriter.write(board.getLevelName());
-        System.out.println(board.getLevelName());
-//        fileWriter.write(time);
-        fileWriter.write(Main.getPlayer().getX());
-        fileWriter.write(Main.getPlayer().getY());
-
-        fileWriter.close();
-        return file.getPath();
-    }
-
 
     /**
      * Saves the current settings of the game into a .json file
@@ -65,10 +43,12 @@ public class Write {
             playerObj.put("level", board.getLevelName()); // get x
             playerObj.put("width", Main.COLS); // get y
             playerObj.put("height", Main.ROWS); // get y
+            System.out.println("J" + Main.COLS);
+            System.out.println("J" + Main.ROWS);
 
             for (int row = 0; row < Main.ROWS; row++){
                 for (int col = 0; col < Main.COLS; col++){
-//                    playerObj.put("layout" + col + " " + row,+ col + ", " + row + ", " + board.getTile(col, row).getType() + "\n");
+                    playerObj.put(col + " " + row,+ col + ", " + row + ", " + board.getTile(col, row).getType());
                 }
             }
 

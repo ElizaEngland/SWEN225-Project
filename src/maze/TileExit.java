@@ -4,7 +4,7 @@ import javax.swing.*;
 
 public class TileExit extends Tile {
 
-    TileExit(int x, int y) {
+    public TileExit(int x, int y) {
         super(x, y);
     }
 

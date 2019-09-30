@@ -107,7 +107,7 @@ public class GUI implements WindowListener {
 
         if (address == JFileChooser.APPROVE_OPTION) {
             File selectedFile = fileChooser.getSelectedFile();
-            r.readFile(selectedFile.getAbsolutePath());
+            Main.loadLevel(selectedFile.getAbsolutePath());
         }
     }
 

@@ -4,7 +4,7 @@ import javax.swing.*;
 
 public class TileSpilledDrink extends Tile {
 
-    TileSpilledDrink(int x, int y) {
+    public TileSpilledDrink(int x, int y) {
         super(x, y);
     }
 

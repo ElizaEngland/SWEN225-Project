@@ -4,7 +4,7 @@ import javax.swing.*;
 
 public class TileJailFloor extends Tile {
 
-    TileJailFloor(int x, int y) {
+    public TileJailFloor(int x, int y) {
         super(x, y);
     }
 

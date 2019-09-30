@@ -3,7 +3,7 @@ import javax.swing.*;
 
 public class TileJailDoor extends Tile {
 
-    TileJailDoor(int x, int y) {
+    public TileJailDoor(int x, int y) {
         super(x, y);
     }
 
