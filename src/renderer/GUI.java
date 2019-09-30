@@ -37,7 +37,7 @@ public class GUI implements WindowListener, ComponentListener {
     JPanel inventoryPanel;
     JLabel[][] inventoryGrid;
 
-    private int ICON_SIZE = 50;
+    private int ICON_SIZE;
 
     public GUI(KeyListener keyListener) {
 
@@ -362,6 +362,22 @@ public class GUI implements WindowListener, ComponentListener {
         JOptionPane.showMessageDialog(mainFrame, "GAME OVER", "GAME OVER", JOptionPane.INFORMATION_MESSAGE);
     }
 
+    @Override
+    public void componentResized(ComponentEvent e) {
+
+        int panelWidth = mainPanel.getWidth();
+        int panelHeight = mainPanel.getHeight();
+
+        if (panelHeight > panelWidth) {
+            ICON_SIZE = panelWidth / Main.WINDOW_COLS;
+        } else {
+            ICON_SIZE = panelHeight / Main.WINDOW_ROWS;
+        }
+
+        updateOnMove();
+
+    }
+
     // Unused methods:
 
     @Override
@@ -397,22 +413,6 @@ public class GUI implements WindowListener, ComponentListener {
 
     public void setBoard(Board board) {
         this.board = board;
-    }
-
-    @Override
-    public void componentResized(ComponentEvent e) {
-
-        int panelWidth = mainPanel.getWidth();
-        int panelHeight = mainPanel.getHeight();
-
-        if (panelHeight > panelWidth) {
-            ICON_SIZE = panelWidth / Main.WINDOW_COLS;
-        } else {
-            ICON_SIZE = panelHeight / Main.WINDOW_ROWS;
-        }
-
-        updateOnMove();
-
     }
 
     @Override

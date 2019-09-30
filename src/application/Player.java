@@ -3,6 +3,8 @@ package application;
 import maze.*;
 import renderer.GUINextLevel;
 
+import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
 
 /**
@@ -16,6 +18,7 @@ public class Player {
     private int treasureCollected = 0;
     private boolean infoRequested;
     private boolean inPrison = false;
+    private ImageIcon icon = new ImageIcon("resources/chapEast.png");
 
     /**
      * Player constructor.
@@ -48,24 +51,28 @@ public class Player {
 
         if (direction == Direction.NORTH) {
             if (validateMove(x, y - 1, board)) {
+                setIcon(new ImageIcon("resources/chapEast.png"));
                 y--;
             }
         }
 
         if (direction == Direction.SOUTH) {
             if (validateMove(x, y + 1, board)) {
+                setIcon(new ImageIcon("resources/chapEast.png"));
                 y++;
             }
         }
 
         if (direction == Direction.WEST) {
             if (validateMove(x - 1, y, board)) {
+                setIcon(new ImageIcon("resources/chapWest.png"));
                 x--;
             }
         }
 
         if (direction == Direction.EAST) {
             if (validateMove(x + 1, y, board)) {
+                setIcon(new ImageIcon("resources/chapEast.png"));
                 x++;
             }
         }
@@ -151,6 +158,14 @@ public class Player {
 
         }
 
+    }
+
+    public ImageIcon getIcon() {
+        return icon;
+    }
+
+    public void setIcon(ImageIcon icon) {
+        this.icon = icon;
     }
 
     /**

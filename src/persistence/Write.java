@@ -17,15 +17,11 @@ import java.util.ArrayList;
 
 /**
  * the time left,
- *  position of Chap and other actors (if there are any),
- *  the treasures he holds, etc.
+ * position of Chap and other actors (if there are any),
+ * the treasures he holds, etc.
  */
 
-// saving file
 public class Write {
-    public Write() {
-    }
-
 
     /**
      * Saves the current settings of the game into a .json file
@@ -33,8 +29,8 @@ public class Write {
      * @param filePath
      * @param board
      */
-    public void saveJSONFile(String filePath, String time, Board board ){
-        try{
+    public void saveJSONFile(String filePath, String time, Board board) {
+        try {
             JSONObject playerObj = new JSONObject(); // create a player new obj
             playerObj.put("x", Main.getPlayer().getX()); // get x
             playerObj.put("y", Main.getPlayer().getY()); // get y
@@ -49,14 +45,14 @@ public class Write {
 
             playerObj.put("inventory", Main.getPlayer().getInventorykeys()); // get x
 
-            for (int row = 0; row < Main.ROWS; row++){
-                for (int col = 0; col < Main.COLS; col++){
-                    playerObj.put(col + " " + row,+ col + ", " + row + ", " + board.getTile(col, row).getType());
+            for (int row = 0; row < Main.ROWS; row++) {
+                for (int col = 0; col < Main.COLS; col++) {
+                    playerObj.put(col + " " + row, +col + ", " + row + ", " + board.getTile(col, row).getType());
                 }
             }
 
 
-            Files.write(Paths.get(filePath+".json"), playerObj.toJSONString().getBytes());
+            Files.write(Paths.get(filePath + ".json"), playerObj.toJSONString().getBytes());
 
         } catch (IOException ex) {
             ex.printStackTrace();
