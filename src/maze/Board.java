@@ -27,7 +27,6 @@ public class Board {
 
         System.out.println(fileName);
         board = Read.readFile(fileName, this);
-
     }
 
     public void addInventory(Item e){
