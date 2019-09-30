@@ -41,8 +41,7 @@ public class Main implements KeyListener {
     public void loadLevel(String file) {
         try {
             board = new Board(new File(file));
-            player = new Player(board.getStartX(), board.getStartY());
-            board.update(board.getStartX(), board.getStartY(), board.getStartX(), board.getStartY());
+            player = new Player(board.getStartX(), board.getStartY(), board);
             MAX_TREASURE = board.getTreasureCount();
             gui.setBoard(board);
             gui.updateOnMove();
@@ -75,10 +74,10 @@ public class Main implements KeyListener {
         if (key == KeyEvent.VK_R && e.isControlDown()) System.out.println("Resume");
         if (key == KeyEvent.VK_P && e.isControlDown()) System.out.println("Start a game at the last unfinished level");
         if (key == KeyEvent.VK_1 && e.isControlDown()) loadLevel("./src/level1.map");
-//        if (key == KeyEvent.VK_2 && e.isControlDown()) loadLevel("./src/level2test.map");
-        if (key == KeyEvent.VK_3 && e.isControlDown()) loadLevel("./src/level13x13.map");
-        if (key == KeyEvent.VK_4 && e.isControlDown()) loadLevel("./src/level14x14.map");
-        if (key == KeyEvent.VK_5 && e.isControlDown()) loadLevel("./src/level15x15.map");
+        if (key == KeyEvent.VK_2 && e.isControlDown()) loadLevel("./src/level13x13.map");
+        if (key == KeyEvent.VK_3 && e.isControlDown()) loadLevel("./src/level14x14.map");
+        if (key == KeyEvent.VK_4 && e.isControlDown()) loadLevel("./src/level15x15.map");
+        if (key == KeyEvent.VK_5 && e.isControlDown()) loadLevel("./src/level15x18.map");
 
         gui.updateOnMove();
 
