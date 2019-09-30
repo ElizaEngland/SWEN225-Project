@@ -41,7 +41,7 @@ public class Main implements KeyListener {
     public static void loadLevel(String file) {
         try {
             board = new Board(file);
-            player = new Player(board.getStartX(), board.getStartY());
+            player = new Player(board.getStartX(), board.getStartY(), board);
 //            board.update(board.getStartX(), board.getStartY(), board.getStartX(), board.getStartY());
             MAX_TREASURE = board.getTreasureCount();
             gui.setBoard(board);
