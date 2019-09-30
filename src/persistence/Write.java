@@ -38,14 +38,11 @@ public class Write {
         file.createNewFile();
         FileWriter fileWriter = new FileWriter(file);
         fileWriter.write(board.getLevelName());
-        fileWriter.write(time);
+        System.out.println(board.getLevelName());
+//        fileWriter.write(time);
         fileWriter.write(Main.getPlayer().getX());
         fileWriter.write(Main.getPlayer().getY());
-        for (int row = 0; row < Main.ROWS; row++){
-            for (int col = 0; col < Main.COLS; col++){
-                fileWriter.write("\n" + col + ", " + row + ", " + board.getTile(col, row).getType() );
-            }
-        }
+
         fileWriter.close();
         return file.getPath();
     }
@@ -60,14 +57,23 @@ public class Write {
      */
     public void saveJSONFile(String filePath, String time, Board board ){
         try{
-            JSONObject jsonObj = new JSONObject(); // create a new obj
-            jsonObj.put("inventory", Main.getPlayer().getInventory().toString()); // arrayList SUSS
-            jsonObj.put("level", board.getLevelName()); // txt file
-            jsonObj.put("treasure", board.getTreasureCount());
-            jsonObj.put("boardMapFile", convertBoardMap(board, filePath, time));
+            JSONObject playerObj = new JSONObject(); // create a player new obj
+            playerObj.put("x", Main.getPlayer().getX()); // get x
+            playerObj.put("y", Main.getPlayer().getY()); // get y
+            playerObj.put("inventory", Main.getPlayer().getInventory()); // arrayList SUSS
+
+            playerObj.put("level", board.getLevelName()); // get x
+            playerObj.put("width", Main.COLS); // get y
+            playerObj.put("height", Main.ROWS); // get y
+
+            for (int row = 0; row < Main.ROWS; row++){
+                for (int col = 0; col < Main.COLS; col++){
+//                    playerObj.put("layout" + col + " " + row,+ col + ", " + row + ", " + board.getTile(col, row).getType() + "\n");
+                }
+            }
 
 
-            Files.write(Paths.get(filePath+".json"), jsonObj.toJSONString().getBytes());
+            Files.write(Paths.get(filePath+".json"), playerObj.toJSONString().getBytes());
 
         } catch (IOException ex) {
             ex.printStackTrace();
