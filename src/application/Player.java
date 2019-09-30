@@ -15,6 +15,7 @@ public class Player {
     private int y;
     private int treasureCollected = 0;
     private boolean infoRequested;
+    private boolean inPrison = false;
 
     /**
      * Player constructor.
@@ -87,6 +88,7 @@ public class Player {
         }
 
         if (nextMove instanceof TileWall) return false;
+        if (nextMove instanceof TileJailWall) return false;
 
         if (nextMove instanceof TileDoor) {
             boolean foundKey = false;
@@ -100,6 +102,12 @@ public class Player {
             }
             return foundKey;
         }
+
+        if (nextMove instanceof TileJailDoor) {
+           if(inPrison){return false;}
+           else{return true;}
+        }
+
 
         if (nextMove instanceof TileExitLock) {
             return (treasureCollected == Main.MAX_TREASURE);
@@ -191,5 +199,27 @@ public class Player {
      */
     public int getY() {
         return y;
+    }
+
+    /**
+     * Timer whilst in prison
+     */
+    public void inPrison(){
+        inPrison =true;
+        boolean running = true;
+        int timer = 0;
+        long previous = System.nanoTime();
+        long current;
+        while (running) {
+            current = System.nanoTime();
+            if (current - previous > 1000000000) {
+                previous = current;
+                timer++;
+            }
+            if (timer == 3) { // wait 3 seconds
+                running = false;
+                inPrison = false;
+            }
+        }
     }
 }
