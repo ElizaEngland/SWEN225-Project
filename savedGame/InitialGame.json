@@ -1,11 +1,12 @@
 {
-  "level":"L1",
+  "level":"TEST",
   "time":"100",
   "width":15,
   "height":18,
   "x":2,
   "y":3,
   "inventory":[
+
 
   ],
   "0 17":"0, 17, blank",

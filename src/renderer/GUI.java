@@ -16,7 +16,7 @@ import java.io.File;
 /**
  * GUI class for Chip's Challenge.
  */
-public class GUI implements WindowListener {
+public class GUI implements WindowListener, ComponentListener {
 
     private Board board;
     private static JMenuBar menuBar;
@@ -43,6 +43,7 @@ public class GUI implements WindowListener {
         mainFrame = new JFrame();
         mainFrame.setTitle("Chap's Challenge");
         mainFrame.addKeyListener(keyListener);
+        mainFrame.addComponentListener(this);
 
         makeMenuBar();
         createFrame();
@@ -397,4 +398,23 @@ public class GUI implements WindowListener {
         this.board = board;
     }
 
+    @Override
+    public void componentResized(ComponentEvent e) {
+        System.out.println("test");
+    }
+
+    @Override
+    public void componentMoved(ComponentEvent e) {
+
+    }
+
+    @Override
+    public void componentShown(ComponentEvent e) {
+
+    }
+
+    @Override
+    public void componentHidden(ComponentEvent e) {
+
+    }
 }
