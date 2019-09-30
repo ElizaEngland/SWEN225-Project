@@ -16,11 +16,10 @@ import java.io.IOException;
  * Read class for Chip's Challenge.
  */
 public class Read {
-    public Read() {
-    }
 
     /**
      * Reads the .JSON file and sets the game up
+     *
      * @param path
      * @param board
      * @return
@@ -47,8 +46,8 @@ public class Read {
             board.setLevelName((String) fileInfo.get("level"));
 
             JSONArray inventoryArray = (JSONArray) fileInfo.get("inventory");
-            if (!inventoryArray.isEmpty()){
-                for (Object i : inventoryArray){
+            if (!inventoryArray.isEmpty()) {
+                for (Object i : inventoryArray) {
                     board.addInventory(new ItemKey(i.toString()));
                 }
             }
@@ -76,11 +75,12 @@ public class Read {
 
     /**
      * read the token passed through and converts it into a tile to place on the board
+     *
      * @param info
      * @param board
      * @return
      */
-    public static Tile helperMethod(String info, Board board) {
+    private static Tile helperMethod(String info, Board board) {
         String[] tokens = info.split(", ");
 
         int x = Integer.parseInt(tokens[0]);    // x

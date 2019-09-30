@@ -1,5 +1,7 @@
 package maze;
 
+import application.Main;
+
 import javax.swing.*;
 
 public class TileDoor extends Tile {
@@ -19,7 +21,7 @@ public class TileDoor extends Tile {
     @Override
     public ImageIcon getIcon() {
         if (isPlayer()) {
-            return new ImageIcon("resources/chap.png");
+            return Main.getPlayer().getIcon();
         } else {
             return new ImageIcon("resources/door_" + colour + ".png");
         }

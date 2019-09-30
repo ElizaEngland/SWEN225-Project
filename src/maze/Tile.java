@@ -1,5 +1,7 @@
 package maze;
 
+import application.Main;
+
 import javax.swing.*;
 
 public class Tile {
@@ -26,7 +28,7 @@ public class Tile {
      * @return Returns the image icon for this tile
      */
     public ImageIcon getIcon() {
-        return null;
+        return Main.getPlayer().getIcon();
     }
 
     /**

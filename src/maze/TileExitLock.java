@@ -1,5 +1,7 @@
 package maze;
 
+import application.Main;
+
 import javax.swing.*;
 
 
@@ -12,7 +14,7 @@ public class TileExitLock extends Tile {
     @Override
     public ImageIcon getIcon() {
         if (isPlayer()) {
-            return new ImageIcon("resources/chap.png");
+            return super.getIcon();
         } else {
             return new ImageIcon("resources/exitLock.png");
         }

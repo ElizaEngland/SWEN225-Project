@@ -25,12 +25,11 @@ public class Board {
      */
     public Board(String fileName) {
 
-        System.out.println(fileName);
         board = Read.readFile(fileName, this);
 
     }
 
-    public void addInventory(Item e){
+    public void addInventory(Item e) {
         initialInventory.add(e);
     }
 

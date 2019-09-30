@@ -1,6 +1,8 @@
 package maze;
 
 
+import application.Main;
+
 import javax.swing.*;
 
 public class TileBlank extends Tile {
@@ -12,7 +14,7 @@ public class TileBlank extends Tile {
     @Override
     public ImageIcon getIcon() {
         if (isPlayer()) {
-            return new ImageIcon("resources/chap.png");
+            return super.getIcon();
         } else {
             return new ImageIcon("resources/blank.png");
         }
