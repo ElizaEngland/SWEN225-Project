@@ -4,6 +4,7 @@ import application.Item;
 import application.Main;
 import maze.Board;
 import maze.Tile;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import renderer.GUI;
 
@@ -30,7 +31,6 @@ public class Write {
      * Saves the current settings of the game into a .json file
      *
      * @param filePath
-     * @param time
      * @param board
      */
     public void saveJSONFile(String filePath, String time, Board board ){
@@ -38,13 +38,16 @@ public class Write {
             JSONObject playerObj = new JSONObject(); // create a player new obj
             playerObj.put("x", Main.getPlayer().getX()); // get x
             playerObj.put("y", Main.getPlayer().getY()); // get y
-            playerObj.put("inventory", Main.getPlayer().getInventory()); // arrayList SUSS
+            playerObj.put("inventory", Main.getPlayer().getInventorykeys()); // arrayList SUSS
 
             playerObj.put("level", board.getLevelName()); // get x
             playerObj.put("width", Main.COLS); // get y
             playerObj.put("height", Main.ROWS); // get y
-            System.out.println("J" + Main.COLS);
-            System.out.println("J" + Main.ROWS);
+
+            playerObj.put("time", time);
+            System.out.println("current time :" + time);
+
+            playerObj.put("inventory", Main.getPlayer().getInventorykeys()); // get x
 
             for (int row = 0; row < Main.ROWS; row++){
                 for (int col = 0; col < Main.COLS; col++){

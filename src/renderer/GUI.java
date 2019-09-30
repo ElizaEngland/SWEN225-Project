@@ -122,7 +122,7 @@ public class GUI implements WindowListener {
 
         if (returnValue == JFileChooser.APPROVE_OPTION) {
             File toSave = fileChooser.getSelectedFile();
-            System.out.println(Main.getPlayer().getInventory().toString());
+//            System.out.println(Main.getPlayer().getInventory().toString());
             w.saveJSONFile(toSave.getAbsolutePath(), timeLeft.getText(), board);
         }
     }

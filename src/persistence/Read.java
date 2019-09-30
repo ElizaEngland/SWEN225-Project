@@ -1,5 +1,6 @@
 package persistence;
 
+import application.ItemKey;
 import application.Main;
 import maze.*;
 import org.json.simple.JSONArray;
@@ -24,7 +25,6 @@ public class Read {
 
         JSONParser jsonParser = new JSONParser();
         try {
-            System.out.println(path);
             Object obj = jsonParser.parse(new FileReader(path));
             JSONObject fileInfo = (JSONObject) obj;
 
@@ -39,11 +39,23 @@ public class Read {
             board.setStartX(x);
             board.setStartY(y);
             board.setLevelName((String) fileInfo.get("level"));
+//            Main.set
+
+            JSONArray inventoryArray = (JSONArray) fileInfo.get("inventory");
+            if (!inventoryArray.isEmpty()){
+                for (Object i : inventoryArray){
+                    board.addInventory(new ItemKey(i.toString()));
+                }
+            }
+
+            int time = Integer.parseInt(String.valueOf(fileInfo.get("time")));
+
+            Main.maxTime = time + Main.getTime();
 
             for (int row = 0; row < Main.ROWS; row++) {
                 for (int col = 0; col < Main.COLS; col++) {
                     String token = (String) fileInfo.get(col + " " + row);
-                    grid[col][row] = helperMethod(token);
+                    grid[col][row] = helperMethod(token, board);
                 }
             }
 
@@ -57,7 +69,7 @@ public class Read {
 
     }
 
-    public static Tile helperMethod(String info) {
+    public static Tile helperMethod(String info, Board board) {
         String[] tokens = info.split(", ");
 
         int x = Integer.parseInt(tokens[0]);    // x
@@ -77,7 +89,7 @@ public class Read {
                 break;
             case "treasure":
                 tile = new TileTreasure(x, y);
-//                treasureCount++;
+                board.treasureCount++;
                 break;
             case "wall":
                 tile = new TileWall(x, y);

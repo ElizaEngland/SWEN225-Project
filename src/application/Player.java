@@ -27,6 +27,13 @@ public class Player {
         this.x = startX;
         this.y = startY;
         board.getTile(x, y).setPlayer(true);
+        addInventory(board);
+    }
+
+    public void addInventory(Board board) {
+        if (!board.initialInventory.isEmpty()){
+            inventory = board.initialInventory;
+        }
     }
 
     /**
@@ -155,11 +162,30 @@ public class Player {
         return inventory;
     }
 
+
+    /**
+     * Get the players inventory.
+     *
+     * @return Player inventory.
+     */
+    public ArrayList<String> getInventorykeys() {
+        ArrayList<String>keyColours = new ArrayList<>();
+
+        for (Item i : inventory) {
+            keyColours.add(((ItemKey) i).getColour());
+        }
+        System.out.println(keyColours);
+        return keyColours;
+    }
+
+
+
+
     @Override
     public String toString() {
         String s = "";
         for (Item i : inventory) {
-            s += ", " + i.getIcon();
+            s += ", " + ((ItemKey) i).getColour();
         }
         System.out.println(s);
         return s;

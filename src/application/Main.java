@@ -25,7 +25,7 @@ public class Main implements KeyListener {
     private static boolean paused = false;
     private static int time = 0;
     private static int currLevel = 1;
-    private static int maxTime = 100;
+    public static int maxTime = 100;
     private String filename;
 
     private void init() {
@@ -42,7 +42,7 @@ public class Main implements KeyListener {
         try {
             board = new Board(file);
             player = new Player(board.getStartX(), board.getStartY(), board);
-//            board.update(board.getStartX(), board.getStartY(), board.getStartX(), board.getStartY());
+            board.update(board.getStartX(), board.getStartY(), board.getStartX(), board.getStartY());
             MAX_TREASURE = board.getTreasureCount();
             gui.setBoard(board);
             gui.updateOnMove();

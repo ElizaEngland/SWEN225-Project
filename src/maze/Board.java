@@ -10,13 +10,15 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class Board {
 
     private Tile[][] board;
-    private int treasureCount = 0;
+    public int treasureCount = 0;
     private String levelName;
     private int startX, startY;
+    public ArrayList<Item> initialInventory = new ArrayList<>();
 
     /**
      * Load the board from a text file and generate a two-dimensional array of tiles.
@@ -28,9 +30,10 @@ public class Board {
 
     }
 
-    public static void helperMethod(String tok){
-
+    public void addInventory(Item e){
+        initialInventory.add(e);
     }
+
 
     /**
      * Move the player from one coordinate to another.
