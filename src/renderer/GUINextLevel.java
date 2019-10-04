@@ -1,9 +1,12 @@
 package renderer;
 
+import application.Main;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
 
 
 public class GUINextLevel implements ActionListener {
@@ -40,8 +43,12 @@ public class GUINextLevel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        if(e.getSource() == nextLevel ){
-            System.out.println("Next level");
+        if(e.getSource() == nextLevel ) {
+            if (Main.getFilename() == "./savedGame/level1.json") {
+                Main.setFilename("./savedGame/level2.json");
+                Main.loadLevel(Main.getFilename());
+                mainFrame.dispatchEvent(new WindowEvent(mainFrame, WindowEvent.WINDOW_CLOSING));
+            }
         }
         else if(e.getSource()==exit){
             System.exit(0);

@@ -26,13 +26,13 @@ public class Main implements KeyListener {
     private static int time = 0;
     private static int currLevel = 1;
     public static int maxTime = 100;
-    private String filename;
+    private static String filename;
 
     private void init() {
         gui = new GUI(this);
-
-        loadLevel("./savedGame/initialGame.json");
-
+        filename = "./savedGame/level1.json";
+//        loadLevel("./savedGame/initialGame.json");
+        loadLevel(filename);
         tick();
     }
 
@@ -134,11 +134,11 @@ public class Main implements KeyListener {
         return currLevel;
     }
 
-    public void setFilename(String filename) {
-        this.filename = filename;
+    public static void setFilename(String str) {
+        filename = str;
     }
 
-    public String getFilename() {
+    public static String getFilename() {
         return filename;
     }
 
