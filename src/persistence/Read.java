@@ -132,6 +132,10 @@ public class Read {
             case "jailfloor":
                 tile = new TileJailFloor(x, y);
                 break;
+            case "cop":
+                tile = new TileCop(x,y);
+            case "enemy":
+                tile = new TileEnemy(x,y);
             default:
                 tile = null;
                 break;

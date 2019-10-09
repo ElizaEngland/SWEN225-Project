@@ -30,7 +30,7 @@ public class Main implements KeyListener {
 
     private void init() {
         gui = new GUI(this);
-        filename = "./savedGame/level1.json";
+        filename = "./savedGame/level2.json";
 //        loadLevel("./savedGame/initialGame.json");
         loadLevel(filename);
         tick();

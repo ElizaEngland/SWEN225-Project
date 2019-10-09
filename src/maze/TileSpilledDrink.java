@@ -15,7 +15,7 @@ public class TileSpilledDrink extends Tile {
         if (isPlayer()) {
             return super.getIcon();
         } else {
-            return new ImageIcon("resources/black.png");
+            return new ImageIcon("resources/spiltDrink.png");
         }
     }
 

@@ -18,6 +18,7 @@ public class Player {
     private int treasureCollected = 0;
     private boolean infoRequested;
     private boolean inPrison = false;
+    private boolean slipped = false;
     private ImageIcon icon = new ImageIcon("resources/chapEast.png");
 
     /**
@@ -50,10 +51,10 @@ public class Player {
         int oldY = y;
 
         if (direction == Direction.NORTH) {
-            if (validateMove(x, y - 1, board)) {
-                setIcon(new ImageIcon("resources/chapEast.png"));
-                y--;
-            }
+                if (validateMove(x, y - 1, board)) {
+                    setIcon(new ImageIcon("resources/chapEast.png"));
+                    y--;
+                }
         }
 
         if (direction == Direction.SOUTH) {
@@ -98,7 +99,7 @@ public class Player {
         Tile nextMove = board.getTile(x, y);
 
         if (nextMove instanceof TileSpilledDrink) {
-            System.out.println("should slip");
+            System.out.println("should spill");
         }
 
         if (nextMove instanceof TileWall) return false;
