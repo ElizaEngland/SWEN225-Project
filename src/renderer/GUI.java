@@ -102,7 +102,7 @@ public class GUI implements WindowListener, ComponentListener {
      */
     public void loadPopup() {
         System.out.println("LOADING GAME");
-        Read r = new Read();
+        //Read r = new Read(); //Dead local store. Bugfix
         JFileChooser fileChooser = new JFileChooser("../group-project/savedGame");
         fileChooser.setDialogTitle("Loading file...");
         int address = fileChooser.showOpenDialog(null);

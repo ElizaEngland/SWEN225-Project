@@ -11,6 +11,7 @@ import java.io.File;
 /**
  * Main class for Chip's Challenge.
  */
+
 public class Main implements KeyListener {
 
     public static final int WINDOW_ROWS = 9;
