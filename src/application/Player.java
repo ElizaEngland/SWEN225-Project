@@ -1,5 +1,6 @@
 package application;
 
+import com.sun.xml.internal.ws.server.provider.AsyncProviderInvokerTube;
 import maze.*;
 import renderer.GUINextLevel;
 
@@ -93,13 +94,30 @@ public class Player {
      */
     private boolean validateMove(int x, int y, Board board) {
         infoRequested = false;
+        int oldX = x;
+        int oldY = y;
 
         if (y < 0 || x < 0 || y >= Main.ROWS || x >= Main.COLS) return false;
 
         Tile nextMove = board.getTile(x, y);
 
         if (nextMove instanceof TileSpilledDrink) {
-            System.out.println("should spill");
+            Direction temp = Direction.RanDir();
+            if(temp == Direction.NORTH){
+                y--;
+                board.update(oldX, oldY, x, y);
+            }else if(temp == Direction.EAST){
+                x++;
+                board.update(oldX, oldY, x, y);
+            }else if(temp == Direction.SOUTH){
+                y++;
+                board.update(oldX, oldY, x, y);
+//                move(temp, board);
+            }else if(temp == Direction.WEST){
+                x--;
+                board.update(oldX, oldY, x, y);
+//                move(temp, board);
+            }
         }
 
         if (nextMove instanceof TileWall) return false;
