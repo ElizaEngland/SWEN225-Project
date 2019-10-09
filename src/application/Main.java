@@ -72,7 +72,8 @@ public class Main implements KeyListener {
         if (key == KeyEvent.VK_R && e.isControlDown()) System.out.println("Resume");
         if (key == KeyEvent.VK_P && e.isControlDown()) System.out.println("Start a game at the last unfinished level");
         if (key == KeyEvent.VK_1 && e.isControlDown()) loadLevel("./savedGame/level1.json");
-        if (key == KeyEvent.VK_2 && e.isControlDown()) loadLevel("./savedGame/initialGame.json");
+        if (key == KeyEvent.VK_2 && e.isControlDown()) loadLevel("./savedGame/level2.json");
+        if (key == KeyEvent.VK_3 && e.isControlDown()) loadLevel("./savedGame/initialGame.json");
 //        if (key == KeyEvent.VK_2 && e.isControlDown()) loadLevel("./savedGame/");
 //        if (key == KeyEvent.VK_3 && e.isControlDown()) loadLevel("./savedGame/");
 //        if (key == KeyEvent.VK_4 && e.isControlDown()) loadLevel("./savedGame/");

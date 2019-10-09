@@ -35,7 +35,7 @@ public class Player {
     }
 
     public void addInventory(Board board) {
-        if (!board.initialInventory.isEmpty()){
+        if (!board.initialInventory.isEmpty()) {
             inventory = board.initialInventory;
         }
     }
@@ -51,28 +51,28 @@ public class Player {
         int oldY = y;
 
         if (direction == Direction.NORTH) {
-                if (validateMove(x, y - 1, board)) {
-                    setIcon(new ImageIcon("resources/chapEast.png"));
-                    y--;
-                }
+            if (validateMove(x, y - 1, board, direction)) {
+                setIcon(new ImageIcon("resources/chapEast.png"));
+                y--;
+            }
         }
 
         if (direction == Direction.SOUTH) {
-            if (validateMove(x, y + 1, board)) {
+            if (validateMove(x, y + 1, board, direction)) {
                 setIcon(new ImageIcon("resources/chapEast.png"));
                 y++;
             }
         }
 
         if (direction == Direction.WEST) {
-            if (validateMove(x - 1, y, board)) {
+            if (validateMove(x - 1, y, board, direction)) {
                 setIcon(new ImageIcon("resources/chapWest.png"));
                 x--;
             }
         }
 
         if (direction == Direction.EAST) {
-            if (validateMove(x + 1, y, board)) {
+            if (validateMove(x + 1, y, board, direction)) {
                 setIcon(new ImageIcon("resources/chapEast.png"));
                 x++;
             }
@@ -91,7 +91,7 @@ public class Player {
      * @param board The board to be checked against.
      * @return Whether or not the move is valid.
      */
-    private boolean validateMove(int x, int y, Board board) {
+    private boolean validateMove(int x, int y, Board board, Direction direction) {
         infoRequested = false;
 
         if (y < 0 || x < 0 || y >= Main.ROWS || x >= Main.COLS) return false;
@@ -99,7 +99,26 @@ public class Player {
         Tile nextMove = board.getTile(x, y);
 
         if (nextMove instanceof TileSpilledDrink) {
-            System.out.println("should spill");
+            if (direction == Direction.NORTH) {
+                if (validateMove(x, y - 1, board, direction)) {
+                    this.y--;
+                }
+            }
+            if (direction == Direction.SOUTH) {
+                if (validateMove(x, y + 1, board, direction)) {
+                    this.y++;
+                }
+            }
+            if (direction == Direction.WEST) {
+                if (validateMove(x - 1, y, board, direction)) {
+                    this.x--;
+                }
+            }
+            if (direction == Direction.EAST) {
+                if (validateMove(x + 1, y, board, direction)) {
+                    this.x++;
+                }
+            }
         }
 
         if (nextMove instanceof TileWall) return false;
@@ -119,8 +138,11 @@ public class Player {
         }
 
         if (nextMove instanceof TileJailDoor) {
-           if(inPrison){return false;}
-           else{return true;}
+            if (inPrison) {
+                return false;
+            } else {
+                return true;
+            }
         }
 
 
@@ -185,7 +207,7 @@ public class Player {
      * @return Player inventory.
      */
     public ArrayList<String> getInventorykeys() {
-        ArrayList<String>keyColours = new ArrayList<>();
+        ArrayList<String> keyColours = new ArrayList<>();
 
         for (Item i : inventory) {
             keyColours.add(((ItemKey) i).getColour());
@@ -193,8 +215,6 @@ public class Player {
         System.out.println(keyColours);
         return keyColours;
     }
-
-
 
 
     @Override
@@ -246,8 +266,8 @@ public class Player {
     /**
      * Timer whilst in prison
      */
-    public void inPrison(){
-        inPrison =true;
+    public void inPrison() {
+        inPrison = true;
         boolean running = true;
         int timer = 0;
         long previous = System.nanoTime();
