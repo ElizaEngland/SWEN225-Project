@@ -14,7 +14,7 @@ public class TileJailDoor extends Tile {
         if (isPlayer()) {
             return super.getIcon();
         } else {
-            return new ImageIcon("resources/jailDoor.png");
+            return new ImageIcon("resources/jail_door.png");
         }
     }
 
