@@ -6,6 +6,14 @@ import javax.swing.*;
 
 public class TileInfo extends Tile {
 
+    /**
+     * Sub class of tile, TileInfo is the tile that
+     * contains information
+     * on how to play the game.
+     *
+     * @param x x axis for tile
+     * @param y y axis for tile
+     */
     public TileInfo(int x, int y) {
         super(x, y);
     }
@@ -18,10 +26,6 @@ public class TileInfo extends Tile {
             return new ImageIcon("resources/info.png");
         }
     }
-
-//    public void showHelp() {
-//        JFrame instructions = new JFrame();
-//    }
 
     @Override
     public String getType() {

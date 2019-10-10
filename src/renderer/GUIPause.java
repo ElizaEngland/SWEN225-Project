@@ -12,8 +12,19 @@ public class GUIPause implements KeyListener {
 
     public GUIPause() {
         mainFrame = new JFrame();
-        mainFrame.setTitle("Paused");
+        JPanel panel1 = new JPanel();
+        JPanel panel2 = new JPanel();
 
+        JLabel text1 = new JLabel("Paused game.");
+        JLabel text2 = new JLabel("Press esc to resume");
+
+        panel1.add(text1);
+        panel2.add(text2);
+
+        mainFrame.add(panel1,"North");
+        mainFrame.add(panel2,"South");
+
+        mainFrame.setTitle("Paused");
         mainFrame.addKeyListener(this);
         mainFrame.pack();
         mainFrame.setLocationRelativeTo(null);
