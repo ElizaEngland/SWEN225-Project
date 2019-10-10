@@ -358,6 +358,7 @@ public class GUI implements WindowListener, ComponentListener {
                     board.getDescription(),
                     "Information",
                     JOptionPane.INFORMATION_MESSAGE);
+            Main.getPlayer().setInfoRequested(false);
         }
 
     }

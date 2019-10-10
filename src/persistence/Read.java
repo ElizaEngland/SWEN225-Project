@@ -151,8 +151,6 @@ public class Read {
                 tile = new TileCop(x, y);
                 break;
             case "enemy":
-                System.out.println("x = " + x);
-                System.out.println("y = " + y);
                 tile = new TileEnemy(x, y);
                 board.enemies.add(tile);
                 break;

@@ -51,14 +51,12 @@ public class Player {
 
         if (direction == Direction.NORTH) {
             if (validateMove(x, y - 1, board, direction)) {
-                setIcon(new ImageIcon("resources/chapEast.png"));
                 y--;
             }
         }
 
         if (direction == Direction.SOUTH) {
             if (validateMove(x, y + 1, board, direction)) {
-                setIcon(new ImageIcon("resources/chapEast.png"));
                 y++;
             }
         }
@@ -258,6 +256,10 @@ public class Player {
      */
     public boolean isInfoRequested() {
         return infoRequested;
+    }
+
+    public void setInfoRequested(boolean value) {
+        infoRequested = value;
     }
 
     /**
