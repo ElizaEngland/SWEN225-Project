@@ -4,9 +4,7 @@ import application.Item;
 import application.Main;
 import application.Player;
 import maze.Board;
-import persistence.Read;
 import persistence.Write;
-
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;

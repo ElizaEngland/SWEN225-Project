@@ -1,19 +1,12 @@
 package persistence;
 
-import application.Item;
+
 import application.Main;
 import maze.Board;
-import maze.Tile;
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import renderer.GUI;
-
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 
 /**
  * The Write class saves the current state of the game to a .json file specified by the user.

@@ -6,7 +6,6 @@ import renderer.GUIPause;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.io.File;
 
 /**
  * Main class for Chip's Challenge.
@@ -104,12 +103,18 @@ public class Main implements KeyListener {
                 current = System.nanoTime();
                 if (current - previous > 1000000000) {
                     previous = current;
-                    time++;
-                    try {
-                        gui.updateOnTick();
-                    } catch (NullPointerException e) {
-                        e.printStackTrace();
+                    if (Player.getPrisonSentence() >= 0) {
+                        int timeleft = Player.getPrisonSentence();
+                        System.out.println(timeleft);
+                        timeleft -= 1;
+                        Player.setPrisonSentence(timeleft);
                     }
+                        time++;
+                        try {
+                            gui.updateOnTick();
+                        } catch (NullPointerException e) {
+                            e.printStackTrace();
+                        }
                 }
                 if (time == maxTime) {
                     running = false;
