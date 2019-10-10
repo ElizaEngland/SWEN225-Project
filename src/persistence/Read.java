@@ -17,16 +17,16 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 /**
- * Read class for Chip's Challenge.
+ * Read class reads the .json file into Chip's Challenge and sets the game up from the specified settings.
  */
 public class Read {
 
     /**
-     * Reads the .JSON file and sets the game up
+     * Reads the .JSON file and sets the game up.
      *
      * @param path
      * @param board
-     * @return
+     * @return Tile grid
      */
     public static Tile[][] readFile(String path, Board board) {
 
@@ -84,11 +84,11 @@ public class Read {
     }
 
     /**
-     * read the token passed through and converts it into a tile to place on the board
+     * Read the token passed through and converts it into a tile to place on the board
      *
      * @param info
      * @param board
-     * @return
+     * @return Tile
      */
     private static Tile helperMethod(String info, Board board) {
         String[] tokens = info.split(", ");

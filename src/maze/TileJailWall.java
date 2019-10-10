@@ -1,4 +1,5 @@
 package maze;
+
 import javax.swing.*;
 
 
