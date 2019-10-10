@@ -9,6 +9,7 @@ import java.awt.event.KeyListener;
 
 /**
  * Main class for Chip's Challenge.
+ * @author - Ben Robertson, Eliza England, Ethan King, Jacqueline Dong, Jay Patel, Mason Yi
  */
 
 public class Main implements KeyListener {

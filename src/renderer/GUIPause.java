@@ -6,6 +6,10 @@ import javax.swing.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+/**
+ * GUI pause for Chip's Challenge.
+ * @author - Ben Robertson, Eliza England, Ethan King, Jacqueline Dong, Jay Patel, Mason Yi
+ */
 public class GUIPause implements KeyListener {
 
     private JFrame mainFrame;

@@ -4,6 +4,10 @@ import application.*;
 import persistence.Read;
 import java.util.ArrayList;
 
+/**
+ * Board class for Chip's Challenge
+ * @author - Ben Robertson, Eliza England, Ethan King, Jacqueline Dong, Jay Patel, Mason Yi
+ */
 public class Board {
 
     private Tile[][] board;

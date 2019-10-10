@@ -14,6 +14,7 @@ import java.util.ArrayList;
 
 /**
  * GUI class for Chip's Challenge.
+ * @author - Ben Robertson, Eliza England, Ethan King, Jacqueline Dong, Jay Patel, Mason Yi
  */
 public class GUI implements WindowListener, ComponentListener {
 

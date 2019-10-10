@@ -10,6 +10,7 @@ import java.nio.file.Paths;
 
 /**
  * The Write class saves the current state of the game to a .json file specified by the user.
+ * @author - Ben Robertson, Eliza England, Ethan King, Jacqueline Dong, Jay Patel, Mason Yi
  */
 
 public class Write {

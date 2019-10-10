@@ -8,7 +8,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 
-
+/**
+ * GUI next level class for Chip's Challenge.
+ * @author - Ben Robertson, Eliza England, Ethan King, Jacqueline Dong, Jay Patel, Mason Yi
+ */
 public class GUINextLevel implements ActionListener {
 
     private JFrame mainFrame;

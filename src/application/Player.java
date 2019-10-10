@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 /**
  * The player class which handles player movement, inventory etc...
+ * @author - Ben Robertson, Eliza England, Ethan King, Jacqueline Dong, Jay Patel, Mason Yi
  */
 public class Player {
 

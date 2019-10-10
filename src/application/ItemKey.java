@@ -4,6 +4,7 @@ import javax.swing.*;
 
 /**
  * ItemKey class for the keys in Chip's Challenge.
+ * @author - Ben Robertson, Eliza England, Ethan King, Jacqueline Dong, Jay Patel, Mason Yi
  */
 public class ItemKey implements Item {
 

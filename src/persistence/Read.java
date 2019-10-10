@@ -15,6 +15,7 @@ import java.nio.file.Paths;
 
 /**
  * Read class reads the .json file into Chip's Challenge and sets the game up from the specified settings.
+ * @author - Ben Robertson, Eliza England, Ethan King, Jacqueline Dong, Jay Patel, Mason Yi
  */
 public class Read {
 
@@ -26,7 +27,6 @@ public class Read {
      * @return Tile grid
      */
     public static Tile[][] readFile(String path, Board board) {
-
         Tile[][] grid;
 
         JSONParser jsonParser = new JSONParser();
