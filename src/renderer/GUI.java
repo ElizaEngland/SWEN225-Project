@@ -53,6 +53,7 @@ public class GUI implements WindowListener, ComponentListener {
         mainFrame.pack();
         mainFrame.setLocationRelativeTo(null);
         mainFrame.setVisible(true);
+        mainFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 
         updateOnMove();
         updateOnTick();
@@ -249,12 +250,13 @@ public class GUI implements WindowListener, ComponentListener {
      */
     @Override
     public void windowClosing(WindowEvent e) {
-        int r = JOptionPane.showConfirmDialog(mainFrame,
-                new JLabel("Exit Game?"), "Confirm Exit",
-                JOptionPane.YES_NO_OPTION,
-                JOptionPane.QUESTION_MESSAGE);
 
-        if (r == JOptionPane.YES_OPTION) System.exit(0);
+        int result = JOptionPane.showConfirmDialog(mainFrame, new JLabel("Are you sure you want to exit?"), "Exit?", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+
+        if (result == JOptionPane.YES_OPTION) {
+            System.exit(0);
+        }
+
     }
 
     /**
