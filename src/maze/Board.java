@@ -29,6 +29,10 @@ public class Board {
         board = Read.readFile(fileName, this);
     }
 
+    /**
+     * Adds item picked up to current inventory.
+     * @param e
+     */
     public void addInventory(Item e) {
         initialInventory.add(e);
     }
@@ -50,30 +54,50 @@ public class Board {
     /**
      * Get a specific tile from the board at a specified coordinate.
      *
-     * @param x The X coordinate
-     * @param y The Y coordinate
-     * @return The tile at the specified coordinates
+     * @param x The X coordinate.
+     * @param y The Y coordinate.
+     * @return The tile at the specified coordinates.
      */
     public Tile getTile(int x, int y) {
         return board[x][y];
     }
 
+    /**
+     * Sets level name for reading new levels in.
+     * @param levelName
+     */
     public void setLevelName(String levelName) {
         this.levelName = levelName;
     }
 
+    /**
+     * Gets start x position of character for level.
+     * @return
+     */
     public int getStartX() {
         return startX;
     }
 
+    /**
+     * Sets start x position of character for level.
+     * @param startX
+     */
     public void setStartX(int startX) {
         this.startX = startX;
     }
 
+    /**
+     * Gets start y position of character for level.
+     * @return
+     */
     public int getStartY() {
         return startY;
     }
 
+    /**
+     * Sets start x position of character for level.
+     * @param startY
+     */
     public void setStartY(int startY) {
         this.startY = startY;
     }
@@ -112,14 +136,26 @@ public class Board {
         return treasureCount;
     }
 
+    /**
+     * Gets level name.
+     * @return
+     */
     public String getLevelName() {
         return levelName;
     }
 
+    /**
+     * Gets information for info tile.
+     * @return
+     */
     public String getDescription() {
         return description;
     }
 
+    /**
+     * Sets information for when loading file in.
+     * @param description
+     */
     public void setDescription(String description) {
         this.description = description;
     }

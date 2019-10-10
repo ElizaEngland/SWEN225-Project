@@ -22,11 +22,10 @@ public class GUIPause implements KeyListener {
         Main.setPaused(true);
     }
 
-    @Override
-    public void keyTyped(KeyEvent e) {
-
-    }
-
+    /**
+     * Implements pause if esc pressed.
+     * @param e
+     */
     @Override
     public void keyPressed(KeyEvent e) {
 
@@ -38,6 +37,15 @@ public class GUIPause implements KeyListener {
         }
 
     }
+
+    ////////////////// Unused methods //////////////////
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+
+    }
+
+
 
     @Override
     public void keyReleased(KeyEvent e) {

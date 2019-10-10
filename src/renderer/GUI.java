@@ -61,7 +61,7 @@ public class GUI implements WindowListener, ComponentListener {
     }
 
     /**
-     * Creates the menubar up the top of the JFrame
+     * Creates the menubar up the top of the JFrame.
      */
     private void makeMenuBar() {
         menuBar = new JMenuBar();
@@ -99,7 +99,7 @@ public class GUI implements WindowListener, ComponentListener {
 
 
     /**
-     * Create the pop up for loading in a level
+     * Create the pop up for loading in a level.
      */
     public void loadPopup() {
         System.out.println("LOADING GAME");
@@ -115,7 +115,7 @@ public class GUI implements WindowListener, ComponentListener {
     }
 
     /**
-     * Create the pop up for saving a level
+     * Create the pop up for saving a level.
      */
     public void savePopup() {
         Write w = new Write();
@@ -129,6 +129,9 @@ public class GUI implements WindowListener, ComponentListener {
         }
     }
 
+    /**
+     * Creates frame for GUI.
+     */
     private void createFrame() {
 
         mainPanel = new JPanel();
@@ -246,7 +249,7 @@ public class GUI implements WindowListener, ComponentListener {
     }
 
     /**
-     * Used to confirm whether a player wants to exit the game or not
+     * Used to confirm whether a player wants to exit the game or not.
      */
     @Override
     public void windowClosing(WindowEvent e) {
@@ -359,14 +362,24 @@ public class GUI implements WindowListener, ComponentListener {
 
     }
 
+    /**
+     * Updates timer every second.
+     */
     public void updateOnTick() {
         timeLeft.setText(Integer.toString(Main.getMaxTime() - Main.getTime()));
     }
 
+    /**
+     * Game has finished without win.
+     */
     public void gameOver() {
         JOptionPane.showMessageDialog(mainFrame, "GAME OVER", "GAME OVER", JOptionPane.INFORMATION_MESSAGE);
     }
 
+    /**
+     * Used to redraw frame if window size changed.
+     * @param e
+     */
     @Override
     public void componentResized(ComponentEvent e) {
 
@@ -383,7 +396,12 @@ public class GUI implements WindowListener, ComponentListener {
 
     }
 
-    // Unused methods:
+    public void setBoard(Board board) {
+        this.board = board;
+    }
+
+
+    ////////////////// Unused methods //////////////////
 
     @Override
     public void windowOpened(WindowEvent e) {
@@ -413,11 +431,6 @@ public class GUI implements WindowListener, ComponentListener {
     @Override
     public void windowDeactivated(WindowEvent e) {
 
-    }
-
-
-    public void setBoard(Board board) {
-        this.board = board;
     }
 
     @Override
