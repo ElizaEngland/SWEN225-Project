@@ -25,14 +25,13 @@ public class Main implements KeyListener {
     private static Player player;
     private static boolean paused = false;
     private static int time = 0;
-    private static int currLevel = 1;
+    public static int currentLevel = 1;
     public static int maxTime = 100;
     private static String filename;
 
     private void init() {
         gui = new GUI(this);
-        filename = "./savedGame/level2.json";
-//        loadLevel("./savedGame/initialGame.json");
+        filename = "./savedGame/level" + currentLevel + ".json";
         loadLevel(filename);
         tick();
     }
@@ -67,18 +66,19 @@ public class Main implements KeyListener {
         if (key == KeyEvent.VK_RIGHT) player.move(Direction.EAST, board);
         if (key == KeyEvent.VK_SPACE) new GUIPause();
 
-        if (key == KeyEvent.VK_X && e.isControlDown()) System.exit(0);
+        if (key == KeyEvent.VK_X && e.isControlDown()) Runtime.getRuntime().exit(0);
         if (key == KeyEvent.VK_S && e.isControlDown()) gui.savePopup();
         if (key == KeyEvent.VK_L && e.isControlDown()) gui.loadPopup();
         if (key == KeyEvent.VK_R && e.isControlDown()) System.out.println("Resume");
         if (key == KeyEvent.VK_P && e.isControlDown()) System.out.println("Start a game at the last unfinished level");
-        if (key == KeyEvent.VK_1 && e.isControlDown()) loadLevel("./savedGame/level1.json");
-        if (key == KeyEvent.VK_2 && e.isControlDown()) loadLevel("./savedGame/level2.json");
-        if (key == KeyEvent.VK_3 && e.isControlDown()) loadLevel("./savedGame/initialGame.json");
-//        if (key == KeyEvent.VK_2 && e.isControlDown()) loadLevel("./savedGame/");
-//        if (key == KeyEvent.VK_3 && e.isControlDown()) loadLevel("./savedGame/");
-//        if (key == KeyEvent.VK_4 && e.isControlDown()) loadLevel("./savedGame/");
-//        if (key == KeyEvent.VK_5 && e.isControlDown()) loadLevel("./savedGame/");
+        if (key == KeyEvent.VK_1 && e.isControlDown()) {
+            loadLevel("./savedGame/level1.json");
+            setCurrentLevel(1);
+        }
+        if (key == KeyEvent.VK_2 && e.isControlDown()) {
+            loadLevel("./savedGame/level2.json");
+            setCurrentLevel(2);
+        }
 
         gui.updateOnMove();
 
@@ -120,6 +120,14 @@ public class Main implements KeyListener {
      * GETTERS & SETTERS
      **/
 
+    public static int getCurrentLevel() {
+        return currentLevel;
+    }
+
+    public static void setCurrentLevel(int currentLevel) {
+        Main.currentLevel = currentLevel;
+    }
+
     public static int getTime() {
         return time;
     }
@@ -130,10 +138,6 @@ public class Main implements KeyListener {
 
     public static void setPaused(boolean paused) {
         Main.paused = paused;
-    }
-
-    public static int getCurrLevel() {
-        return currLevel;
     }
 
     public static void setFilename(String str) {

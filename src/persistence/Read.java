@@ -133,9 +133,9 @@ public class Read {
                 tile = new TileJailFloor(x, y);
                 break;
             case "cop":
-                tile = new TileCop(x,y);
+                tile = new TileCop(x, y);
             case "enemy":
-                tile = new TileEnemy(x,y);
+                tile = new TileEnemy(x, y);
             default:
                 tile = null;
                 break;

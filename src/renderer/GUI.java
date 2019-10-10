@@ -12,6 +12,7 @@ import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
+import java.util.ArrayList;
 
 /**
  * GUI class for Chip's Challenge.
@@ -72,7 +73,7 @@ public class GUI implements WindowListener, ComponentListener {
         saveGame = new JMenuItem("Save Game");
         controls = new JMenuItem("Controls");
 
-        controls.addActionListener(ev -> JOptionPane.showMessageDialog(mainFrame, "COTROLS:\n " +
+        controls.addActionListener(ev -> JOptionPane.showMessageDialog(mainFrame, "CONTROLS:\n " +
                 "CLT + X = exit the game\n" +
                 "CLT + S = save the game\n" +
                 "CLT + L = Load the game\n" +
@@ -335,15 +336,19 @@ public class GUI implements WindowListener, ComponentListener {
         mavsLeft.setText(String.valueOf(Main.MAX_TREASURE - Main.getPlayer().getTreasureCollected()));
         levelCount.setText(board.getLevelName());
 
-        int row = 0;
-        int col = 0;
-        for (Item item : Main.getPlayer().getInventory()) {
-            inventoryGrid[col][row].setIcon(item.getIcon());
-            if (col == 3) {
-                row++;
-                col = 0;
-            } else {
-                col++;
+
+        int count = 0;
+        ArrayList<Item> inventory = Main.getPlayer().getInventory();
+
+        for (int row = 0; row < 2; row++) {
+            for (int col = 0; col < 4; col++) {
+                if (count < inventory.size()) {
+                    Item item = inventory.get(count);
+                    inventoryGrid[col][row].setIcon(item.getIcon());
+                    count++;
+                } else {
+                    inventoryGrid[col][row].setIcon(null);
+                }
             }
         }
 
