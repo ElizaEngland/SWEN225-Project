@@ -9,6 +9,7 @@ import java.awt.event.KeyListener;
 
 /**
  * Main class for Chip's Challenge.
+ *
  * @author - Ben Robertson, Eliza England, Ethan King, Jacqueline Dong, Jay Patel, Mason Yi
  */
 
@@ -41,6 +42,7 @@ public class Main implements KeyListener {
 
     /**
      * Loads the level into Chip's Challenge, setting up the Board, Player and treasure.
+     *
      * @param file The path of the level file.
      */
     public static void loadLevel(String file) {
@@ -50,6 +52,8 @@ public class Main implements KeyListener {
             MAX_TREASURE = board.getTreasureCount();
             gui.setBoard(board);
             gui.updateOnMove();
+            time = 0;
+            System.out.println("TIMETIMEtime = " + time);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -84,7 +88,7 @@ public class Main implements KeyListener {
             gui.loadPopup();
             setPaused(false);
         }
-        if (key == KeyEvent.VK_R && e.isControlDown()){
+        if (key == KeyEvent.VK_R && e.isControlDown()) {
             System.out.println("unpaused");
             Main.setPaused(false);
         }
@@ -107,10 +111,9 @@ public class Main implements KeyListener {
      * Main loop of the game.
      */
     public void tick() {
-        boolean running = true;
         long previous = System.nanoTime();
         long current;
-        while (running) {
+        while (true) {
             if (!paused) {
                 current = System.nanoTime();
                 if (current - previous > 1000000000) {
@@ -120,17 +123,16 @@ public class Main implements KeyListener {
                         timeleft -= 1;
                         Player.setPrisonSentence(timeleft);
                     }
-                        time++;
-                        try {
-                            board.updateEnemies();
-                            gui.updateOnTick();
-                            gui.updateOnMove();
-                        } catch (NullPointerException e) {
-                            e.printStackTrace();
-                        }
+                    time++;
+                    try {
+                        board.updateEnemies();
+                        gui.updateOnTick();
+                        gui.updateOnMove();
+                    } catch (NullPointerException e) {
+                        e.printStackTrace();
+                    }
                 }
                 if (time == maxTime) {
-                    running = false;
                     try {
                         gui.gameOver();
                     } catch (NullPointerException e) {

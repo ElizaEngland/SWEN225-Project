@@ -65,8 +65,8 @@ public class Read {
                 }
 
                 int time = Integer.parseInt(String.valueOf(fileInfo.get("time")));
-
-                Main.maxTime = time + Main.getTime();
+                System.out.println("time = " + time);
+                Main.maxTime = time;
 
                 for (int row = 0; row < Main.ROWS; row++) {
                     for (int col = 0; col < Main.COLS; col++) {

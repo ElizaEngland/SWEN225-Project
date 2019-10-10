@@ -368,7 +368,12 @@ public class GUI implements WindowListener, ComponentListener {
      * Updates timer every second.
      */
     public void updateOnTick() {
-        timeLeft.setText(Integer.toString(Main.getMaxTime() - Main.getTime()));
+        int time = Main.getMaxTime() - Main.getTime();
+        if (time <= 0) {
+            timeLeft.setText("0");
+        } else {
+            timeLeft.setText(Integer.toString(time));
+        }
     }
 
     /**
