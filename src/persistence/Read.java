@@ -8,9 +8,13 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 /**
  * Read class for Chip's Challenge.
@@ -30,41 +34,48 @@ public class Read {
 
         JSONParser jsonParser = new JSONParser();
         try {
-            Object obj = jsonParser.parse(new FileReader(path));
-            JSONObject fileInfo = (JSONObject) obj;
 
-            Main.COLS = Math.toIntExact((long) fileInfo.get("width")); // int
-            Main.ROWS = Math.toIntExact((long) fileInfo.get("height")); // int
+            boolean fileFound = Files.exists(Paths.get(path));
+            if (fileFound){
+                Object obj = jsonParser.parse(new FileReader(path));
+                JSONObject fileInfo = (JSONObject) obj;
 
-            grid = new Tile[Main.COLS][Main.ROWS];
+                Main.COLS = Math.toIntExact((long) fileInfo.get("width")); // int
+                Main.ROWS = Math.toIntExact((long) fileInfo.get("height")); // int
 
-            int x = Math.toIntExact((long) fileInfo.get("x"));
-            int y = Math.toIntExact((long) fileInfo.get("y"));
+                grid = new Tile[Main.COLS][Main.ROWS];
 
-            board.setStartX(x);
-            board.setStartY(y);
-            board.setLevelName((String) fileInfo.get("level"));
+                int x = Math.toIntExact((long) fileInfo.get("x"));
+                int y = Math.toIntExact((long) fileInfo.get("y"));
 
-            JSONArray inventoryArray = (JSONArray) fileInfo.get("inventory");
-            if (!inventoryArray.isEmpty()) {
-                for (Object i : inventoryArray) {
-                    board.addInventory(new ItemKey(i.toString()));
+                board.setStartX(x);
+                board.setStartY(y);
+                board.setLevelName((String) fileInfo.get("level"));
+
+                JSONArray inventoryArray = (JSONArray) fileInfo.get("inventory");
+                if (!inventoryArray.isEmpty()) {
+                    for (Object i : inventoryArray) {
+                        board.addInventory(new ItemKey(i.toString()));
+                    }
                 }
-            }
 
-            int time = Integer.parseInt(String.valueOf(fileInfo.get("time")));
+                int time = Integer.parseInt(String.valueOf(fileInfo.get("time")));
 
-            Main.maxTime = time + Main.getTime();
+                Main.maxTime = time + Main.getTime();
 
-            for (int row = 0; row < Main.ROWS; row++) {
-                for (int col = 0; col < Main.COLS; col++) {
-                    String token = (String) fileInfo.get(col + " " + row);
-                    grid[col][row] = helperMethod(token, board);
+                for (int row = 0; row < Main.ROWS; row++) {
+                    for (int col = 0; col < Main.COLS; col++) {
+                        String token = (String) fileInfo.get(col + " " + row);
+                        grid[col][row] = helperMethod(token, board);
+                    }
                 }
+
+                return grid;
+
             }
-
-            return grid;
-
+            else{
+                throw new FileNotFoundException("File not found");
+            }
         } catch (ParseException | IOException ex) {
             ex.printStackTrace();
         }
