@@ -5,7 +5,7 @@ The objective of the game is to explore an imaginary world, collecting objects, 
 #### Start the game
 To start the game, run the following package. By default, level 1 will be loaded onto the screen.
 ````
-nz.ac.vuw.ecs.swen225-2019-groupproject.t9.application.Main
+nz.ac.vuw.ecs.swen225-2019-groupproject.src.application.Main
 ````
 
 
