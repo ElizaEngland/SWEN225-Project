@@ -26,7 +26,7 @@ public class Main implements KeyListener {
     private static boolean paused = false;
     private static int time = 0;
     public static int currentLevel = 1;
-    public static int maxTime = 100;
+    public static int maxTime = 60;
     private static String filename;
 
     private void init() {
@@ -171,4 +171,5 @@ public class Main implements KeyListener {
     public void keyReleased(KeyEvent e) {
 
     }
+
 }
