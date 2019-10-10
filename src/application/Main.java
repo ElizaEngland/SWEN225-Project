@@ -111,7 +111,9 @@ public class Main implements KeyListener {
                     }
                         time++;
                         try {
+                            board.updateEnemies();
                             gui.updateOnTick();
+                            gui.updateOnMove();
                         } catch (NullPointerException e) {
                             e.printStackTrace();
                         }

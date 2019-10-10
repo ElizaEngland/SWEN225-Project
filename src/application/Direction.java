@@ -8,7 +8,7 @@ import java.util.Random;
 /**
  * The Direction class chooses the direction of the current player.
  */
-enum Direction {
+public enum Direction {
     NORTH, SOUTH, EAST, WEST;
 
     //based on code from https://stackoverflow.com/questions/1972392/pick-a-random-value-from-an-enum

@@ -1,8 +1,12 @@
 package maze;
 
 import javax.swing.*;
+import application.Direction;
+
 
 public class TileEnemy extends Tile {
+
+    private int x,y;
 
     /**
      * Tile for the board x and y axis

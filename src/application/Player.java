@@ -89,7 +89,7 @@ public class Player {
      * @param board The board to be checked against.
      * @return Whether or not the move is valid.
      */
-    private boolean validateMove(int x, int y, Board board, Direction direction) {
+    public boolean validateMove(int x, int y, Board board, Direction direction) {
         infoRequested = false;
 
         if (y < 0 || x < 0 || y >= Main.ROWS || x >= Main.COLS) return false;

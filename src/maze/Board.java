@@ -1,8 +1,6 @@
 package maze;
 
-import application.Item;
-import application.ItemKey;
-import application.ItemTreasure;
+import application.*;
 import persistence.Read;
 import java.util.ArrayList;
 
@@ -14,6 +12,8 @@ public class Board {
     private int startX, startY;
     public ArrayList<Item> initialInventory = new ArrayList<>();
     public String description = "";
+    public ArrayList<Tile> enemies = new ArrayList<>();
+    public boolean moveRight = false;
 
     /**
      * Load the board from a text file and generate a two-dimensional array of tiles.
@@ -43,6 +43,28 @@ public class Board {
     public void update(int oldX, int oldY, int x, int y) {
         board[oldX][oldY].setPlayer(false);
         board[x][y].setPlayer(true);
+    }
+
+
+    public void updateEnemies() {
+        for (Tile enemy : enemies) {
+
+            board[enemy.getX()][enemy.getY()] = new TileBlank(enemy.getX(), enemy.getY());
+
+            if (moveRight) {
+                moveRight = false;
+                enemy.move(Direction.EAST);
+            } else {
+                moveRight = true;
+                enemy.move(Direction.WEST);
+            }
+
+            board[enemy.getX()][enemy.getY()] = enemy;
+
+            if (enemy.getX() == Main.getPlayer().getX() && enemy.getY() == Main.getPlayer().getY()) {
+                Main.getPlayer().validateMove(Main.getPlayer().getX(), Main.getPlayer().getY(), this, Direction.NORTH);
+            }
+        }
     }
 
     /**
