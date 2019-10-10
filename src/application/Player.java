@@ -18,7 +18,6 @@ public class Player {
     private int treasureCollected = 0;
     private boolean infoRequested;
     private boolean inPrison = false;
-    private boolean slipped = false;
     private ImageIcon icon = new ImageIcon("resources/chapEast.png");
 
     /**
@@ -138,11 +137,7 @@ public class Player {
         }
 
         if (nextMove instanceof TileJailDoor) {
-            if (inPrison) {
-                return false;
-            } else {
-                return true;
-            }
+            inPrison();
         }
 
 
@@ -158,8 +153,19 @@ public class Player {
             new GUINextLevel();
         }
 
+        if (nextMove instanceof TileCop){
+            if (validateMove(x, y - 1, board, direction)) {
+                this.x = 2;
+                this.y = 9;
+                inPrison = true;}
+        }
+        if (nextMove instanceof TileEnemy){
+            if (validateMove(x, y - 1, board, direction)) {
+                this.x = 12;
+                this.y = 12;
+            }
+        }
         return true;
-
     }
 
     /**
@@ -270,7 +276,6 @@ public class Player {
      * Timer whilst in prison
      */
     public void inPrison() {
-        inPrison = true;
         boolean running = true;
         int timer = 0;
         long previous = System.nanoTime();

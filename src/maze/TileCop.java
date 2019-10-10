@@ -2,7 +2,7 @@ package maze;
 
 import javax.swing.*;
 
-public class TileCop extends Tile {
+public class TileCop extends  Tile{
     public TileCop(int x, int y) {
         super(x, y);
     }

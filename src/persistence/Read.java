@@ -145,8 +145,10 @@ public class Read {
                 break;
             case "cop":
                 tile = new TileCop(x, y);
+                break;
             case "enemy":
                 tile = new TileEnemy(x, y);
+                break;
             default:
                 tile = null;
                 break;
