@@ -2,7 +2,7 @@ package maze;
 
 import javax.swing.*;
 
-public class TileEnemy extends Tile{
+public class TileEnemy extends Tile {
 
     /**
      * Tile for the board x and y axis

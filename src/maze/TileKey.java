@@ -11,8 +11,8 @@ public class TileKey extends Tile {
     /**
      * Tile Key parameters
      *
-     * @param x x coord for tile
-     * @param y y coord for tile
+     * @param x      x coord for tile
+     * @param y      y coord for tile
      * @param colour string type of tile eg wall, blank
      */
 
@@ -40,5 +40,7 @@ public class TileKey extends Tile {
     }
 
     @Override
-    public String getType() { return "key, " + colour; }
+    public String getType() {
+        return "key, " + colour;
+    }
 }
