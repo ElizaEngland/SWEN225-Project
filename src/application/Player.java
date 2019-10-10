@@ -12,6 +12,8 @@ import java.util.ArrayList;
 public class Player {
 
     private ArrayList<Item> inventory = new ArrayList<>();
+    public ArrayList MavsXPos = new ArrayList<ItemTreasure>();
+    public ArrayList MavsYPos = new ArrayList<ItemTreasure>();
     private int x;
     private int y;
     private int treasureCollected = 0;
@@ -44,7 +46,6 @@ public class Player {
      * @param direction The direction to be moved
      */
     public void move(Direction direction, Board board) {
-
         int oldX = x;
         int oldY = y;
 
@@ -160,12 +161,12 @@ public class Player {
             if (validateMove(x, y - 1, board, direction)) {
                 this.x = 2;
                 this.y = 9;
-                prisonSentence = 3;
+                prisonSentence = 5;
             }
         }
         if (nextMove instanceof TileEnemy){
             if (validateMove(x, y - 1, board, direction)) {
-                this.x = 12;
+                this.x = 7;
                 this.y = 12;
             }
         }
@@ -181,6 +182,7 @@ public class Player {
 
         if (item == null) return;
         if (item instanceof ItemTreasure) {
+
             treasureCollected++;
             return;
         }

@@ -6,6 +6,7 @@ import javax.swing.*;
 
 public class TileTreasure extends Tile {
 
+
     public TileTreasure(int x, int y) {
         super(x, y);
     }
@@ -28,4 +29,6 @@ public class TileTreasure extends Tile {
     public String getType() {
         return "treasure";
     }
+
+
 }

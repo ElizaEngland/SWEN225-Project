@@ -176,4 +176,9 @@ public class Board {
         this.description = description;
     }
 
+
+    public Tile[][] getBoard() {
+        return board;
+    }
+
 }
