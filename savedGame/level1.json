@@ -8,6 +8,7 @@
   "inventory": [
   ],
   "description": "Once you have collected all the Billy Mav's® \nyou can pass through Maccas.\nThen take a short Uber ride to the next level!",
+  "paused": "false",
   "0 0": "0, 0, blank",
   "0 1": "0, 1, blank",
   "0 2": "0, 2, blank",

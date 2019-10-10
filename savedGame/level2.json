@@ -9,6 +9,7 @@
 
   ],
   "description": "Same rules as before but now you must watch out for\nPolice, a wild dancer and spilt drinks on the floor!\nBe careful out there!",
+  "paused": "false",
   "0 0":"0, 0, treasure",
   "0 1":"0, 1, blank",
   "0 2":"0, 2, blank",

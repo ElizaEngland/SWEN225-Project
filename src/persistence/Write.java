@@ -32,9 +32,9 @@ public class Write {
             playerObj.put("height", Main.ROWS); // get y
 
             playerObj.put("description", board.getDescription());
+            playerObj.put("paused", "true");
 
             playerObj.put("time", time);
-            System.out.println("current time :" + time);
 
             playerObj.put("inventory", Main.getPlayer().getInventorykeys()); // get x
 

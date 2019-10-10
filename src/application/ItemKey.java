@@ -27,6 +27,6 @@ public class ItemKey implements Item {
      */
     @Override
     public ImageIcon getIcon() {
-        return new ImageIcon("resources/inventory/key_" + colour + ".png");
+        return new ImageIcon("resources/key_" + colour + ".png");
     }
 }
