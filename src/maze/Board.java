@@ -48,9 +48,7 @@ public class Board {
 
     public void updateEnemies() {
         for (Tile enemy : enemies) {
-
             board[enemy.getX()][enemy.getY()] = new TileBlank(enemy.getX(), enemy.getY());
-
             if (moveRight) {
                 moveRight = false;
                 enemy.move(Direction.EAST);
