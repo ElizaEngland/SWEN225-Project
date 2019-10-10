@@ -3,13 +3,7 @@ package maze;
 import application.Item;
 import application.ItemKey;
 import application.ItemTreasure;
-import application.Main;
 import persistence.Read;
-
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class Board {

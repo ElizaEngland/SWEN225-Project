@@ -4,7 +4,6 @@ import maze.*;
 import renderer.GUINextLevel;
 
 import javax.swing.*;
-import java.awt.*;
 import java.util.ArrayList;
 
 /**
@@ -17,7 +16,7 @@ public class Player {
     private int y;
     private int treasureCollected = 0;
     private boolean infoRequested;
-    private boolean inPrison = false;
+    private static int prisonSentence = 0;
     private ImageIcon icon = new ImageIcon("resources/chapEast.png");
 
     /**
@@ -137,7 +136,11 @@ public class Player {
         }
 
         if (nextMove instanceof TileJailDoor) {
-            inPrison();
+            if(prisonSentence <= 0){
+                return true;
+            }else{
+                return false;
+            }
         }
 
 
@@ -157,7 +160,8 @@ public class Player {
             if (validateMove(x, y - 1, board, direction)) {
                 this.x = 2;
                 this.y = 9;
-                inPrison = true;}
+                prisonSentence = 3;
+            }
         }
         if (nextMove instanceof TileEnemy){
             if (validateMove(x, y - 1, board, direction)) {
@@ -272,24 +276,11 @@ public class Player {
         return y;
     }
 
-    /**
-     * Timer whilst in prison
-     */
-    public void inPrison() {
-        boolean running = true;
-        int timer = 0;
-        long previous = System.nanoTime();
-        long current;
-        while (running) {
-            current = System.nanoTime();
-            if (current - previous > 1000000000) {
-                previous = current;
-                timer++;
-            }
-            if (timer == 3) { // wait 3 seconds
-                running = false;
-                inPrison = false;
-            }
-        }
+    public static void setPrisonSentence(int length) {
+        prisonSentence = length;
+    }
+
+    public static int getPrisonSentence() {
+        return prisonSentence;
     }
 }
