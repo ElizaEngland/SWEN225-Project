@@ -109,7 +109,6 @@ public class Main implements KeyListener {
                     previous = current;
                     if (Player.getPrisonSentence() >= 0) {
                         int timeleft = Player.getPrisonSentence();
-                        System.out.println(timeleft);
                         timeleft -= 1;
                         Player.setPrisonSentence(timeleft);
                     }
