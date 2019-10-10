@@ -156,11 +156,26 @@ public class Player {
         }
 
         if (nextMove instanceof TileCop){
-            if (validateMove(x, y - 1, board, direction)) {
-                this.x = 2;
-                this.y = 9;
-                prisonSentence = 5;
-            }
+//            if (direction == Direction.NORTH) {
+//                if (validateMove(x, y - 1, board, direction)) {
+//                    this.y--;
+//                }
+//            }else if (direction == Direction.SOUTH) {
+//                if (validateMove(x, y + 1, board, direction)) {
+//                    this.y++;
+//                }
+//            }else if (direction == Direction.WEST) {
+//                if (validateMove(x - 1, y, board, direction)) {
+//                    this.x--;
+//                }
+//            }else if (direction == Direction.EAST) {
+//                if (validateMove(x + 1, y, board, direction)) {
+//                    this.x++;
+//                }
+//            }
+            this.x = 1;
+            this.y = 9;
+            prisonSentence = 5;
         }
         if (nextMove instanceof TileEnemy){
             if (validateMove(x, y - 1, board, direction)) {
