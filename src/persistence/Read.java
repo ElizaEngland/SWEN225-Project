@@ -22,8 +22,8 @@ public class Read {
     /**
      * Reads the .JSON file and sets the game up.
      *
-     * @param path
-     * @param board
+     * @param path contains the file path
+     * @param board stores the board information from the JSON file
      * @return Tile grid
      */
     public static Tile[][] readFile(String path, Board board) {
@@ -91,8 +91,8 @@ public class Read {
     /**
      * Read the token passed through and converts it into a tile to place on the board
      *
-     * @param info
-     * @param board
+     * @param info is the description of the level, taken from the json files and passed into the GUI. To be placed on a JOption Pane
+     * @param board is the board layout  which is then parsed.
      * @return Tile
      */
     private static Tile helperMethod(String info, Board board) {

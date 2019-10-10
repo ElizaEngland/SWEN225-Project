@@ -15,9 +15,9 @@ public class Board {
     private String levelName;
     private int startX, startY;
     public ArrayList<Item> initialInventory = new ArrayList<>();
-    public String description = "";
+    private String description = "";
     public ArrayList<Tile> enemies = new ArrayList<>();
-    public boolean moveRight = false;
+    private boolean moveRight = false;
 
     /**
      * Load the board from a text file and generate a two-dimensional array of tiles.
