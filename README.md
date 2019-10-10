@@ -10,7 +10,7 @@ nz.ac.vuw.ecs.swen225-2019-groupproject.t9.application.Main
 
 
 ##### Load level
-To load a level, use the Menu bar at the top of the GUI to choose load which level to load.
+To load a level, use the Menu bar at the top of the GUI to choose which level to load.
 
 ##### Save level
 To save a level, use the Menu bar at the top of the GUI to choose where to save the level. The filename will automatically be saved with the .json extension.
