@@ -100,7 +100,7 @@ public class GUI implements WindowListener, ComponentListener {
      * Create the pop up for loading in a level.
      */
     public void loadPopup() {
-        System.out.println("LOADING GAME");
+//        System.out.println("LOADING GAME");
         //Read r = new Read(); //Dead local store. Bugfix
         JFileChooser fileChooser = new JFileChooser("../group-project/savedGame");
         fileChooser.setDialogTitle("Loading file...");
@@ -116,6 +116,7 @@ public class GUI implements WindowListener, ComponentListener {
      * Create the pop up for saving a level.
      */
     public void savePopup() {
+
         Write w = new Write();
         JFileChooser fileChooser = new JFileChooser("../group-project/savedGame");
         fileChooser.setDialogTitle("Saving file...");
@@ -344,7 +345,7 @@ public class GUI implements WindowListener, ComponentListener {
             for (int col = 0; col < 4; col++) {
                 if (count < inventory.size()) {
                     Item item = inventory.get(count);
-                    inventoryGrid[col][row].setIcon(item.getIcon());
+                    inventoryGrid[col][row].setIcon(new ImageIcon(item.getIcon().getImage().getScaledInstance(25, 25, Image.SCALE_SMOOTH)));
                     count++;
                 } else {
                     inventoryGrid[col][row].setIcon(null);
@@ -355,7 +356,8 @@ public class GUI implements WindowListener, ComponentListener {
         if (Main.getPlayer().isInfoRequested()) {
             JOptionPane.showMessageDialog(mainFrame,
                     board.getDescription(),
-                    "Information", JOptionPane.INFORMATION_MESSAGE);
+                    "Information",
+                    JOptionPane.INFORMATION_MESSAGE);
         }
 
     }
@@ -372,6 +374,7 @@ public class GUI implements WindowListener, ComponentListener {
      */
     public void gameOver() {
         JOptionPane.showMessageDialog(mainFrame, "GAME OVER", "GAME OVER", JOptionPane.INFORMATION_MESSAGE);
+        board = null;
     }
 
     /**

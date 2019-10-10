@@ -49,6 +49,14 @@ public class Read {
                 board.setLevelName((String) fileInfo.get("level"));
                 board.setDescription((String) fileInfo.get("description"));
 
+                String paused = (String) fileInfo.get("paused");
+
+                if (paused.equals("true")) {
+                    Main.setPaused(true);
+                } else {
+                    Main.setPaused(false);
+                }
+
                 JSONArray inventoryArray = (JSONArray) fileInfo.get("inventory");
                 if (!inventoryArray.isEmpty()) {
                     for (Object i : inventoryArray) {

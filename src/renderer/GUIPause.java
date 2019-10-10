@@ -18,6 +18,9 @@ public class GUIPause implements KeyListener {
         mainFrame.pack();
         mainFrame.setLocationRelativeTo(null);
         mainFrame.setVisible(true);
+//        mainFrame.setUndecorated(true);
+        mainFrame.getRootPane().setWindowDecorationStyle(JRootPane.NONE);
+        mainFrame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 
         Main.setPaused(true);
     }
