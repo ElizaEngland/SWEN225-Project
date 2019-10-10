@@ -27,7 +27,6 @@ public class GUI implements WindowListener, ComponentListener {
 
     private JFrame mainFrame;
     private JPanel mainPanel;
-    //    private JLabel[][] tileGrid = new JLabel[Main.COLS][Main.ROWS];
     private JLabel[][] tileGrid = new JLabel[Main.WINDOW_COLS][Main.WINDOW_ROWS];
     private JPanel boardPanel;
     private JPanel sidePanel;
@@ -125,7 +124,6 @@ public class GUI implements WindowListener, ComponentListener {
 
         if (returnValue == JFileChooser.APPROVE_OPTION) {
             File toSave = fileChooser.getSelectedFile();
-//            System.out.println(Main.getPlayer().getInventory().toString());
             w.saveJSONFile(toSave.getAbsolutePath(), timeLeft.getText(), board);
         }
     }
@@ -336,7 +334,6 @@ public class GUI implements WindowListener, ComponentListener {
         mavsLeft.setText(String.valueOf(Main.MAX_TREASURE - Main.getPlayer().getTreasureCollected()));
         levelCount.setText(board.getLevelName());
 
-
         int count = 0;
         ArrayList<Item> inventory = Main.getPlayer().getInventory();
 
@@ -352,11 +349,14 @@ public class GUI implements WindowListener, ComponentListener {
             }
         }
 
-        //TODO: 17/9/19 replace the message with the actual information
         if (Main.getPlayer().isInfoRequested()) {
-            JOptionPane.showMessageDialog(mainFrame, "Once you have collected all the \n " +
-                    "billy mavs you can then pass through macas \n and your way to the taxi to complete the level", "Information", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(mainFrame,
+                    "Once you have collected all the \n" +
+                            "billy mavs you can then pass through macas \n" +
+                            "and your way to the taxi to complete the level",
+                    "Information", JOptionPane.INFORMATION_MESSAGE);
         }
+
     }
 
     public void updateOnTick() {
