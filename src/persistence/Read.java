@@ -52,7 +52,7 @@ public class Read {
                 String paused = (String) fileInfo.get("paused");
 
                 if (paused.equals("true")) {
-                    Main.setPaused(true);
+                    Main.setPaused(false);
                 } else {
                     Main.setPaused(false);
                 }

@@ -74,8 +74,16 @@ public class Main implements KeyListener {
         if (key == KeyEvent.VK_SPACE) new GUIPause();
 
         if (key == KeyEvent.VK_X && e.isControlDown()) Runtime.getRuntime().exit(0);
-        if (key == KeyEvent.VK_S && e.isControlDown()) gui.savePopup();
-        if (key == KeyEvent.VK_L && e.isControlDown()) gui.loadPopup();
+        if (key == KeyEvent.VK_S && e.isControlDown()) {
+            setPaused(true);
+            gui.savePopup();
+            setPaused(false);
+        }
+        if (key == KeyEvent.VK_L && e.isControlDown()) {
+            setPaused(true);
+            gui.loadPopup();
+            setPaused(false);
+        }
         if (key == KeyEvent.VK_R && e.isControlDown()){
             System.out.println("unpaused");
             Main.setPaused(false);
