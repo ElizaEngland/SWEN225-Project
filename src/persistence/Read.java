@@ -34,9 +34,8 @@ public class Read {
 
         JSONParser jsonParser = new JSONParser();
         try {
-
             boolean fileFound = Files.exists(Paths.get(path));
-            if (fileFound){
+            if (fileFound) {
                 Object obj = jsonParser.parse(new FileReader(path));
                 JSONObject fileInfo = (JSONObject) obj;
 
@@ -51,6 +50,7 @@ public class Read {
                 board.setStartX(x);
                 board.setStartY(y);
                 board.setLevelName((String) fileInfo.get("level"));
+                board.setDescription((String) fileInfo.get("description"));
 
                 JSONArray inventoryArray = (JSONArray) fileInfo.get("inventory");
                 if (!inventoryArray.isEmpty()) {
@@ -72,8 +72,7 @@ public class Read {
 
                 return grid;
 
-            }
-            else{
+            } else {
                 throw new FileNotFoundException("File not found");
             }
         } catch (ParseException | IOException ex) {

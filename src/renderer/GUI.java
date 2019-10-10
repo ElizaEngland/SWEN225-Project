@@ -353,9 +353,7 @@ public class GUI implements WindowListener, ComponentListener {
 
         if (Main.getPlayer().isInfoRequested()) {
             JOptionPane.showMessageDialog(mainFrame,
-                    "Once you have collected all the \n" +
-                            "billy mavs you can then pass through macas \n" +
-                            "and your way to the taxi to complete the level",
+                    board.getDescription(),
                     "Information", JOptionPane.INFORMATION_MESSAGE);
         }
 

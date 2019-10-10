@@ -40,6 +40,8 @@ public class Write {
             playerObj.put("width", Main.COLS); // get y
             playerObj.put("height", Main.ROWS); // get y
 
+            playerObj.put("description", board.getDescription());
+
             playerObj.put("time", time);
             System.out.println("current time :" + time);
 

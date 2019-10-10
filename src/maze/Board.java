@@ -19,6 +19,7 @@ public class Board {
     private String levelName;
     private int startX, startY;
     public ArrayList<Item> initialInventory = new ArrayList<>();
+    public String description = "";
 
     /**
      * Load the board from a text file and generate a two-dimensional array of tiles.
@@ -114,4 +115,13 @@ public class Board {
     public String getLevelName() {
         return levelName;
     }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
 }
