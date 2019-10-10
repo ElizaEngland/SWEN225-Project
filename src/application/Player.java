@@ -219,10 +219,13 @@ public class Player {
 
     @Override
     public String toString() {
-        String s = "";
+        //String s = "";
+        StringBuffer buf = new StringBuffer();
         for (Item i : inventory) {
-            s += ", " + ((ItemKey) i).getColour();
+            //s += ", " + ((ItemKey) i).getColour();
+            buf.append(", " + ((ItemKey) i).getColour());
         }
+        String s = buf.toString();
         System.out.println(s);
         return s;
     }

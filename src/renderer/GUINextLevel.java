@@ -10,6 +10,7 @@ import java.awt.event.WindowEvent;
 
 
 public class GUINextLevel implements ActionListener {
+
     private JFrame mainFrame;
     private JPanel panel;
     private JButton nextLevel;
@@ -31,8 +32,8 @@ public class GUINextLevel implements ActionListener {
         panel.add(text);
         panel1.add(nextLevel);
         panel1.add(exit);
-        mainFrame.add(panel,"North");
-        mainFrame.add(panel1,"South");
+        mainFrame.add(panel, "North");
+        mainFrame.add(panel1, "South");
         mainFrame.setTitle("Level Complete!");
         mainFrame.pack();
         mainFrame.setLocationRelativeTo(null);
@@ -43,15 +44,12 @@ public class GUINextLevel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        if(e.getSource() == nextLevel ) {
-            if (Main.getFilename() == "./savedGame/level1.json") {
-                Main.setFilename("./savedGame/level2.json");
-                Main.loadLevel(Main.getFilename());
-                mainFrame.dispatchEvent(new WindowEvent(mainFrame, WindowEvent.WINDOW_CLOSING));
-            }
-        }
-        else if(e.getSource()==exit){
-            System.exit(0);
+        if (e.getSource() == nextLevel) {
+            Main.setCurrentLevel(Main.getCurrentLevel() + 1);
+            Main.loadLevel("./savedGame/level" + Main.getCurrentLevel() + ".json");
+            mainFrame.dispose();
+        } else if (e.getSource() == exit) {
+            Runtime.getRuntime().exit(0);
         }
     }
 }

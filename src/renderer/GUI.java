@@ -12,6 +12,7 @@ import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
+import java.util.ArrayList;
 
 /**
  * GUI class for Chip's Challenge.
@@ -26,7 +27,6 @@ public class GUI implements WindowListener, ComponentListener {
 
     private JFrame mainFrame;
     private JPanel mainPanel;
-    //    private JLabel[][] tileGrid = new JLabel[Main.COLS][Main.ROWS];
     private JLabel[][] tileGrid = new JLabel[Main.WINDOW_COLS][Main.WINDOW_ROWS];
     private JPanel boardPanel;
     private JPanel sidePanel;
@@ -72,7 +72,7 @@ public class GUI implements WindowListener, ComponentListener {
         saveGame = new JMenuItem("Save Game");
         controls = new JMenuItem("Controls");
 
-        controls.addActionListener(ev -> JOptionPane.showMessageDialog(mainFrame, "COTROLS:\n " +
+        controls.addActionListener(ev -> JOptionPane.showMessageDialog(mainFrame, "CONTROLS:\n " +
                 "CLT + X = exit the game\n" +
                 "CLT + S = save the game\n" +
                 "CLT + L = Load the game\n" +
@@ -102,7 +102,7 @@ public class GUI implements WindowListener, ComponentListener {
      */
     public void loadPopup() {
         System.out.println("LOADING GAME");
-        Read r = new Read();
+        //Read r = new Read(); //Dead local store. Bugfix
         JFileChooser fileChooser = new JFileChooser("../group-project/savedGame");
         fileChooser.setDialogTitle("Loading file...");
         int address = fileChooser.showOpenDialog(null);
@@ -124,7 +124,6 @@ public class GUI implements WindowListener, ComponentListener {
 
         if (returnValue == JFileChooser.APPROVE_OPTION) {
             File toSave = fileChooser.getSelectedFile();
-//            System.out.println(Main.getPlayer().getInventory().toString());
             w.saveJSONFile(toSave.getAbsolutePath(), timeLeft.getText(), board);
         }
     }
@@ -335,23 +334,29 @@ public class GUI implements WindowListener, ComponentListener {
         mavsLeft.setText(String.valueOf(Main.MAX_TREASURE - Main.getPlayer().getTreasureCollected()));
         levelCount.setText(board.getLevelName());
 
-        int row = 0;
-        int col = 0;
-        for (Item item : Main.getPlayer().getInventory()) {
-            inventoryGrid[col][row].setIcon(item.getIcon());
-            if (col == 3) {
-                row++;
-                col = 0;
-            } else {
-                col++;
+        int count = 0;
+        ArrayList<Item> inventory = Main.getPlayer().getInventory();
+
+        for (int row = 0; row < 2; row++) {
+            for (int col = 0; col < 4; col++) {
+                if (count < inventory.size()) {
+                    Item item = inventory.get(count);
+                    inventoryGrid[col][row].setIcon(item.getIcon());
+                    count++;
+                } else {
+                    inventoryGrid[col][row].setIcon(null);
+                }
             }
         }
 
-        //TODO: 17/9/19 replace the message with the actual information
         if (Main.getPlayer().isInfoRequested()) {
-            JOptionPane.showMessageDialog(mainFrame, "Once you have collected all the \n " +
-                    "billy mavs you can then pass through macas \n and your way to the taxi to complete the level", "Information", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(mainFrame,
+                    "Once you have collected all the \n" +
+                            "billy mavs you can then pass through macas \n" +
+                            "and your way to the taxi to complete the level",
+                    "Information", JOptionPane.INFORMATION_MESSAGE);
         }
+
     }
 
     public void updateOnTick() {
