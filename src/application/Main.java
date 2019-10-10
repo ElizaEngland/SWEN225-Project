@@ -29,6 +29,9 @@ public class Main implements KeyListener {
     public static int maxTime = 60;
     private static String filename;
 
+    /**
+     * Initialises a new game and loads the level.
+     */
     private void init() {
         gui = new GUI(this);
         filename = "./savedGame/level" + currentLevel + ".json";
@@ -36,6 +39,10 @@ public class Main implements KeyListener {
         tick();
     }
 
+    /**
+     * Loads the level into Chip's Challenge, setting up the Board, Player and treasure.
+     * @param file The path of the level file.
+     */
     public static void loadLevel(String file) {
         try {
             board = new Board(file);
@@ -51,7 +58,7 @@ public class Main implements KeyListener {
     /**
      * Handles key press events and makes the corresponding changes to the game.
      *
-     * @param e The key which was pressed
+     * @param e The key which was pressed.
      */
     @Override
     public void keyPressed(KeyEvent e) {
@@ -86,7 +93,7 @@ public class Main implements KeyListener {
 
 
     /**
-     * Main loop of the game
+     * Main loop of the game.
      */
     public void tick() {
         boolean running = true;

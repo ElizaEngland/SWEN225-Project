@@ -2,6 +2,9 @@ package application;
 
 import javax.swing.*;
 
+/**
+ * ItemKey class for the keys in Chip's Challenge.
+ */
 public class ItemKey implements Item {
 
     private String colour;
@@ -10,10 +13,18 @@ public class ItemKey implements Item {
         this.colour = colour;
     }
 
+    /**
+     * Returns the colour of the Key.
+     * @return String of the colour.
+     */
     String getColour() {
         return colour;
     }
 
+    /**
+     * Returns an Image Icon of the coloured key.
+     * @return ImageIcon.
+     */
     @Override
     public ImageIcon getIcon() {
         return new ImageIcon("resources/inventory/key_" + colour + ".png");

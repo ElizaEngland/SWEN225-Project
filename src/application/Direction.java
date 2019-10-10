@@ -7,6 +7,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * The Direction class chooses the direction of the current player.
+ */
 enum Direction {
     NORTH, SOUTH, EAST, WEST;
 

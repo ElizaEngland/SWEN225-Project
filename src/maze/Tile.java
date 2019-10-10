@@ -51,7 +51,10 @@ public class Tile {
 
     /**
      * Returns type of tile for jSon file output
+     *
      * @return
      */
-    public String getType() { return null; }
+    public String getType() {
+        return null;
+    }
 }

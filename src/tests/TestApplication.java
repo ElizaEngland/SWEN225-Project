@@ -3,10 +3,12 @@ package tests;
 import application.Main;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class TestApplication {
     private Main instance;
+
     @BeforeEach
     void setUp() throws Exception {
         try {
@@ -16,7 +18,9 @@ class TestApplication {
         }
     }
 
-/**MAIN TESTS **/
+    /**
+     * MAIN TESTS
+     **/
 
     @Test
     void loadValidLevel() {
@@ -37,10 +41,12 @@ class TestApplication {
 
     @Test
     void checkPaused() {
-       // fail();
+        // fail();
     }
 
-    /**PLAYER TESTS **/
+    /**
+     * PLAYER TESTS
+     **/
     @Test
     void move() {
         //fail();
@@ -54,7 +60,7 @@ class TestApplication {
 
     @Test
     void getInventory() {
-      //  fail();
+        //  fail();
 
     }
 }

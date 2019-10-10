@@ -16,15 +16,13 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 
 /**
- * the time left,
- * position of Chap and other actors (if there are any),
- * the treasures he holds, etc.
+ * The Write class saves the current state of the game to a .json file specified by the user.
  */
 
 public class Write {
 
     /**
-     * Saves the current settings of the game into a .json file
+     * Saves the current settings of the game into a .json file.
      *
      * @param filePath
      * @param board
@@ -52,7 +50,6 @@ public class Write {
                     playerObj.put(col + " " + row, +col + ", " + row + ", " + board.getTile(col, row).getType());
                 }
             }
-
 
             Files.write(Paths.get(filePath + ".json"), playerObj.toJSONString().getBytes());
 
