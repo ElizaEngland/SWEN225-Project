@@ -7,6 +7,7 @@ import javax.swing.*;
 
 /**
  * Tile class for Chip's Challenge
+ *
  * @author - Ben Robertson, Eliza England, Ethan King, Jacqueline Dong, Jay Patel, Mason Yi
  */
 public class Tile {
@@ -79,6 +80,11 @@ public class Tile {
         this.y = y;
     }
 
+    /**
+     * Move a tile one space in the specified direction.
+     *
+     * @param direction
+     */
     public void move(Direction direction) {
         if (direction == Direction.EAST) x++;
         if (direction == Direction.WEST) x--;

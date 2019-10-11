@@ -1,7 +1,5 @@
 package maze;
 
-import application.Main;
-
 import javax.swing.*;
 
 

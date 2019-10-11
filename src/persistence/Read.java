@@ -7,6 +7,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -15,6 +16,7 @@ import java.nio.file.Paths;
 
 /**
  * Read class reads the .json file into Chip's Challenge and sets the game up from the specified settings.
+ *
  * @author - Ben Robertson, Eliza England, Ethan King, Jacqueline Dong, Jay Patel, Mason Yi
  */
 public class Read {
@@ -22,7 +24,7 @@ public class Read {
     /**
      * Reads the .JSON file and sets the game up.
      *
-     * @param path contains the file path
+     * @param path  contains the file path
      * @param board stores the board information from the JSON file
      * @return Tile grid
      */
@@ -65,7 +67,6 @@ public class Read {
                 }
 
                 int time = Integer.parseInt(String.valueOf(fileInfo.get("time")));
-                System.out.println("time = " + time);
                 Main.maxTime = time;
 
                 for (int row = 0; row < Main.ROWS; row++) {
@@ -91,7 +92,7 @@ public class Read {
     /**
      * Read the token passed through and converts it into a tile to place on the board
      *
-     * @param info is the description of the level, taken from the json files and passed into the GUI. To be placed on a JOption Pane
+     * @param info  is the description of the level, taken from the json files and passed into the GUI. To be placed on a JOption Pane
      * @param board is the board layout  which is then parsed.
      * @return Tile
      */

@@ -12,7 +12,7 @@ public class TileJailWall extends Tile {
 
     @Override
     public ImageIcon getIcon() {
-        return new ImageIcon("resources/jail_Wall.png");
+        return new ImageIcon("resources/jail_wall.png");
     }
 
     @Override

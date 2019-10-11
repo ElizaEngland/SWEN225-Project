@@ -8,6 +8,7 @@ import java.awt.event.KeyListener;
 
 /**
  * GUI pause for Chip's Challenge.
+ *
  * @author - Ben Robertson, Eliza England, Ethan King, Jacqueline Dong, Jay Patel, Mason Yi
  */
 public class GUIPause implements KeyListener {
@@ -25,8 +26,8 @@ public class GUIPause implements KeyListener {
         panel1.add(text1);
         panel2.add(text2);
 
-        mainFrame.add(panel1,"North");
-        mainFrame.add(panel2,"South");
+        mainFrame.add(panel1, "North");
+        mainFrame.add(panel2, "South");
 
         mainFrame.setTitle("Paused");
         mainFrame.addKeyListener(this);
@@ -42,6 +43,7 @@ public class GUIPause implements KeyListener {
 
     /**
      * Implements pause if esc pressed.
+     *
      * @param e
      */
     @Override
@@ -62,8 +64,6 @@ public class GUIPause implements KeyListener {
     public void keyTyped(KeyEvent e) {
 
     }
-
-
 
     @Override
     public void keyReleased(KeyEvent e) {

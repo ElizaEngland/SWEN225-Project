@@ -53,7 +53,6 @@ public class Main implements KeyListener {
             gui.setBoard(board);
             gui.updateOnMove();
             time = 0;
-            System.out.println("TIMETIMEtime = " + time);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -89,7 +88,6 @@ public class Main implements KeyListener {
             setPaused(false);
         }
         if (key == KeyEvent.VK_R && e.isControlDown()) {
-            System.out.println("unpaused");
             Main.setPaused(false);
         }
         if (key == KeyEvent.VK_P && e.isControlDown()) loadLevel("./savedGame/level" + getCurrentLevel() + ".json");
@@ -106,9 +104,8 @@ public class Main implements KeyListener {
 
     }
 
-
     /**
-     * Main loop of the game.
+     * Tick functionality.
      */
     public void tick() {
         long previous = System.nanoTime();
@@ -141,6 +138,15 @@ public class Main implements KeyListener {
                 }
             }
         }
+    }
+
+    /**
+     * Main instance of the program.
+     *
+     * @param args
+     */
+    public static void main(String[] args) {
+        new Main().init();
     }
 
     /**
@@ -181,10 +187,6 @@ public class Main implements KeyListener {
 
     public void setMaxTime(int maxTime) {
         this.maxTime = maxTime;
-    }
-
-    public static void main(String[] args) {
-        new Main().init();
     }
 
     // Unused methods:

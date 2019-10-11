@@ -19,6 +19,6 @@ public class TileSpilledDrink extends Tile {
 
     @Override
     public String getType() {
-        return "spilled_drink";
+        return "spilleddrink";
     }
 }

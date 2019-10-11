@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 
 /**
  * GUI next level class for Chip's Challenge.
+ *
  * @author - Ben Robertson, Eliza England, Ethan King, Jacqueline Dong, Jay Patel, Mason Yi
  */
 public class GUINextLevel implements ActionListener {
@@ -42,9 +43,7 @@ public class GUINextLevel implements ActionListener {
         mainFrame.setVisible(true);
     }
 
-
     /**
-     *
      * @param e
      */
     @Override

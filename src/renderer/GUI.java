@@ -5,6 +5,7 @@ import application.Main;
 import application.Player;
 import maze.Board;
 import persistence.Write;
+
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
@@ -14,6 +15,7 @@ import java.util.ArrayList;
 
 /**
  * GUI class for Chip's Challenge.
+ *
  * @author - Ben Robertson, Eliza England, Ethan King, Jacqueline Dong, Jay Patel, Mason Yi
  */
 public class GUI implements WindowListener, ComponentListener {
@@ -96,13 +98,10 @@ public class GUI implements WindowListener, ComponentListener {
         mainFrame.setJMenuBar(menuBar);
     }
 
-
     /**
      * Create the pop up for loading in a level.
      */
     public void loadPopup() {
-//        System.out.println("LOADING GAME");
-        //Read r = new Read(); //Dead local store. Bugfix
         JFileChooser fileChooser = new JFileChooser("../group-project/savedGame");
         fileChooser.setDialogTitle("Loading file...");
         int address = fileChooser.showOpenDialog(null);
@@ -355,11 +354,11 @@ public class GUI implements WindowListener, ComponentListener {
         }
 
         if (Main.getPlayer().isInfoRequested()) {
+            Main.getPlayer().setInfoRequested(false);
             JOptionPane.showMessageDialog(mainFrame,
                     board.getDescription(),
                     "Information",
                     JOptionPane.INFORMATION_MESSAGE);
-            Main.getPlayer().setInfoRequested(false);
         }
 
     }
@@ -386,6 +385,7 @@ public class GUI implements WindowListener, ComponentListener {
 
     /**
      * Used to redraw frame if window size changed.
+     *
      * @param e
      */
     @Override
@@ -407,7 +407,6 @@ public class GUI implements WindowListener, ComponentListener {
     public void setBoard(Board board) {
         this.board = board;
     }
-
 
     ////////////////// Unused methods //////////////////
 

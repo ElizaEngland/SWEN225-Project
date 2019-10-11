@@ -2,10 +2,12 @@ package maze;
 
 import application.*;
 import persistence.Read;
+
 import java.util.ArrayList;
 
 /**
  * Board class for Chip's Challenge
+ *
  * @author - Ben Robertson, Eliza England, Ethan King, Jacqueline Dong, Jay Patel, Mason Yi
  */
 public class Board {
@@ -29,12 +31,12 @@ public class Board {
 
     /**
      * Adds item picked up to current inventory.
+     *
      * @param e
      */
     public void addInventory(Item e) {
         initialInventory.add(e);
     }
-
 
     /**
      * Move the player from one coordinate to another.
@@ -49,7 +51,9 @@ public class Board {
         board[x][y].setPlayer(true);
     }
 
-
+    /**
+     * Update the position of all enemies on the board.
+     */
     public void updateEnemies() {
         for (Tile enemy : enemies) {
             board[enemy.getX()][enemy.getY()] = new TileBlank(enemy.getX(), enemy.getY());
@@ -64,7 +68,8 @@ public class Board {
             board[enemy.getX()][enemy.getY()] = enemy;
 
             if (enemy.getX() == Main.getPlayer().getX() && enemy.getY() == Main.getPlayer().getY()) {
-                Main.getPlayer().validateMove(Main.getPlayer().getX(), Main.getPlayer().getY(), this, Direction.NORTH);
+                Main.getPlayer().setX(5);
+                Main.getPlayer().setY(9);
             }
         }
     }
@@ -82,6 +87,7 @@ public class Board {
 
     /**
      * Sets level name for reading new levels in.
+     *
      * @param levelName
      */
     public void setLevelName(String levelName) {
@@ -90,6 +96,7 @@ public class Board {
 
     /**
      * Gets start x position of character for level.
+     *
      * @return
      */
     public int getStartX() {
@@ -98,6 +105,7 @@ public class Board {
 
     /**
      * Sets start x position of character for level.
+     *
      * @param startX
      */
     public void setStartX(int startX) {
@@ -106,6 +114,7 @@ public class Board {
 
     /**
      * Gets start y position of character for level.
+     *
      * @return
      */
     public int getStartY() {
@@ -114,6 +123,7 @@ public class Board {
 
     /**
      * Sets start x position of character for level.
+     *
      * @param startY
      */
     public void setStartY(int startY) {
@@ -156,6 +166,7 @@ public class Board {
 
     /**
      * Gets level name.
+     *
      * @return
      */
     public String getLevelName() {
@@ -164,6 +175,7 @@ public class Board {
 
     /**
      * Gets information for info tile.
+     *
      * @return
      */
     public String getDescription() {
@@ -172,15 +184,11 @@ public class Board {
 
     /**
      * Sets information for when loading file in.
+     *
      * @param description
      */
     public void setDescription(String description) {
         this.description = description;
-    }
-
-
-    public Tile[][] getBoard() {
-        return board;
     }
 
 }

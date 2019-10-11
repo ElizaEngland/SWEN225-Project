@@ -4,6 +4,7 @@ import javax.swing.*;
 
 /**
  * ItemKey class for the keys in Chip's Challenge.
+ *
  * @author - Ben Robertson, Eliza England, Ethan King, Jacqueline Dong, Jay Patel, Mason Yi
  */
 public class ItemKey implements Item {
@@ -16,6 +17,7 @@ public class ItemKey implements Item {
 
     /**
      * Returns the colour of the Key.
+     *
      * @return String of the colour.
      */
     String getColour() {
@@ -24,6 +26,7 @@ public class ItemKey implements Item {
 
     /**
      * Returns an Image Icon of the coloured key.
+     *
      * @return ImageIcon.
      */
     @Override

@@ -8,13 +8,12 @@ import java.util.ArrayList;
 
 /**
  * The player class which handles player movement, inventory etc...
+ *
  * @author - Ben Robertson, Eliza England, Ethan King, Jacqueline Dong, Jay Patel, Mason Yi
  */
 public class Player {
 
     private ArrayList<Item> inventory = new ArrayList<>();
-    public ArrayList MavsXPos = new ArrayList<ItemTreasure>();
-    public ArrayList MavsYPos = new ArrayList<ItemTreasure>();
     private int x;
     private int y;
     private int treasureCollected = 0;
@@ -35,6 +34,11 @@ public class Player {
         addInventory(board);
     }
 
+    /**
+     * Add an item to the players inventory.
+     *
+     * @param board
+     */
     public void addInventory(Board board) {
         if (!board.initialInventory.isEmpty()) {
             inventory = board.initialInventory;
@@ -136,9 +140,9 @@ public class Player {
         }
 
         if (nextMove instanceof TileJailDoor) {
-            if(prisonSentence <= 0){
+            if (prisonSentence <= 0) {
                 return true;
-            }else{
+            } else {
                 return false;
             }
         }
@@ -153,36 +157,19 @@ public class Player {
         }
 
         if (nextMove instanceof TileExit) {
+            Main.setPaused(true);
             new GUINextLevel();
         }
 
-        if (nextMove instanceof TileCop){
-//            if (direction == Direction.NORTH) {
-//                if (validateMove(x, y - 1, board, direction)) {
-//                    this.y--;
-//                }
-//            }else if (direction == Direction.SOUTH) {
-//                if (validateMove(x, y + 1, board, direction)) {
-//                    this.y++;
-//                }
-//            }else if (direction == Direction.WEST) {
-//                if (validateMove(x - 1, y, board, direction)) {
-//                    this.x--;
-//                }
-//            }else if (direction == Direction.EAST) {
-//                if (validateMove(x + 1, y, board, direction)) {
-//                    this.x++;
-//                }
-//            }
+        if (nextMove instanceof TileCop) {
             this.x = 1;
             this.y = 9;
             prisonSentence = 5;
         }
-        if (nextMove instanceof TileEnemy){
-            if (validateMove(x, y - 1, board, direction)) {
-                this.x = 7;
-                this.y = 12;
-            }
+
+        if (nextMove instanceof TileEnemy) {
+            this.x = 5;
+            this.y = 9;
         }
         return true;
     }
@@ -209,14 +196,6 @@ public class Player {
 
     }
 
-    public ImageIcon getIcon() {
-        return icon;
-    }
-
-    public void setIcon(ImageIcon icon) {
-        this.icon = icon;
-    }
-
     /**
      * Get the players inventory.
      *
@@ -226,22 +205,98 @@ public class Player {
         return inventory;
     }
 
-
     /**
-     * Get the players inventory.
+     * Get the players keys.
      *
      * @return Player inventory.
      */
-    public ArrayList<String> getInventorykeys() {
+    public ArrayList<String> getInventoryKeys() {
         ArrayList<String> keyColours = new ArrayList<>();
 
         for (Item i : inventory) {
             keyColours.add(((ItemKey) i).getColour());
         }
-        System.out.println(keyColours);
         return keyColours;
     }
 
+    public ImageIcon getIcon() {
+        return icon;
+    }
+
+    public void setIcon(ImageIcon icon) {
+        this.icon = icon;
+    }
+
+    /**
+     * Gets the number of Treasure the player has collected.
+     *
+     * @return Number of Treasure the player has
+     */
+    public int getTreasureCollected() {
+        return treasureCollected;
+    }
+
+    /**
+     * Checks the boolean variable to see if information is being requested.
+     *
+     * @return if the information Tile is being stood on
+     */
+    public boolean isInfoRequested() {
+        return infoRequested;
+    }
+
+    /**
+     * @param value Notify the player of level information.
+     */
+    public void setInfoRequested(boolean value) {
+        infoRequested = value;
+    }
+
+    /**
+     * Gets the x co-ordinate of player.
+     *
+     * @return x value
+     */
+    public int getX() {
+        return x;
+    }
+
+    /**
+     * Gets the y co-ordinate of player.
+     *
+     * @return y value
+     */
+    public int getY() {
+        return y;
+    }
+
+    /**
+     * @param x Set player X.
+     */
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    /**
+     * @param y Set player Y.
+     */
+    public void setY(int y) {
+        this.y = y;
+    }
+
+    /**
+     * @param length The period of time the user spends in jail.
+     */
+    public static void setPrisonSentence(int length) {
+        prisonSentence = length;
+    }
+
+    /**
+     * @return Returns the jail time.
+     */
+    public static int getPrisonSentence() {
+        return prisonSentence;
+    }
 
     @Override
     public String toString() {
@@ -252,55 +307,6 @@ public class Player {
             buf.append(", " + ((ItemKey) i).getColour());
         }
         String s = buf.toString();
-        System.out.println(s);
         return s;
-    }
-
-    /**
-     * Gets the number of Treasure the player has collected
-     *
-     * @return Number of Treasure the player has
-     */
-    public int getTreasureCollected() {
-        return treasureCollected;
-    }
-
-    /**
-     * Checks the boolean variable to see if information is being requested
-     *
-     * @return if the information Tile is being stood on
-     */
-    public boolean isInfoRequested() {
-        return infoRequested;
-    }
-
-    public void setInfoRequested(boolean value) {
-        infoRequested = value;
-    }
-
-    /**
-     * Gets the x co-ordinate of player
-     *
-     * @return x value
-     */
-    public int getX() {
-        return x;
-    }
-
-    /**
-     * Gets the y co-ordinate of player
-     *
-     * @return y value
-     */
-    public int getY() {
-        return y;
-    }
-
-    public static void setPrisonSentence(int length) {
-        prisonSentence = length;
-    }
-
-    public static int getPrisonSentence() {
-        return prisonSentence;
     }
 }
